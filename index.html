@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TweenLearn - E-Tweening Learning Platform</title>
+    <title>eTwinning Aristotel '26</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
             --primary: #4f46e5;
             --secondary: #7c3aed;
@@ -19,13 +14,39 @@
             --dark: #1e293b;
             --light: #f8fafc;
             --white: #ffffff;
+            --gray: #64748b;
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            
+            /* Light theme */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --card-bg: #1e293b;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.7;
-            color: var(--dark);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            transition: all 0.3s ease;
         }
 
         /* Navigation */
@@ -33,14 +54,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-primary);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -48,703 +71,603 @@
             padding: 0 2rem;
         }
 
-        .logo {
-            font-size: 1.8rem;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .etwinning-logo {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .site-title {
+            font-size: 1.6rem;
             font-weight: 800;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-menu {
+        .theme-toggle {
+            background: var(--border);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            cursor: pointer;
             display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary);
-        }
-
-        .search-box {
-            position: relative;
-            max-width: 300px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.7rem 1rem 0.7rem 2.5rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 25px;
-            font-size: 0.9rem;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
+            color: var(--text-secondary);
         }
 
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: white;
+            transform: rotate(180deg);
         }
 
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #64748b;
-        }
-
-        /* Hero Section */
+        /* Hero Gallery */
         .hero {
-            padding: 8rem 2rem 6rem;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-container {
-            max-width: 1200px;
+        .gallery-container {
+            max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero h1 {
+        .circular-gallery {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            transform-style: preserve-3d;
+            animation: rotate 40s linear infinite;
+        }
+
+        .gallery-item {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.2) translateZ(20px);
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .gallery-item:nth-child(1) { background: #ef4444; transform: rotate(0deg) translateX(140px) rotateY(0deg); }
+        .gallery-item:nth-child(2) { background: #f59e0b; transform: rotate(60deg) translateX(140px) rotateY(-60deg); }
+        .gallery-item:nth-child(3) { background: #10b981; transform: rotate(120deg) translateX(140px) rotateY(-120deg); }
+        .gallery-item:nth-child(4) { background: #3b82f6; transform: rotate(180deg) translateX(140px) rotateY(-180deg); }
+        .gallery-item:nth-child(5) { background: #8b5cf6; transform: rotate(240deg) translateX(140px) rotateY(-240deg); }
+        .gallery-item:nth-child(6) { background: #ec4899; transform: rotate(300deg) translateX(140px) rotateY(-300deg); }
+        .gallery-item:nth-child(7) { background: #06b6d4; transform: rotate(360deg) translateX(140px) rotateY(-360deg); }
+
+        @keyframes rotate {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        .hero-title {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .hero-title h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            line-height: 1.2;
+            margin-bottom: 1rem;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            color: #64748b;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-        }
-
-        /* Content Sections */
-        .section {
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Tutorials Grid */
-        .tutorials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .tutorial-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #f1f5f9;
-        }
-
-        .tutorial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-        }
-
-        .tutorial-image {
-            height: 200px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .tutorial-content {
-            padding: 2rem;
-        }
-
-        .tutorial-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .tutorial-meta {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #64748b;
-        }
-
-        .tutorial-description {
-            color: #475569;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Concepts Section */
-        .concepts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .concept-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-        }
-
-        .concept-card:hover {
-            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-        }
-
-        .concept-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Resources Section */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .resource-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 3px solid var(--accent);
-            transition: all 0.3s ease;
-        }
-
-        .resource-card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        /* Newsletter */
-        .newsletter {
-            background: var(--dark);
-            color: white;
-            text-align: center;
             padding: 4rem 2rem;
         }
 
-        .newsletter h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .section {
+            margin-bottom: 5rem;
         }
 
-        .newsletter-form {
-            max-width: 500px;
-            margin: 2rem auto 0;
+        .section-header {
             display: flex;
+            align-items: center;
             gap: 1rem;
-            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 1.2rem;
         }
 
-        .newsletter-input {
-            flex: 1;
-            min-width: 250px;
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
-        .newsletter-btn {
+        /* Status */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .status-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .status-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        /* Events */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .event-header {
             background: var(--gradient);
             color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
+            padding: 1.5rem 2rem;
+        }
+
+        .event-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-meta {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .event-content {
+            padding: 2rem;
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .team-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .team-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-link {
+            color: white;
         }
 
         /* Footer */
         .footer {
-            background: #0f172a;
+            background: var(--dark);
             color: #94a3b8;
             padding: 3rem 2rem 1.5rem;
+            margin-top: 5rem;
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        .footer h3 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+        .copyright {
+            font-size: 0.9rem;
+            margin-top: 2rem;
         }
 
-        .footer-link {
-            color: #94a3b8;
+        .github-link {
+            color: #eab308;
             text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: white;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            font-weight: 600;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+            .nav-container {
+                padding: 0 1rem;
             }
-
-            .hero h1 {
+            
+            .hero-title h1 {
                 font-size: 2.5rem;
             }
-
-            .section-title {
-                font-size: 2.2rem;
+            
+            .gallery-container {
+                height: 300px;
             }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+            
+            .circular-gallery {
+                width: 280px;
+                height: 280px;
             }
+            
+            .gallery-item {
+                width: 90px;
+                height: 90px;
+                font-size: 1.5rem;
+            }
+            
+            .gallery-item:nth-child(n) {
+                transform: rotate(var(--angle)) translateX(110px) rotateY(calc(-1 * var(--angle)));
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
         }
     </style>
 </head>
-<body>
+<body data-theme="light">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">TweenLearn</a>
-            <ul class="nav-menu">
-                <li><a href="#tutorials" class="nav-link">Tutorials</a></li>
-                <li><a href="#concepts" class="nav-link">Concepts</a></li>
-                <li><a href="#resources" class="nav-link">Resources</a></li>
-                <li><a href="#glossary" class="nav-link">Glossary</a></li>
-            </ul>
-            <div class="search-box">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" placeholder="Search tutorials...">
-            </div>
+            <a href="#" class="logo-container">
+                <div class="etwinning-logo">eT</div>
+                <span class="site-title">Aristotel '26</span>
+            </a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero with Circular Gallery -->
     <section class="hero">
-        <div class="hero-container">
-            <h1 class="reveal">Learn E-Tweening</h1>
-            <p class="reveal">Master the art of smooth animations through comprehensive tutorials, detailed concept explanations, and practical resources. From beginner to advanced tweening techniques.</p>
-            
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <span class="stat-number">150+</span>
-                    <p>Tutorials</p>
-                </div>
-                <div class="stat-item reveal">
-                    <span class="stat-number">25+</span>
-                    <p>Concepts</p>
-                </div>
-                <div class="stat-item reveal">
-                    <span class="stat-number">10K+</span>
-                    <p>Learners</p>
-                </div>
-                <div class="stat-item reveal">
-                    <span class="stat-number">50+</span>
-                    <p>Easing Functions</p>
-                </div>
+        <div class="gallery-container">
+            <div class="circular-gallery" id="gallery">
+                <div class="gallery-item" data-team="1">Team 1</div>
+                <div class="gallery-item" data-team="2">Team 2</div>
+                <div class="gallery-item" data-team="3">Team 3</div>
+                <div class="gallery-item" data-team="4">Team 4</div>
+                <div class="gallery-item" data-team="5">Team 5</div>
+                <div class="gallery-item" data-team="6">Team 6</div>
+                <div class="gallery-item" data-team="7">Team 7</div>
             </div>
+        </div>
+        <div class="hero-title">
+            <h1>eTwinning Aristotel '26</h1>
+            <p>Collaborative learning platform showcasing team achievements and project milestones</p>
         </div>
     </section>
 
-    <!-- Tutorials Section -->
-    <section class="section" id="tutorials">
-        <div class="container">
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Google Drive Status -->
+        <section class="section">
             <div class="section-header">
-                <h2 class="section-title reveal">Featured Tutorials</h2>
-                <p class="section-subtitle reveal">Step-by-step guides covering all aspects of e-tweening</p>
+                <div class="section-icon">
+                    <i class="fab fa-google-drive"></i>
+                </div>
+                <h2 class="section-title">Project Status</h2>
             </div>
-            
-            <div class="tutorials-grid">
-                <article class="tutorial-card reveal">
-                    <div class="tutorial-image">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                    <div class="tutorial-content">
-                        <div class="tutorial-meta">
-                            <span><i class="fas fa-clock"></i> 12 min</span>
-                            <span><i class="fas fa-user"></i> Beginner</span>
+            <div class="status-grid">
+                <div class="status-card">
+                    <h3>📁 Main Drive Folder</h3>
+                    <p>Complete access to all project documents, presentations, and deliverables</p>
+                    <a href="https://drive.google.com/drive/folders/YOUR_FOLDER_ID?usp=sharing" target="_blank" class="team-link" style="font-size: 1.1rem; margin-top: 1rem; display: inline-block;">
+                        <i class="fab fa-google-drive"></i> Open Google Drive
+                    </a>
+                </div>
+                <div class="status-card">
+                    <h3>📊 Progress Overview</h3>
+                    <p>7 teams • 5 major events • Ongoing collaboration across Europe</p>
+                    <div style="margin-top: 1.5rem;">
+                        <div style="background: var(--border); height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div style="background: var(--gradient); height: 100%; width: 85%; border-radius: 4px;"></div>
                         </div>
-                        <h3 class="tutorial-title">Introduction to Easing Functions</h3>
-                        <p class="tutorial-description">Understand linear, ease-in, ease-out, and cubic-bezier functions. See visual examples and practical applications.</p>
+                        <small style="display: block; margin-top: 0.5rem; color: var(--text-secondary);">85% Complete</small>
                     </div>
-                </article>
-
-                <article class="tutorial-card reveal">
-                    <div class="tutorial-image">
-                        <i class="fas fa-timeline"></i>
-                    </div>
-                    <div class="tutorial-content">
-                        <div class="tutorial-meta">
-                            <span><i class="fas fa-clock"></i> 18 min</span>
-                            <span><i class="fas fa-user"></i> Intermediate</span>
-                        </div>
-                        <h3 class="tutorial-title">Keyframes & Timeline Basics</h3>
-                        <p class="tutorial-description">Learn how to set keyframes, control timing, and create complex multi-step animations.</p>
-                    </div>
-                </article>
-
-                <article class="tutorial-card reveal">
-                    <div class="tutorial-image">
-                        <i class="fas fa-bezier-curve"></i>
-                    </div>
-                    <div class="tutorial-content">
-                        <div class="tutorial-meta">
-                            <span><i class="fas fa-clock"></i> 25 min</span>
-                            <span><i class="fas fa-user"></i> Advanced</span>
-                        </div>
-                        <h3 class="tutorial-title">Custom Bezier Curves</h3>
-                        <p class="tutorial-description">Create your own easing curves using Bezier mathematics and visual editors.</p>
-                    </div>
-                </article>
-
-                <article class="tutorial-card reveal">
-                    <div class="tutorial-image">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="tutorial-content">
-                        <div class="tutorial-meta">
-                            <span><i class="fas fa-clock"></i> 15 min</span>
-                            <span><i class="fas fa-user"></i> Intermediate</span>
-                        </div>
-                        <h3 class="tutorial-title">Responsive Tweening</h3>
-                        <p class="tutorial-description">Techniques for creating animations that work perfectly across all device sizes.</p>
-                    </div>
-                </article>
-
-                <article class="tutorial-card reveal">
-                    <div class="tutorial-image">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <div class="tutorial-content">
-                        <div class="tutorial-meta">
-                            <span><i class="fas fa-clock"></i> 22 min</span>
-                            <span><i class="fas fa-user"></i> Advanced</span>
-                        </div>
-                        <h3 class="tutorial-title">Multi-Layer Animations</h3>
-                        <p class="tutorial-description">Advanced techniques for layering multiple tweens with perfect synchronization.</p>
-                    </div>
-                </article>
-
-                <article class="tutorial-card reveal">
-                    <div class="tutorial-image">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="tutorial-content">
-                        <div class="tutorial-meta">
-                            <span><i class="fas fa-clock"></i> 30 min</span>
-                            <span><i class="fas fa-user"></i> Expert</span>
-                        </div>
-                        <h3 class="tutorial-title">CSS vs JavaScript Tweening</h3>
-                        <p class="tutorial-description">Deep dive comparison of CSS transitions, animations, and JavaScript libraries.</p>
-                    </div>
-                </article>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Core Concepts -->
-    <section class="section" style="background: #f8fafc;" id="concepts">
-        <div class="container">
+        <!-- Events -->
+        <section class="section">
             <div class="section-header">
-                <h2 class="section-title reveal">Core Concepts</h2>
-                <p class="section-subtitle reveal">Essential knowledge for every tweening artist</p>
+                <div class="section-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h2 class="section-title">Events & Activities</h2>
             </div>
-            
-            <div class="concepts-grid">
-                <div class="concept-card reveal">
-                    <div class="concept-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Duration & Timing</h3>
-                    <p>Understand milliseconds, seconds, and frame rates. Learn optimal timing for different animation types and user expectations.</p>
-                </div>
 
-                <div class="concept-card reveal">
-                    <div class="concept-icon">
-                        <i class="fas fa-percentage"></i>
+            <div class="events-grid">
+                <!-- Event 1 -->
+                <article class="event-card">
+                    <div class="event-header">
+                        <div class="event-title">🎯 Skills that make a difference</div>
+                        <div class="event-meta">Video Showcase • Latest Event</div>
                     </div>
-                    <h3>Easing Functions</h3>
-                    <p>Explore 20+ standard easing functions. Learn when to use ease-in, ease-out, ease-in-out, and custom curves.</p>
-                </div>
+                    <div class="event-content">
+                        <p>Team presentations highlighting essential 21st-century skills</p>
+                        <div class="teams-grid">
+                            <div class="team-card">
+                                <div class="team-name">Team 1</div>
+                                <a href="https://youtube.com/watch?v=VIDEO_ID_1" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
+                            </div>
+                            <div class="team-card">
+                                <div class="team-name">Team 2</div>
+                                <a href="https://youtube.com/watch?v=VIDEO_ID_2" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
+                            </div>
+                            <div class="team-card">
+                                <div class="team-name">Team 3</div>
+                                <a href="https://youtube.com/watch?v=VIDEO_ID_3" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
+                            </div>
+                            <div class="team-card">
+                                <div class="team-name">Team 4</div>
+                                <a href="https://youtube.com/watch?v=VIDEO_ID_4" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
+                            </div>
+                            <div class="team-card">
+                                <div class="team-name">Team 5</div>
+                                <a href="https://youtube.com/watch?v=VIDEO_ID_5" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
+                            </div>
+                            <div class="team-card">
+                                <div class="team-name">Team 6</div>
+                                <a href="https://youtube.com/watch?v=VIDEO_ID_6" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
+                            </div>
+                            <div class="team-card">
+                                <div class="team-name">Team 7</div>
+                                <a href="https://youtube.com/watch?v=VIDEO_ID_7" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
 
-                <div class="concept-card reveal">
-                    <div class="concept-icon">
-                        <i class="fas fa-key"></i>
+                <!-- Event 2 -->
+                <article class="event-card">
+                    <div class="event-header">
+                        <div class="event-title">📢 Promoting eTwinning and ESEP platform</div>
+                        <div class="event-meta">Awareness Activity</div>
                     </div>
-                    <h3>Keyframes</h3>
-                    <p>Master keyframe interpolation. Understand linear, step, and bezier interpolation methods for precise control.</p>
-                </div>
+                    <div class="event-content">
+                        <p>Creative campaigns promoting eTwinning and ESEP platforms</p>
+                        <div class="teams-grid">
+                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                        </div>
+                    </div>
+                </article>
 
-                <div class="concept-card reveal">
-                    <div class="concept-icon">
-                        <i class="fas fa-expand-arrows-alt"></i>
+                <!-- Event 3 -->
+                <article class="event-card">
+                    <div class="event-header">
+                        <div class="event-title">👩‍🎓 International Women's Day</div>
+                        <div class="event-meta">YouTube • Photos • Poster</div>
                     </div>
-                    <h3>Motion Principles</h3>
-                    <p>Apply 12 principles of animation adapted for digital: squash & stretch, anticipation, follow through, and more.</p>
-                </div>
+                    <div class="event-content">
+                        <p>Celebrating women's achievements with multimedia presentations</p>
+                        <div class="teams-grid">
+                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
+                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-image"></i> Photos</a></div>
+                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
+                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
+                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-image"></i> Photos</a></div>
+                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
+                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
+                        </div>
+                    </div>
+                </article>
 
-                <div class="concept-card reveal">
-                    <div class="concept-icon">
-                        <i class="fas fa-sync-alt"></i>
+                <!-- Event 4 -->
+                <article class="event-card">
+                    <div class="event-header">
+                        <div class="event-title">🎬 Reenacting the movie</div>
+                        <div class="event-meta">YouTube • Canva • Report</div>
                     </div>
-                    <h3>Loops & Reverses</h3>
-                    <p>Create seamless loops, ping-pong effects, and reverse animations with perfect timing synchronization.</p>
-                </div>
+                    <div class="event-content">
+                        <p>Creative movie reenactments with professional editing</p>
+                        <div class="teams-grid">
+                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
+                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-canva"></i> Canva</a></div>
+                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
+                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
+                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-canva"></i> Canva</a></div>
+                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
+                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
+                        </div>
+                    </div>
+                </article>
 
-                <div class="concept-card reveal">
-                    <div class="concept-icon">
-                        <i class="fas fa-eye"></i>
+                <!-- Event 5 -->
+                <article class="event-card">
+                    <div class="event-header">
+                        <div class="event-title">🎥 Watching and Studying: Suffragette</div>
+                        <div class="event-meta">Google Slides Analysis</div>
                     </div>
-                    <h3>Performance</h3>
-                    <p>Optimize for 60fps. Learn GPU acceleration, will-change, transform usage, and avoiding layout thrashing.</p>
-                </div>
+                    <div class="event-content">
+                        <p>In-depth movie analysis focusing on women's rights history</p>
+                        <div class="teams-grid">
+                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                        </div>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
-
-    <!-- Resources -->
-    <section class="section" id="resources">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title reveal">Learning Resources</h2>
-                <p class="section-subtitle reveal">Tools, references, and references for tweening professionals</p>
-            </div>
-            
-            <div class="resources-grid">
-                <div class="resource-card reveal">
-                    <h4>Easing Cheatsheet</h4>
-                    <p>Printable reference with all standard easing functions and their visual curves</p>
-                </div>
-                <div class="resource-card reveal">
-                    <h4>Timing Calculator</h4>
-                    <p>Calculate perfect animation durations based on distance and easing type</p>
-                </div>
-                <div class="resource-card reveal">
-                    <h4>Bezier Playground</h4>
-                    <p>Interactive tool to create and test custom easing curves</p>
-                </div>
-                <div class="resource-card reveal">
-                    <h4>CSS Properties</h4>
-                    <p>Complete reference of all CSS animation and transition properties</p>
-                </div>
-                <div class="resource-card reveal">
-                    <h4>Performance Checklist</h4>
-                    <p>50+ items to audit your animations for optimal performance</p>
-                </div>
-                <div class="resource-card reveal">
-                    <h4>Motion Guidelines</h4>
-                    <p>Platform-specific animation guidelines (iOS, Android, Web)</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2 class="reveal">Stay Updated</h2>
-            <p class="reveal">Get new tutorials and resources delivered to your inbox weekly</p>
-            <form class="newsletter-form reveal">
-                <input type="email" class="newsletter-input" placeholder="Enter your email">
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <h3>Tutorials</h3>
-                    <a href="#" class="footer-link">Beginner</a>
-                    <a href="#" class="footer-link">Intermediate</a>
-                    <a href="#" class="footer-link">Advanced</a>
-                </div>
-                <div>
-                    <h3>Concepts</h3>
-                    <a href="#" class="footer-link">Easing</a>
-                    <a href="#" class="footer-link">Timing</a>
-                    <a href="#" class="footer-link">Performance</a>
-                </div>
-                <div>
-                    <h3>Resources</h3>
-                    <a href="#" class="footer-link">Tools</a>
-                    <a href="#" class="footer-link">References</a>
-                    <a href="#" class="footer-link">Cheatsheets</a>
-                </div>
-                <div>
-                    <h3>Community</h3>
-                    <a href="#" class="footer-link">Discord</a>
-                    <a href="#" class="footer-link">Forum</a>
-                    <a href="#" class="footer-link">Contribute</a>
-                </div>
-            </div>
-            <div style="border-top: 1px solid #334155; padding-top: 2rem; text-align: center;">
-                <p>&copy; 2024 TweenLearn. Educational resource for animation professionals.</p>
-            </div>
+        <div class="footer-content">
+            <p>eTwinning Aristotel '26 © 2024. All rights reserved.</p>
+            <p class="copyright">
+                View source on <a href="https://github.com/YOUR_USERNAME/README.md" target="_blank" class="github-link">GitHub</a>
+            </p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        // Dark/Light Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            body.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            body.setAttribute('data-theme', 'light');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        });
+
+        // Pause gallery rotation on hover
+        const gallery = document.getElementById('gallery');
+        gallery.addEventListener('mouseenter', () => {
+            gallery.style.animationPlayState = 'paused';
+        });
+        gallery.addEventListener('mouseleave', () => {
+            gallery.style.animationPlayState = 'running';
+        });
+
+        // Gallery item click effect
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const teamNum = item.dataset.team;
+                alert(`Opening Team ${teamNum} showcase!`);
             });
         });
 
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+        // Smooth scrolling for navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Search functionality
-        const searchInput = document.querySelector('.search-input');
-        searchInput.addEventListener('focus', () => {
-            searchInput.placeholder = '';
         });
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
+            if (window.scrollY > 100) {
                 navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
             } else {
                 navbar.style.background = 'rgba(255, 255, 255, 0.95)';
                 navbar.style.boxShadow = 'none';
             }
-        });
-
-        // Newsletter form
-        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = document.querySelector('.newsletter-btn');
-            const originalText = btn.textContent;
-            btn.textContent = 'Thank you! 🎉';
-            btn.disabled = true;
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }, 3000);
         });
     </script>
 </body>
