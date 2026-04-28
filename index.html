@@ -24,15 +24,17 @@
             --text-secondary: #64748b;
             --card-bg: #ffffff;
             --border: #e2e8f0;
+            --event-header-dark: #1e40af;
         }
 
         [data-theme="dark"] {
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
             --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
+            --text-secondary: #cbd5e1;
             --card-bg: #1e293b;
             --border: #334155;
+            --event-header-dark: #1d4ed8;
         }
 
         * {
@@ -81,14 +83,8 @@
         .etwinning-logo {
             width: 50px;
             height: 50px;
-            background: var(--gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 1.2rem;
+            object-fit: contain;
+            border-radius: 8px;
         }
 
         .site-title {
@@ -119,7 +115,7 @@
             transform: rotate(180deg);
         }
 
-        /* Hero Gallery */
+        /* Hero with Horizontal Gallery */
         .hero {
             padding: 8rem 2rem 4rem;
             position: relative;
@@ -128,60 +124,46 @@
 
         .gallery-container {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 0 auto 3rem;
             position: relative;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .circular-gallery {
-            position: relative;
-            width: 350px;
-            height: 350px;
-            transform-style: preserve-3d;
-            animation: rotate 40s linear infinite;
-        }
-
-        .gallery-item {
-            position: absolute;
-            width: 120px;
-            height: 120px;
+            height: 200px;
+            overflow: hidden;
             border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .gallery-track {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            animation: scroll-left 60s linear infinite;
+            width: max-content;
+            height: 100%;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.2) translateZ(20px);
-            z-index: 10;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        .gallery-track:hover {
+            animation-play-state: paused;
         }
 
-        .gallery-item:nth-child(1) { background: #ef4444; transform: rotate(0deg) translateX(140px) rotateY(0deg); }
-        .gallery-item:nth-child(2) { background: #f59e0b; transform: rotate(60deg) translateX(140px) rotateY(-60deg); }
-        .gallery-item:nth-child(3) { background: #10b981; transform: rotate(120deg) translateX(140px) rotateY(-120deg); }
-        .gallery-item:nth-child(4) { background: #3b82f6; transform: rotate(180deg) translateX(140px) rotateY(-180deg); }
-        .gallery-item:nth-child(5) { background: #8b5cf6; transform: rotate(240deg) translateX(140px) rotateY(-240deg); }
-        .gallery-item:nth-child(6) { background: #ec4899; transform: rotate(300deg) translateX(140px) rotateY(-300deg); }
-        .gallery-item:nth-child(7) { background: #06b6d4; transform: rotate(360deg) translateX(140px) rotateY(-360deg); }
+        .gallery-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-radius: 20px;
+            margin-right: 1rem;
+            transition: transform 0.3s ease;
+        }
 
-        @keyframes rotate {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
+        .gallery-photo:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .hero-title {
             text-align: center;
-            margin-top: 3rem;
         }
 
         .hero-title h1 {
@@ -191,6 +173,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Main Content */
@@ -241,16 +230,44 @@
 
         .status-card {
             background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
+            padding: 2.5rem;
+            border-radius: 20px;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
 
         .status-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             border-color: var(--primary);
+        }
+
+        .progress-container {
+            margin-top: 1.5rem;
+        }
+
+        .progress-bar {
+            background: var(--border);
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 6px;
+            transition: width 1s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
         /* Events */
@@ -266,40 +283,45 @@
             overflow: hidden;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
 
         .event-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
         }
 
         .event-header {
             background: var(--gradient);
             color: white;
-            padding: 1.5rem 2rem;
+            padding: 1.8rem 2rem;
+            position: relative;
+        }
+
+        [data-theme="dark"] .event-header {
+            background: var(--event-header-dark);
         }
 
         .event-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .event-meta {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.95rem;
+            opacity: 0.95;
         }
 
         .event-content {
-            padding: 2rem;
+            padding: 2.2rem;
         }
 
         .teams-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 1.2rem;
+            margin-top: 1.8rem;
         }
 
         .team-card {
@@ -313,23 +335,25 @@
         .team-card:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            border-color: var(--primary);
         }
 
         .team-name {
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-size: 1.1rem;
         }
 
         .team-link {
             color: var(--primary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .team-card:hover .team-link {
@@ -341,7 +365,7 @@
             background: var(--dark);
             color: #94a3b8;
             padding: 3rem 2rem 1.5rem;
-            margin-top: 5rem;
+            margin-top: 6rem;
         }
 
         .footer-content {
@@ -364,41 +388,21 @@
         /* Responsive */
         @media (max-width: 768px) {
             .nav-container {
-                padding: 0 1rem;
+                padding: 0 1.5rem;
             }
             
             .hero-title h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .gallery-photo {
+                width: 150px;
+                height: 150px;
             }
             
             .gallery-container {
-                height: 300px;
+                height: 160px;
             }
-            
-            .circular-gallery {
-                width: 280px;
-                height: 280px;
-            }
-            
-            .gallery-item {
-                width: 90px;
-                height: 90px;
-                font-size: 1.5rem;
-            }
-            
-            .gallery-item:nth-child(n) {
-                transform: rotate(var(--angle)) translateX(110px) rotateY(calc(-1 * var(--angle)));
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease forwards;
         }
     </style>
 </head>
@@ -407,7 +411,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo-container">
-                <div class="etwinning-logo">eT</div>
+                <img src="eTwinning-LogoHorizontal(1).png" alt="eTwinning Logo" class="etwinning-logo">
                 <span class="site-title">Aristotel '26</span>
             </a>
             <button class="theme-toggle" id="themeToggle">
@@ -416,22 +420,31 @@
         </div>
     </nav>
 
-    <!-- Hero with Circular Gallery -->
+    <!-- Hero with Horizontal Scrolling Gallery -->
     <section class="hero">
         <div class="gallery-container">
-            <div class="circular-gallery" id="gallery">
-                <div class="gallery-item" data-team="1">Team 1</div>
-                <div class="gallery-item" data-team="2">Team 2</div>
-                <div class="gallery-item" data-team="3">Team 3</div>
-                <div class="gallery-item" data-team="4">Team 4</div>
-                <div class="gallery-item" data-team="5">Team 5</div>
-                <div class="gallery-item" data-team="6">Team 6</div>
-                <div class="gallery-item" data-team="7">Team 7</div>
+            <div class="gallery-track" id="galleryTrack">
+                <!-- Duplicate images for seamless loop -->
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&crop=face" alt="Team Photo 1" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Team Photo 2" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face" alt="Team Photo 3" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1500622909229-e707f45f426b?w=400&h=400&fit=crop&crop=face" alt="Team Photo 4" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=400&fit=crop&crop=face" alt="Team Photo 5" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face" alt="Team Photo 6" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1560272562-cabdb21f39ef?w=400&h=400&fit=crop&crop=face" alt="Team Photo 7" class="gallery-photo">
+                <!-- Duplicates for seamless loop -->
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&crop=face" alt="Team Photo 1" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Team Photo 2" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face" alt="Team Photo 3" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1500622909229-e707f45f426b?w=400&h=400&fit=crop&crop=face" alt="Team Photo 4" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=400&fit=crop&crop=face" alt="Team Photo 5" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face" alt="Team Photo 6" class="gallery-photo">
+                <img src="https://images.unsplash.com/photo-1560272562-cabdb21f39ef?w=400&h=400&fit=crop&crop=face" alt="Team Photo 7" class="gallery-photo">
             </div>
         </div>
         <div class="hero-title">
             <h1>eTwinning Aristotel '26</h1>
-            <p>Collaborative learning platform showcasing team achievements and project milestones</p>
+            <p class="hero-subtitle">Collaborative learning platform showcasing team achievements and project milestones</p>
         </div>
     </section>
 
@@ -447,20 +460,23 @@
             </div>
             <div class="status-grid">
                 <div class="status-card">
-                    <h3>📁 Main Drive Folder</h3>
+                    <h3>Main Drive Folder</h3>
                     <p>Complete access to all project documents, presentations, and deliverables</p>
-                    <a href="https://drive.google.com/drive/folders/YOUR_FOLDER_ID?usp=sharing" target="_blank" class="team-link" style="font-size: 1.1rem; margin-top: 1rem; display: inline-block;">
+                    <a href="https://drive.google.com/drive/folders/YOUR_FOLDER_ID?usp=sharing" target="_blank" class="team-link" style="font-size: 1.1rem; margin-top: 1.5rem; display: inline-block;">
                         <i class="fab fa-google-drive"></i> Open Google Drive
                     </a>
                 </div>
                 <div class="status-card">
-                    <h3>📊 Progress Overview</h3>
+                    <h3>Progress Overview</h3>
                     <p>7 teams • 5 major events • Ongoing collaboration across Europe</p>
-                    <div style="margin-top: 1.5rem;">
-                        <div style="background: var(--border); height: 8px; border-radius: 4px; overflow: hidden;">
-                            <div style="background: var(--gradient); height: 100%; width: 85%; border-radius: 4px;"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
                         </div>
-                        <small style="display: block; margin-top: 0.5rem; color: var(--text-secondary);">85% Complete</small>
+                        <div class="progress-text">
+                            <span id="progressPercent">0%</span>
+                            <span id="progressDate"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -476,51 +492,30 @@
             </div>
 
             <div class="events-grid">
-                <!-- Event 1 -->
+                <!-- Event 1: Skills that make a difference -->
                 <article class="event-card">
                     <div class="event-header">
-                        <div class="event-title">🎯 Skills that make a difference</div>
+                        <div class="event-title">Skills that make a difference</div>
                         <div class="event-meta">Video Showcase • Latest Event</div>
                     </div>
                     <div class="event-content">
                         <p>Team presentations highlighting essential 21st-century skills</p>
                         <div class="teams-grid">
-                            <div class="team-card">
-                                <div class="team-name">Team 1</div>
-                                <a href="https://youtube.com/watch?v=VIDEO_ID_1" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
-                            </div>
-                            <div class="team-card">
-                                <div class="team-name">Team 2</div>
-                                <a href="https://youtube.com/watch?v=VIDEO_ID_2" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
-                            </div>
-                            <div class="team-card">
-                                <div class="team-name">Team 3</div>
-                                <a href="https://youtube.com/watch?v=VIDEO_ID_3" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
-                            </div>
-                            <div class="team-card">
-                                <div class="team-name">Team 4</div>
-                                <a href="https://youtube.com/watch?v=VIDEO_ID_4" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
-                            </div>
-                            <div class="team-card">
-                                <div class="team-name">Team 5</div>
-                                <a href="https://youtube.com/watch?v=VIDEO_ID_5" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
-                            </div>
-                            <div class="team-card">
-                                <div class="team-name">Team 6</div>
-                                <a href="https://youtube.com/watch?v=VIDEO_ID_6" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
-                            </div>
-                            <div class="team-card">
-                                <div class="team-name">Team 7</div>
-                                <a href="https://youtube.com/watch?v=VIDEO_ID_7" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a>
-                            </div>
+                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Event 2 -->
+                <!-- Event 2: Promoting eTwinning and ESEP platform -->
                 <article class="event-card">
                     <div class="event-header">
-                        <div class="event-title">📢 Promoting eTwinning and ESEP platform</div>
+                        <div class="event-title">Promoting eTwinning and ESEP platform</div>
                         <div class="event-meta">Awareness Activity</div>
                     </div>
                     <div class="event-content">
@@ -537,10 +532,10 @@
                     </div>
                 </article>
 
-                <!-- Event 3 -->
+                <!-- Event 3: International Women's Day -->
                 <article class="event-card">
                     <div class="event-header">
-                        <div class="event-title">👩‍🎓 International Women's Day</div>
+                        <div class="event-title">International Women's Day</div>
                         <div class="event-meta">YouTube • Photos • Poster</div>
                     </div>
                     <div class="event-content">
@@ -557,30 +552,30 @@
                     </div>
                 </article>
 
-                <!-- Event 4 -->
+                <!-- Event 4: Reenacting the movie -->
                 <article class="event-card">
                     <div class="event-header">
-                        <div class="event-title">🎬 Reenacting the movie</div>
+                        <div class="event-title">Reenacting the movie</div>
                         <div class="event-meta">YouTube • Canva • Report</div>
                     </div>
                     <div class="event-content">
                         <p>Creative movie reenactments with professional editing</p>
                         <div class="teams-grid">
                             <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
-                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-canva"></i> Canva</a></div>
+                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
                             <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
                             <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
-                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-canva"></i> Canva</a></div>
+                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
                             <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
                             <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Event 5 -->
+                <!-- Event 5: Suffragette -->
                 <article class="event-card">
                     <div class="event-header">
-                        <div class="event-title">🎥 Watching and Studying: Suffragette</div>
+                        <div class="event-title">Watching and Studying: Suffragette</div>
                         <div class="event-meta">Google Slides Analysis</div>
                     </div>
                     <div class="event-content">
@@ -619,9 +614,6 @@
         if (currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             body.setAttribute('data-theme', 'dark');
             themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            body.setAttribute('data-theme', 'light');
-            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         }
 
         themeToggle.addEventListener('click', () => {
@@ -631,39 +623,29 @@
             localStorage.setItem('theme', isDark ? 'light' : 'dark');
         });
 
-        // Pause gallery rotation on hover
-        const gallery = document.getElementById('gallery');
-        gallery.addEventListener('mouseenter', () => {
-            gallery.style.animationPlayState = 'paused';
-        });
-        gallery.addEventListener('mouseleave', () => {
-            gallery.style.animationPlayState = 'running';
-        });
+        // Progress bar based on time to May 31st
+        function updateProgress() {
+            const endDate = new Date('2024-05-31T23:59:59');
+            const now = new Date();
+            const totalDuration = endDate - new Date('2024-01-01T00:00:00');
+            const elapsed = now - new Date('2024-01-01T00:00:00');
+            const progress = Math.min((elapsed / totalDuration) * 100, 100);
+            
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+            document.getElementById('progressDate').textContent = now.toLocaleDateString();
+        }
 
-        // Gallery item click effect
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const teamNum = item.dataset.team;
-                alert(`Opening Team ${teamNum} showcase!`);
-            });
-        });
-
-        // Smooth scrolling for navbar
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Update progress on load and every minute
+        updateProgress();
+        setInterval(updateProgress, 60000);
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
                 navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
             } else {
                 navbar.style.background = 'rgba(255, 255, 255, 0.95)';
                 navbar.style.boxShadow = 'none';
