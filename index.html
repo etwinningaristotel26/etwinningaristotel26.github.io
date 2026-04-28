@@ -273,8 +273,8 @@
         /* Events */
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2.5rem;
         }
 
         .event-card {
@@ -317,17 +317,41 @@
             padding: 2.2rem;
         }
 
+        .subsections {
+            margin: 1.5rem 0;
+        }
+
+        .subsection {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .subsection-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
         .teams-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2rem;
-            margin-top: 1.8rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .teams-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .team-card {
-            background: var(--bg-secondary);
-            padding: 1.5rem;
-            border-radius: 12px;
+            background: transparent;
+            padding: 1.2rem;
+            border-radius: 10px;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
@@ -335,20 +359,20 @@
         .team-card:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             border-color: var(--primary);
         }
 
         .team-name {
             font-weight: 600;
             margin-bottom: 0.8rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .team-link {
             color: var(--primary);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -403,6 +427,10 @@
             .gallery-container {
                 height: 160px;
             }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -411,7 +439,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo-container">
-                <img src="eTwinning-LogoHorizontal(1).png" alt="eTwinning Logo" class="etwinning-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/ETwinning_logo.svg/512px-ETwinning_logo.svg.png" alt="eTwinning Logo" class="etwinning-logo">
                 <span class="site-title">Aristotel '26</span>
             </a>
             <button class="theme-toggle" id="themeToggle">
@@ -424,7 +452,7 @@
     <section class="hero">
         <div class="gallery-container">
             <div class="gallery-track" id="galleryTrack">
-                <!-- Duplicate images for seamless loop -->
+                <!-- Duplicate images for seamless loop - Replace with your team photos -->
                 <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&crop=face" alt="Team Photo 1" class="gallery-photo">
                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Team Photo 2" class="gallery-photo">
                 <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face" alt="Team Photo 3" class="gallery-photo">
@@ -492,7 +520,7 @@
             </div>
 
             <div class="events-grid">
-                <!-- Event 1: Skills that make a difference -->
+                <!-- Event 1: Skills that make a difference (1 subsection: Video) -->
                 <article class="event-card">
                     <div class="event-header">
                         <div class="event-title">Skills that make a difference</div>
@@ -500,19 +528,24 @@
                     </div>
                     <div class="event-content">
                         <p>Team presentations highlighting essential 21st-century skills</p>
-                        <div class="teams-grid">
-                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                        <div class="subsections">
+                            <div class="subsection">
+                                <div class="subsection-title">Video Presentation</div>
+                                <div class="teams-grid">
+                                    <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Event 2: Promoting eTwinning and ESEP platform -->
+                <!-- Event 2: Promoting eTwinning and ESEP platform (1 subsection: Activity) -->
                 <article class="event-card">
                     <div class="event-header">
                         <div class="event-title">Promoting eTwinning and ESEP platform</div>
@@ -520,19 +553,24 @@
                     </div>
                     <div class="event-content">
                         <p>Creative campaigns promoting eTwinning and ESEP platforms</p>
-                        <div class="teams-grid">
-                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
-                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
-                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
-                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
-                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
-                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
-                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                        <div class="subsections">
+                            <div class="subsection">
+                                <div class="subsection-title">Promotion Activity</div>
+                                <div class="teams-grid">
+                                    <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                                    <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                                    <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                                    <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                                    <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Event 3: International Women's Day -->
+                <!-- Event 3: International Women's Day (3 subsections) -->
                 <article class="event-card">
                     <div class="event-header">
                         <div class="event-title">International Women's Day</div>
@@ -540,19 +578,48 @@
                     </div>
                     <div class="event-content">
                         <p>Celebrating women's achievements with multimedia presentations</p>
-                        <div class="teams-grid">
-                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
-                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-image"></i> Photos</a></div>
-                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
-                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
-                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-image"></i> Photos</a></div>
-                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
-                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
+                        <div class="subsections">
+                            <div class="subsection">
+                                <div class="subsection-title">YouTube Video</div>
+                                <div class="teams-grid">
+                                    <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                </div>
+                            </div>
+                            <div class="subsection">
+                                <div class="subsection-title">Event Photos</div>
+                                <div class="teams-grid">
+                                    <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
+                                    <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
+                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
+                                    <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
+                                    <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
+                                    <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
+                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
+                                </div>
+                            </div>
+                            <div class="subsection">
+                                <div class="subsection-title">Poster Design</div>
+                                <div class="teams-grid">
+                                    <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
+                                    <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
+                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
+                                    <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
+                                    <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
+                                    <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
+                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-image"></i> Poster</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Event 4: Reenacting the movie -->
+                <!-- Event 4: Reenacting the movie (3 subsections) -->
                 <article class="event-card">
                     <div class="event-header">
                         <div class="event-title">Reenacting the movie</div>
@@ -560,19 +627,48 @@
                     </div>
                     <div class="event-content">
                         <p>Creative movie reenactments with professional editing</p>
-                        <div class="teams-grid">
-                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
-                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
-                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
-                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
-                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
-                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
-                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> YT</a></div>
+                        <div class="subsections">
+                            <div class="subsection">
+                                <div class="subsection-title">YouTube Video</div>
+                                <div class="teams-grid">
+                                    <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
+                                </div>
+                            </div>
+                            <div class="subsection">
+                                <div class="subsection-title">Canva Design</div>
+                                <div class="teams-grid">
+                                    <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
+                                    <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
+                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
+                                    <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
+                                    <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
+                                    <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
+                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
+                                </div>
+                            </div>
+                            <div class="subsection">
+                                <div class="subsection-title">Activity Report</div>
+                                <div class="teams-grid">
+                                    <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
+                                    <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
+                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
+                                    <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
+                                    <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
+                                    <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
+                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Event 5: Suffragette -->
+                <!-- Event 5: Suffragette (1 subsection: Google Slides) -->
                 <article class="event-card">
                     <div class="event-header">
                         <div class="event-title">Watching and Studying: Suffragette</div>
@@ -580,14 +676,19 @@
                     </div>
                     <div class="event-content">
                         <p>In-depth movie analysis focusing on women's rights history</p>
-                        <div class="teams-grid">
-                            <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                            <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                            <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                            <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                            <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                            <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                            <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                        <div class="subsections">
+                            <div class="subsection">
+                                <div class="subsection-title">Google Slides Presentation</div>
+                                <div class="teams-grid">
+                                    <div class="team-card"><div class="team-name">Team 1</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                                    <div class="team-card"><div class="team-name">Team 2</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                                    <div class="team-card"><div class="team-name">Team 4</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                                    <div class="team-card"><div class="team-name">Team 5</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                                    <div class="team-card"><div class="team-name">Team 6</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -598,9 +699,9 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>eTwinning Aristotel '26 © 2024. All rights reserved.</p>
+            <p>eTwinning Aristotel '26 © 2024-2026. All rights reserved.</p>
             <p class="copyright">
-                View <a href="README.md" target="_blank" class="github-link">copyright</a>
+                View source on <a href="https://github.com/YOUR_USERNAME/README.md" target="_blank" class="github-link">GitHub</a>
             </p>
         </div>
     </footer>
@@ -623,13 +724,15 @@
             localStorage.setItem('theme', isDark ? 'light' : 'dark');
         });
 
-        // Progress bar based on time to May 31st
+        // Progress bar based on time to May 31st 2026
         function updateProgress() {
-            const endDate = new Date('2024-05-31T23:59:59');
+            const startDate = new Date('2026-01-01T00:00:00');
+            const endDate = new Date('2026-05-31T23:59:59');
             const now = new Date();
-            const totalDuration = endDate - new Date('2024-01-01T00:00:00');
-            const elapsed = now - new Date('2024-01-01T00:00:00');
-            const progress = Math.min((elapsed / totalDuration) * 100, 100);
+            
+            const totalDuration = endDate - startDate;
+            const elapsed = Math.max(0, Math.min(now - startDate, totalDuration));
+            const progress = (elapsed / totalDuration) * 100;
             
             document.getElementById('progressFill').style.width = progress + '%';
             document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
