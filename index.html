@@ -1048,6 +1048,31 @@ description: `
         function getMaterialsForType(type, id) {
     const materialsMap = {
         // Digital Pact Teams
+        // 7.1 Mini Teams Videos
+'mini-video': [
+    {type: 'drive', icon: '🎥', title: 'Mini Team Video', desc: 'Watch campaign video', 
+     url: id.includes('mini-team1') ? 'https://drive.google.com/file/d/1I9uA7PwcMaobhIe0Ns_MCfEzSi2OylXi/view?usp=sharing' :
+         id.includes('mini-team2') ? 'https://drive.google.com/file/d/18al-YWc2rp9vw9MEnXzIkjhibxKBFqfm/view' :
+         id.includes('mini-team3') ? 'https://drive.google.com/file/d/1TiLkDBBs4BAJGK65NbEBgaNZOJwHQVv/view?usp=drivesdk' :
+         id.includes('mini-team4') ? 'https://drive.google.com/file/d/1z-p1z-8AhSok_CLfB5Pw3AZaFXHp55bl/view' :
+         id.includes('mini-team5') ? 'https://drive.google.com/file/d/1SWmX8HUl-R3cWC9wKqUW9iXwp_3V3qlt/view?usp=drivesdk' :
+         id.includes('mini-team6') ? 'https://youtu.be/RK6fFzYzob8?si=TTjRj7w84Ruld0_9' :
+         id.includes('mini-team7') ? 'https://drive.google.com/file/d/17COeRkaPnd15RqRHLrdEhJj2ZLbbFSYQ/view?usp=sharing' :
+         id.includes('mini-team8') ? 'https://drive.google.com/file/d/1occXkIIP3NeJqFcEsPTLHxuPTgP7U0wm/view?usp=drivesdk' :
+         'https://youtube.com/shorts/ZrBzqRbTKmU?si=XSFvnGeauqIipy6q'}
+],
+
+// 7.2 Promo Teams (existing ones work)
+'promo-ebook': [{type: 'bookcreator', icon: '📖', title: 'Interactive eBook', desc: 'Team 1 creation', url: 'https://read.bookcreator.com/guabWq9i56WoAWOxIVYLOdmXMQf1/PcytJIBRRu6GK_jdr8rytw'}],
+'promo-video': [{type: 'youtube', icon: '🎥', title: 'Promotion Video', desc: 'Team video', url: 'https://youtu.be/_WCCjW4j_tA?si=CSDzl6w4Ok4W0ZN8'}],
+'promo-website': [{type: 'link', icon: '🌐', title: 'Project Website', desc: 'Live site', url: 'https://etwinningaristotel26.github.io'}],
+'promo-vr': [{type: 'link', icon: '🕶️', title: 'VR Museum', desc: 'Virtual tour', url: 'https://metasteps.com/viewer/80dc8861-833c-41c7-8c3a-2df4598bc87b'}],
+'promo-games': [
+    {type: 'link', icon: '🎮', title: 'Quiz 1', desc: 'Interactive quiz', url: 'https://wayground.com/admin/quiz/69ce0893288de4679c3044de'},
+    {type: 'wordwall', icon: '🧩', title: 'Wordwall Game', desc: 'Learning game', url: 'https://wordwall.net/resource/110878082'},
+    {type: 'learningapps', icon: '📱', title: 'Learning Apps', desc: 'Interactive app', url: 'https://learningapps.org/view49936035'}
+],
+'promo-infographic': [{type: 'text', icon: '🖼️', title: 'Infographic', desc: 'Coming soon...', url: '#'}],
         mixed1: [  // Team 1
             {type: 'canva', icon: '📱', title: 'Canva Presentation', desc: 'Interactive presentation', url: 'https://www.canva.com/design/DAGyaQahhJU/5hA0W7pB9mtfkb38W6Q2QQ/edit?utm_content=DAGyaQahhJU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'},
             {type: 'canva', icon: '🖼️', title: 'Canva Infographic', desc: 'Visual infographic', url: 'https://www.canva.com/design/DAGx_xS5VD4/GjvtZMxWFVpSPKq2gNuqvw/edit?utm_content=DAGx_xS5VD4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'},
