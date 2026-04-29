@@ -250,6 +250,16 @@
             background: var(--hover-bg);
         }
 
+        /* FIX: Nested teams-list for deeper levels */
+.teams-list .topic-item.open .teams-list {
+    max-height: 800px;
+}
+
+/* Ensure all topic-items work */
+.teams-list .topic-item {
+    border-bottom: 1px solid var(--border);
+}
+
         .topic-item.open .teams-list {
             max-height: 500px;
         }
@@ -723,6 +733,7 @@
 
                 <!-- 7. Skills -->
                 <!-- 7. Skills - FIXED STRUCTURE -->
+<!-- 7. Skills - CORRECT STRUCTURE -->
 <li class="topic-item" data-topic="skills">
     <button class="topic-button">
         <span>7 - Skills that make a difference</span>
@@ -731,10 +742,9 @@
         </svg>
     </button>
     <ul class="teams-list">
-        <!-- 7.1 Mini Campaign -->
         <li class="topic-item" data-topic="skills-7-1">
             <button class="topic-button">
-                <span>7.1 - Mini Campaign (9 Mini Teams)</span>
+                <span>7.1 - Mini Campaign (9 Teams)</span>
                 <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <polyline points="6,9 12,15 18,9"></polyline>
                 </svg>
@@ -751,7 +761,6 @@
                 <li class="team-item" data-material="mini-team9" data-type="mini-video">Mini Team 9</li>
             </ul>
         </li>
-        <!-- 7.2 Promoting -->
         <li class="topic-item" data-topic="skills-7-2">
             <button class="topic-button">
                 <span>7.2 - Promoting eTwinning (7 Teams)</span>
@@ -1195,23 +1204,33 @@ description: `
 }
 
         // Topic Toggle
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.topic-button')) {
-                const button = e.target.closest('.topic-button');
-                const topicItem = button.closest('.topic-item');
-                const isOpen = topicItem.classList.contains('open');
-
-                topicItem.parentElement.querySelectorAll('.topic-item').forEach(item => {
-                    item.classList.remove('open');
-                    item.querySelector('.topic-button').classList.remove('active');
-                });
-
-                if (!isOpen) {
-                    topicItem.classList.add('open');
-                    button.classList.add('active');
-                }
+        // FIXED Topic Toggle - Handles ALL levels
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.topic-button')) {
+        e.stopPropagation();
+        const button = e.target.closest('.topic-button');
+        const topicItem = button.closest('.topic-item');
+        
+        // Close ALL other topic-items at same level
+        const parentList = topicItem.parentElement;
+        parentList.querySelectorAll('.topic-item').forEach(sibling => {
+            if (sibling !== topicItem) {
+                sibling.classList.remove('open');
+                sibling.querySelector('.topic-button')?.classList.remove('active');
             }
         });
+        
+        // Toggle current item
+        const isOpen = topicItem.classList.contains('open');
+        if (isOpen) {
+            topicItem.classList.remove('open');
+            button.classList.remove('active');
+        } else {
+            topicItem.classList.add('open');
+            button.classList.add('active');
+        }
+    }
+});
 
         // Gallery functionality
         function loadGallery() {
