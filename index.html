@@ -3,6 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+    // Mobile Detection - PC Only
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.documentElement.innerHTML = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>eTwinning Aristotel '26 - PC Only</title>
+                <meta charset="UTF-8">
+                <style>
+                    body { font-family: Arial; text-align: center; padding: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+                    .message { max-width: 400px; background: rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px); }
+                    h1 { font-size: 2em; margin-bottom: 20px; }
+                    p { font-size: 1.2em; line-height: 1.6; margin-bottom: 20px; }
+                    .emoji { font-size: 3em; margin-bottom: 20px; }
+                </style>
+            </head>
+            <body>
+                <div class="message">
+                    <div class="emoji">💻</div>
+                    <h1>PC Only Mode</h1>
+                    <p>This TwinSpace is optimized for desktop computers.<br><strong>Please use a PC or laptop for the best experience!</strong></p>
+                    <p>📱 Mobile support coming soon...</p>
+                </div>
+            </body>
+            </html>`;
+        document.body.style.display = 'none';
+    }
+</script>
     <title>eTwinning Aristotel '26 - TwinSpace</title>
     <!-- Simple Analytics Tracker -->
     <script async src="https://cloud.umami.is/script.js" data-website-id="8bf95060-8550-4fb9-9c1d-c17624d0c0ab" data-do-not-track="false"></script>
@@ -734,6 +763,7 @@
                 <!-- 7. Skills -->
                 <!-- 7. Skills - FIXED STRUCTURE -->
 <!-- 7. Skills - CORRECT STRUCTURE -->
+<!-- 7. Skills - SIMPLIFIED FLAT STRUCTURE -->
 <li class="topic-item" data-topic="skills">
     <button class="topic-button">
         <span>7 - Skills that make a difference</span>
@@ -742,9 +772,10 @@
         </svg>
     </button>
     <ul class="teams-list">
+        <!-- 7.1 Mini Campaign -->
         <li class="topic-item" data-topic="skills-7-1">
             <button class="topic-button">
-                <span>7.1 - Mini Campaign (9 Teams)</span>
+                <span>7.1 - Mini Campaign</span>
                 <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <polyline points="6,9 12,15 18,9"></polyline>
                 </svg>
@@ -761,23 +792,15 @@
                 <li class="team-item" data-material="mini-team9" data-type="mini-video">Mini Team 9</li>
             </ul>
         </li>
-        <li class="topic-item" data-topic="skills-7-2">
-            <button class="topic-button">
-                <span>7.2 - Promoting eTwinning (7 Teams)</span>
-                <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <polyline points="6,9 12,15 18,9"></polyline>
-                </svg>
-            </button>
-            <ul class="teams-list">
-                <li class="team-item" data-material="promo-team1" data-type="promo-ebook">Promo Team 1</li>
-                <li class="team-item" data-material="promo-team2" data-type="promo-video">Promo Team 2</li>
-                <li class="team-item" data-material="promo-team3" data-type="promo-video">Promo Team 3</li>
-                <li class="team-item" data-material="promo-team4" data-type="promo-website">Promo Team 4</li>
-                <li class="team-item" data-material="promo-team5" data-type="promo-vr">Promo Team 5</li>
-                <li class="team-item" data-material="promo-team6" data-type="promo-games">Promo Team 6</li>
-                <li class="team-item" data-material="promo-team7" data-type="promo-infographic">Promo Team 7</li>
-            </ul>
-        </li>
+        <!-- 7.2 Promoting - DIRECTLY VISIBLE -->
+        <li class="team-item" data-material="promo-main" data-type="promo-overview">7.2 - Promoting eTwinning</li>
+        <li class="team-item" data-material="promo-team1" data-type="promo-ebook">Promo Team 1 - eBook</li>
+        <li class="team-item" data-material="promo-team2" data-type="promo-video">Promo Team 2 - Video</li>
+        <li class="team-item" data-material="promo-team3" data-type="promo-video">Promo Team 3 - Video</li>
+        <li class="team-item" data-material="promo-team4" data-type="promo-website">Promo Team 4 - Website</li>
+        <li class="team-item" data-material="promo-team5" data-type="promo-vr">Promo Team 5 - VR</li>
+        <li class="team-item" data-material="promo-team6" data-type="promo-games">Promo Team 6 - Games</li>
+        <li class="team-item" data-material="promo-team7" data-type="promo-infographic">Promo Team 7 - Infographic</li>
     </ul>
 </li>
 
@@ -869,14 +892,43 @@
         // Main sections
         function showMainSection(section) {
             const content = {
-                home: `
-    <h1 class="content-title">Welcome to eTwinning Aristotel '26</h1>
-    <p class="content-subtitle"><strong>✨ Made by Moldavian Team from eTwinning 2025-2026</strong><br>Aristotel Republican Theoretical Lyceum - English Project</p>
-    <div style="display: flex; gap: 2rem; margin-top: 2rem; align-items: flex-start;">
-        <img src="description.png" alt="Project Description" style="width: 300px; height: 400px; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); flex-shrink: 0;">
-        <div style="flex: 1; line-height: 1.7;">
-            <p>Click sidebar items to explore international team contributions, materials, and gallery from 8 European countries!</p>
-            <p><strong>Project Theme:</strong> The power of S.H.E. - Strength, Hope & Equality</p>
+               home: `
+    <div style="display: grid; grid-template-columns: 300px 1fr; gap: 2rem; align-items: start; margin-top: 1rem;">
+        <!-- Left: Thumbnail + Info -->
+        <div style="background: var(--bg-secondary); padding: 2rem; border-radius: 16px; border: 2px solid var(--border); text-align: center;">
+            <img src="logo.png" alt="Project Logo" style="width: 120px; height: 120px; border-radius: 12px; margin: 0 auto 1rem; border: 3px solid var(--active-bg);">
+            <div style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem;">PROJECT ● Active</div>
+            <h2 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--text-primary);">The power of S.H.E.</h2>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.5rem;">
+                Strength, Hope and Equality<br>
+                <strong>01.07.2025 - 8 members</strong>
+            </p>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); text-align: left;">
+                <strong>Members:</strong> 8<br>
+                <strong>Countries:</strong> Italy(2), France(1), Türkiye(1), Poland(1), Moldova(1), Spain(1), Albania(1)<br>
+                <strong>Age:</strong> 16-18<br>
+                <strong>Subjects:</strong> Art, Citizenship, Ethics, Languages, Social Studies
+            </div>
+        </div>
+        
+        <!-- Right: Description + Photo -->
+        <div>
+            <h1 class="content-title">Welcome to eTwinning Aristotel '26</h1>
+            <p class="content-subtitle">
+                <strong>Made by Moldavian Team</strong><br>
+                Aristotel Republican Theoretical Lyceum - English Project
+            </p>
+            <div style="display: flex; gap: 2rem; margin-top: 2rem; align-items: flex-start; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px; line-height: 1.7;">
+                    <p>This is a year-long international eTwinning project exploring women's rights, activism, and representation in cinema. Secondary school students work in international groups across 8 European countries to encourage intercultural collaboration, critical thinking, and creativity.</p>
+                    <p style="margin-top: 1.5rem; font-style: italic;"><strong>Improving every year!</strong> Some teams have run similar suffragette projects for 2+ years.</p>
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--hover-bg); border-radius: 12px; border-left: 4px solid var(--active-bg);">
+                        <strong>Navigation:</strong> Pages → Teams → Materials<br>
+                        <strong>Gallery:</strong> Project images and screenshots
+                    </div>
+                </div>
+                <img src="description.png" alt="Project Description" style="width: 300px; height: 400px; object-fit: cover; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); flex-shrink: 0;" onerror="this.style.display='none';">
+            </div>
         </div>
     </div>
 `,
@@ -1037,6 +1089,15 @@ description: `
          id.includes('mini-team7') ? 'https://drive.google.com/file/d/17COeRkaPnd15RqRHLrdEhJj2ZLbbFSYQ/view' :
          id.includes('mini-team8') ? 'https://drive.google.com/file/d/1occXkIIP3NeJqFcEsPTLHxuPTgP7U0wm/view' :
          'https://www.youtube.com/watch?v=ZrBzqRbTKmU'}
+],
+        'promo-overview': [
+    {type: 'text', icon: '📢', title: '7.2 Overview', desc: 'Promoting eTwinning & ESEP Platform across 7 teams', url: '#'},
+    {type: 'link', icon: '📖', title: 'Team 1: eBook', desc: 'Interactive BookCreator', url: 'https://read.bookcreator.com/guabWq9i56WoAWOxIVYLOdmXMQf1/PcytJIBRRu6GK_jdr8rytw'},
+    {type: 'link', icon: '🎥', title: 'Team 2-3: Videos', desc: 'Promotion videos', url: 'https://youtube.com'},
+    {type: 'link', icon: '🌐', title: 'Team 4: Website', desc: 'Live project site', url: 'https://etwinningaristotel26.github.io'},
+    {type: 'link', icon: '🕶️', title: 'Team 5: VR Museum', desc: 'Virtual tour', url: 'https://metasteps.com/viewer/80dc8861-833c-41c7-8c3a-2df4598bc87b'},
+    {type: 'link', icon: '🎮', title: 'Team 6: Games', desc: 'Interactive quizzes', url: 'https://wayground.com/admin/quiz/69ce0893288de4679c3044de'},
+    {type: 'text', icon: '🖼️', title: 'Team 7: Coming Soon', desc: 'Infographic loading...', url: '#'}
 ],
 
 // 7.2 Promotion (already exists in your code)
