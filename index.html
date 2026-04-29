@@ -1,280 +1,488 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pages | Digital Innovators TwinSpace</title>
-    
-    <!-- Simplified CSS for demo (in production would be external files) -->
+    <title>Digital Innovators - TwinSpace</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
         /* Header */
-        .header { background: linear-gradient(135deg, #004494 0%, #0066cc 100%); color: white; padding: 1rem 0; }
-        .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .logo { font-size: 1.5rem; font-weight: bold; }
-        .user-profile { display: flex; align-items: center; gap: 0.5rem; }
-        .profile-img { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.2); }
-        .notifications { background: #ff6b35; color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
-        
-        /* Page Header */
-        .page-header { background: #f8f9fa; padding: 2rem 0; border-bottom: 1px solid #dee2e6; }
-        .project-info { display: flex; align-items: center; gap: 1rem; }
-        .project-icon { width: 80px; height: 80px; background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); border-radius: 12px; }
-        .project-title { font-size: 2.5rem; color: #212529; margin-bottom: 0.5rem; }
-        .project-meta { color: #6c757d; font-size: 1.1rem; }
-        
-        /* Navigation Tabs */
-        .tabs { background: white; border-bottom: 2px solid #dee2e6; padding: 1rem 0; }
-        .tabs-list { display: flex; list-style: none; gap: 2rem; margin: 0; padding: 0; }
-        .tab { padding: 0.75rem 1.5rem; border-bottom: 3px solid transparent; text-decoration: none; color: #495057; font-weight: 500; transition: all 0.3s; }
-        .tab.active { color: #004494; border-bottom-color: #004494; }
-        .tab:hover { color: #004494; }
-        
-        /* Main Content */
-        .main-content { padding: 2rem 0; }
-        .content-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
-        
-        /* Sidebar Navigation */
-        .sidebar-nav { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 1.5rem; }
-        .sidebar-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; color: #212529; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem; }
-        .nav-list { list-style: none; }
-        .nav-item { margin-bottom: 0.25rem; }
-        .nav-link { color: #495057; text-decoration: none; padding: 0.5rem 0; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; }
-        .nav-link:hover { color: #004494; background: #f8f9fa; padding-left: 0.5rem; border-radius: 4px; }
-        .nav-toggle { width: 20px; height: 12px; transition: transform 0.3s; }
-        .nav-item.open .nav-toggle { transform: rotate(180deg); }
-        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            min-height: calc(100vh - 140px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 320px;
+            background: white;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.08);
+            overflow-y: auto;
+            position: sticky;
+            top: 80px;
+            height: calc(100vh - 80px);
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .sidebar-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-subtitle {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Topics/Folders */
+        .topics-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .topic-item {
+            border-bottom: 1px solid #f3f4f6;
+            transition: all 0.3s;
+        }
+
+        .topic-item:last-child {
+            border-bottom: none;
+        }
+
+        .topic-button {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #374151;
+            transition: all 0.3s;
+        }
+
+        .topic-button:hover {
+            background: #f8fafc;
+            color: #1e40af;
+            padding-left: 2rem;
+        }
+
+        .topic-button.active {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .topic-icon {
+            font-size: 1.2rem;
+            margin-right: 0.75rem;
+        }
+
+        .topic-arrow {
+            transition: transform 0.3s;
+            width: 20px;
+            height: 20px;
+        }
+
+        .topic-item.open .topic-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Teams List */
+        .teams-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: #f8fafc;
+        }
+
+        .topic-item.open .teams-list {
+            max-height: 500px;
+        }
+
+        .team-item {
+            padding: 0.75rem 3rem 0.75rem 3.5rem;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .team-item:hover {
+            background: white;
+            border-left-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .team-name {
+            font-weight: 500;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
         /* Content Area */
-        .content-area { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 2rem; }
-        .page-title { font-size: 2rem; color: #212529; margin-bottom: 1rem; }
-        .page-meta { color: #6c757d; margin-bottom: 2rem; font-size: 0.95rem; }
-        .twinboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #dee2e6; }
-        .twinboard-title { font-size: 1.25rem; font-weight: 600; color: #212529; }
-        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500; transition: all 0.3s; }
-        .btn-primary { background: linear-gradient(135deg, #004494 0%, #0066cc 100%); color: white; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,68,148,0.3); }
-        
-        /* Masonry Grid */
-        .masonry-grid { column-count: 2; column-gap: 1.5rem; }
-        .grid-item { break-inside: avoid; margin-bottom: 1.5rem; background: #f8f9fa; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; }
-        .grid-item:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
-        .grid-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; }
-        .item-title { font-size: 1.1rem; font-weight: 600; color: #212529; margin-bottom: 0.5rem; }
-        .item-description { color: #6c757d; line-height: 1.6; margin-bottom: 1rem; }
-        .item-link { color: #004494; text-decoration: none; font-weight: 500; }
-        .item-link:hover { text-decoration: underline; }
-        
+        .content-area {
+            flex: 1;
+            padding: 2rem;
+            background: #f5f7fa;
+        }
+
+        .content-placeholder {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            min-height: 60vh;
+            text-align: center;
+        }
+
+        .content-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .content-subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .topic-content {
+            display: none;
+        }
+
+        .topic-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Dark Theme */
+        body.dark {
+            background: #111827;
+            color: #f9fafb;
+        }
+
+        body.dark .sidebar {
+            background: #1f2937;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.3);
+        }
+
+        body.dark .sidebar-header {
+            border-bottom-color: #374151;
+        }
+
+        body.dark .topic-button {
+            color: #d1d5db;
+        }
+
+        body.dark .topic-button:hover {
+            background: #374151;
+            color: #60a5fa;
+        }
+
+        body.dark .teams-list {
+            background: #111827;
+        }
+
+        body.dark .team-item:hover {
+            background: #374151;
+        }
+
+        body.dark .content-placeholder {
+            background: #1f2937;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .content-grid { grid-template-columns: 1fr; }
-            .tabs-list { flex-wrap: wrap; gap: 1rem; }
-            .masonry-grid { column-count: 1; }
-            .twinboard-header { flex-direction: column; gap: 1rem; align-items: stretch; }
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+            }
+            
+            .content-area {
+                padding: 1rem;
+            }
         }
-        
-        /* Utilities */
-        .hidden { display: none; }
-        .flex { display: flex; }
-        .mb-xl { margin-bottom: 2rem; }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-placeholder {
+            animation: fadeIn 0.6s ease-out;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="container">
-            <div class="header-top">
-                <div class="logo">European School Education Platform</div>
-                <div class="user-profile">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxkZWZzPgo8cmFkaWFsR3JhZGllbnQgaWQ9ImdyYWRpZW50IiBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGQjJEMiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGN0E1NCIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CjwvcmFkaWFsR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+" alt="Profile" class="profile-img">
-                    <span>mddamian m</span>
-                    <div class="notifications">9</div>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">🚀</div>
+                <div>
+                    <div class="header-title">Digital Innovators</div>
+                    <div style="font-size: 0.9rem; opacity: 0.9;">TwinSpace Portal</div>
                 </div>
             </div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark/Light</button>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="container">
-            <div class="project-info">
-                <div class="project-icon"></div>
-                <div>
-                    <div class="project-meta">TwinSpace</div>
-                    <h1 class="project-title">Digital Innovators: Code, Create, Collaborate</h1>
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">Project Topics</h2>
+                <p class="sidebar-subtitle">7 teams per topic</p>
+            </div>
+
+            <ul class="topics-list">
+                <!-- Topic 1 -->
+                <li class="topic-item">
+                    <button class="topic-button">
+                        <span><span class="topic-icon">📱</span>Digital Citizenship Rules</span>
+                        <svg class="topic-arrow" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </button>
+                    <ul class="teams-list">
+                        <li class="team-item"><span class="team-name">Team Alpha 🇫🇷</span></li>
+                        <li class="team-item"><span class="team-name">Team Beta 🇹🇷</span></li>
+                        <li class="team-item"><span class="team-name">Team Gamma 🇮🇹</span></li>
+                        <li class="team-item"><span class="team-name">Team Delta 🇵🇱</span></li>
+                        <li class="team-item"><span class="team-name">Team Epsilon 🇪🇸</span></li>
+                        <li class="team-item"><span class="team-name">Team Zeta 🇦🇱</span></li>
+                        <li class="team-item"><span class="team-name">Team Eta 🇲🇩</span></li>
+                    </ul>
+                </li>
+
+                <!-- Topic 2 -->
+                <li class="topic-item">
+                    <button class="topic-button">
+                        <span><span class="topic-icon">🌍</span>International Teams</span>
+                        <svg class="topic-arrow" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </button>
+                    <ul class="teams-list">
+                        <li class="team-item"><span class="team-name">Team Alpha 🇫🇷</span></li>
+                        <li class="team-item"><span class="team-name">Team Beta 🇹🇷</span></li>
+                        <li class="team-item"><span class="team-name">Team Gamma 🇮🇹</span></li>
+                        <li class="team-item"><span class="team-name">Team Delta 🇵🇱</span></li>
+                        <li class="team-item"><span class="team-name">Team Epsilon 🇪🇸</span></li>
+                        <li class="team-item"><span class="team-name">Team Zeta 🇦🇱</span></li>
+                        <li class="team-item"><span class="team-name">Team Eta 🇲🇩</span></li>
+                    </ul>
+                </li>
+
+                <!-- Topic 3 -->
+                <li class="topic-item">
+                    <button class="topic-button">
+                        <span><span class="topic-icon">🤖</span>Coding Challenge #1</span>
+                        <svg class="topic-arrow" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </button>
+                    <ul class="teams-list">
+                        <li class="team-item"><span class="team-name">Team Alpha 🇫🇷</span></li>
+                        <li class="team-item"><span class="team-name">Team Beta 🇹🇷</span></li>
+                        <li class="team-item"><span class="team-name">Team Gamma 🇮🇹</span></li>
+                        <li class="team-item"><span class="team-name">Team Delta 🇵🇱</span></li>
+                        <li class="team-item"><span class="team-name">Team Epsilon 🇪🇸</span></li>
+                        <li class="team-item"><span class="team-name">Team Zeta 🇦🇱</span></li>
+                        <li class="team-item"><span class="team-name">Team Eta 🇲🇩</span></li>
+                    </ul>
+                </li>
+
+                <!-- Add more topics as needed -->
+            </ul>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <div class="content-placeholder">
+                <div class="topic-content active">
+                    <h1 class="content-title">📱 Digital Citizenship Rules</h1>
+                    <p class="content-subtitle">Select a team to view their contributions and materials</p>
+                    <div style="font-size: 4rem; margin: 2rem 0; opacity: 0.3;">Click a topic above to expand teams</div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 
-    <!-- Navigation Tabs -->
-    <nav class="tabs">
-        <div class="container">
-            <ul class="tabs-list">
-                <li><a href="#" class="tab">Home</a></li>
-                <li><a href="#" class="tab active">Pages</a></li>
-                <li><a href="#" class="tab">Materials</a></li>
-                <li><a href="#" class="tab">Forum</a></li>
-                <li><a href="#" class="tab">Members</a></li>
-                <li><a href="#" class="tab">Support</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <div class="content-grid">
-                <!-- Sidebar Navigation -->
-                <aside class="sidebar-nav">
-                    <h2 class="sidebar-title">Pages</h2>
-                    <ol class="nav-list">
-                        <li class="nav-item">
-                            <div class="nav-link">
-                                <a href="#">📱 Our Digital Citizenship Rules</a>
-                                <svg class="nav-toggle" viewBox="0 0 10 6" fill="#282828">
-                                    <path d="M0.6 4.5C0.27 4.83 0.27 5.37 0.6 5.7C0.93 6.03 1.47 6.03 1.8 5.7L5.1 2.41L8.4 5.7C8.73 6.03 9.27 6.03 9.6 5.7C9.93 5.37 9.93 4.83 9.6 4.5L5.81 0.71C5.42 0.32 4.78 0.32 4.39 0.71L0.6 4.5Z"/>
-                                </svg>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="nav-link">
-                                <a href="#">🌍 Meet Our International Teams</a>
-                                <svg class="nav-toggle" viewBox="0 0 10 6" fill="#282828">
-                                    <path d="M0.6 4.5C0.27 4.83 0.27 5.37 0.6 5.7C0.93 6.03 1.47 6.03 1.8 5.7L5.1 2.41L8.4 5.7C8.73 6.03 9.27 6.03 9.6 5.7C9.93 5.37 9.93 4.83 9.6 4.5L5.81 0.71C5.42 0.32 4.78 0.32 4.39 0.71L0.6 4.5Z"/>
-                                </svg>
-                            </div>
-                        </li>
-                        <li class="nav-item open">
-                            <div class="nav-link">
-                                <a href="#">🤖 Coding Challenge #1</a>
-                                <svg class="nav-toggle" viewBox="0 0 10 6" fill="#282828">
-                                    <path d="M0.6 4.5C0.27 4.83 0.27 5.37 0.6 5.7C0.93 6.03 1.47 6.03 1.8 5.7L5.1 2.41L8.4 5.7C8.73 6.03 9.27 6.03 9.6 5.7C9.93 5.37 9.93 4.83 9.6 4.5L5.81 0.71C5.42 0.32 4.78 0.32 4.39 0.71L0.6 4.5Z"/>
-                                </svg>
-                            </div>
-                            <ol class="nav-list hidden">
-                                <li class="nav-item"><a href="#" class="nav-link">Team Alpha - Python</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Team Beta - Scratch</a></li>
-                            </ol>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">🎨 Our Project Logo Contest</a>
-                        </li>
-                    </ol>
-                </aside>
-
-                <!-- Content Area -->
-                <div class="content-area">
-                    <h1 class="page-title">Our Digital Citizenship Rules</h1>
-                    <div class="page-meta">
-                        Created by <strong>Digital Team Lead</strong> | 
-                        Last updated 2 weeks ago
-                    </div>
-
-                    <div class="twinboard-header">
-                        <h3 class="twinboard-title">Twinboard</h3>
-                        <a href="#" class="btn btn-primary">+ Add Item</a>
-                    </div>
-
-                    <div class="masonry-grid">
-                        <article class="grid-item">
-                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=200&fit=crop" alt="Coding presentation">
-                            <h4 class="item-title">Digital Citizenship Presentation - Team Alpha</h4>
-                            <p class="item-description">Interactive presentation covering netiquette, online safety, and digital responsibility. Created using Canva with engaging visuals and key takeaways.</p>
-                            <a href="#" class="item-link" target="_blank">View Presentation →</a>
-                        </article>
-
-                        <article class="grid-item">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop" alt="Safety infographic">
-                            <h4 class="item-title">eSafety Infographic - Team Beta</h4>
-                            <p class="item-description">Visual guide to staying safe online with 5 golden rules: strong passwords, privacy settings, phishing awareness, cyberbullying prevention, and digital footprint management.</p>
-                            <a href="#" class="item-link">Download Infographic →</a>
-                        </article>
-
-                        <article class="grid-item">
-                            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop" alt="Quiz interface">
-                            <h4 class="item-title">Netiquette Quiz - Team Gamma</h4>
-                            <p class="item-description">Interactive Kahoot quiz to test knowledge on digital citizenship. 15 questions covering communication etiquette, copyright basics, and online behavior best practices.</p>
-                            <a href="#" class="item-link" target="_blank">Play Quiz →</a>
-                        </article>
-
-                        <article class="grid-item">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="Code of conduct poster">
-                            <h4 class="item-title">Code of Conduct Poster - Team Delta</h4>
-                            <p class="item-description">Eye-catching poster summarizing our project's digital citizenship rules. Perfect for classroom display and quick reference.</p>
-                            <a href="#" class="item-link">View Poster →</a>
-                        </article>
-
-                        <article class="grid-item">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop" alt="Word game">
-                            <h4 class="item-title">Netiquette Word Game - Team Epsilon</h4>
-                            <p class="item-description">Fun Wordwall activity where students match netiquette rules with scenarios. Great for reinforcing learning through gamification.</p>
-                            <a href="#" class="item-link" target="_blank">Play Game →</a>
-                        </article>
-                    </div>
-
-                    <div style="text-align: center; margin-top: 2rem; padding: 2rem; border-top: 1px solid #dee2e6;">
-                        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Load More Items</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
     <!-- Footer -->
-    <footer style="background: #f8f9fa; padding: 3rem 0 1rem; margin-top: 4rem; border-top: 4px solid #004494;">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
-                <div>
-                    <h3 style="color: #004494; margin-bottom: 1rem;">European School Education Platform</h3>
-                    <p style="color: #6c757d;">Managed by European Education and Culture Executive Agency</p>
-                </div>
-                <div>
-                    <h4 style="color: #212529; margin-bottom: 1rem;">Get in Touch</h4>
-                    <ul style="list-style: none;">
-                        <li><a href="#" style="color: #495057; text-decoration: none;">Contact & Support</a></li>
-                        <li><a href="#" style="color: #495057; text-decoration: none;">Newsletter</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: #212529; margin-bottom: 1rem;">Legal</h4>
-                    <ul style="list-style: none;">
-                        <li><a href="#" style="color: #495057; text-decoration: none;">Privacy Policy</a></li>
-                        <li><a href="#" style="color: #495057; text-decoration: none;">Terms of Use</a></li>
-                        <li><a href="#" style="color: #495057; text-decoration: none;">eTwinning Code</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #dee2e6; color: #6c757d; font-size: 0.9rem;">
-                © European Union, 2025 | All rights reserved
-            </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Digital Innovators TwinSpace. All rights reserved. | European School Education Platform</p>
         </div>
     </footer>
 
     <script>
-        // Simple toggle functionality for sidebar
-        document.querySelectorAll('.nav-item .nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const parent = link.closest('.nav-item');
-                const sublist = parent.querySelector('.nav-list');
-                const toggle = parent.querySelector('.nav-toggle');
+        // Theme Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const btn = document.querySelector('.theme-toggle');
+            btn.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';
+        }
+
+        // Sidebar Topics Functionality
+        document.querySelectorAll('.topic-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const topicItem = this.closest('.topic-item');
+                const isOpen = topicItem.classList.contains('open');
+                const teamsList = topicItem.querySelector('.teams-list');
                 
-                parent.classList.toggle('open');
-                sublist.classList.toggle('hidden');
+                // Close all other topics
+                document.querySelectorAll('.topic-item').forEach(item => {
+                    item.classList.remove('open');
+                    item.querySelector('.topic-button').classList.remove('active');
+                });
+
+                // Toggle current topic
+                if (!isOpen) {
+                    topicItem.classList.add('open');
+                    this.classList.add('active');
+                    
+                    // Show content for this topic
+                    showTopicContent(this);
+                }
             });
         });
 
-        // Smooth hover animations
-        document.querySelectorAll('.grid-item').forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                item.style.transform = 'translateY(-4px)';
+        // Team click handlers (placeholder)
+        document.querySelectorAll('.team-item').forEach(team => {
+            team.addEventListener('click', function() {
+                const teamName = this.querySelector('.team-name').textContent;
+                alert(`Opening content for ${teamName}\n\nTeam materials, presentations, and files will load here!`);
             });
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'translateY(0)';
-            });
+        });
+
+        function showTopicContent(button) {
+            const topicTitle = button.querySelector('span').textContent.trim();
+            const contentArea = document.querySelector('.content-placeholder');
+            
+            contentArea.innerHTML = `
+                <div class="topic-content active">
+                    <h1 class="content-title">${topicTitle}</h1>
+                    <p class="content-subtitle">Select a team from the sidebar to view their contributions</p>
+                    <div style="font-size: 4rem; margin: 2rem 0; opacity: 0.3;">👈 Click a team name</div>
+                    <p style="color: #6b7280; max-width: 600px; margin: 0 auto;">
+                        Each team has created presentations, infographics, quizzes, and coding projects 
+                        related to this topic. Click any team to see their work!
+                    </p>
+                </div>
+            `;
+        }
+
+        // Smooth scrolling for sidebar
+        document.querySelector('.sidebar').addEventListener('wheel', function(e) {
+            e.stopPropagation();
         });
     </script>
 </body>
