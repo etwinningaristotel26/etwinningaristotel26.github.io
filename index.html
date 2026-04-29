@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Innovators - TwinSpace</title>
+    <title>eTwinning Aristotel '26 - TwinSpace</title>
     <style>
         * {
             margin: 0;
@@ -13,20 +13,22 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
-            color: #333;
+            background: #f8fafc;
+            color: #1e293b;
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* Header - Fixed */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1e3a8a;
             color: white;
             padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .header-content {
@@ -35,97 +37,126 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 60px;
         }
 
         .logo-section {
             display: flex;
             align-items: center;
             gap: 1rem;
+            cursor: pointer;
+            user-select: none;
         }
 
         .logo {
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 8px;
         }
 
         .header-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
+            color: white;
         }
 
         .theme-toggle {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #475569;
+            background: transparent;
+            color: #1e293b;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
             transition: all 0.3s;
         }
 
+        body.dark .theme-toggle {
+            border-color: #94a3b8;
+            color: #f1f5f9;
+        }
+
         .theme-toggle:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-1px);
+            background: rgba(255,255,255,0.1);
         }
 
         /* Main Layout */
-        .main-container {
-            max-width: 1400px;
-            margin: 0 auto;
+        .main-wrapper {
             display: flex;
+            margin-top: 60px;
             min-height: calc(100vh - 140px);
         }
 
-        /* Sidebar */
+        /* Fixed Sidebar */
         .sidebar {
             width: 320px;
             background: white;
-            box-shadow: 2px 0 15px rgba(0,0,0,0.08);
+            box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+            position: fixed;
+            top: 60px;
+            left: 0;
+            bottom: 80px;
+            z-index: 100;
             overflow-y: auto;
-            position: sticky;
-            top: 80px;
-            height: calc(100vh - 80px);
+            border-right: 1px solid #e2e8f0;
+        }
+
+        body.dark .sidebar {
+            background: #0f172a;
+            border-right-color: #334155;
+            box-shadow: 4px 0 25px rgba(0,0,0,0.4);
         }
 
         .sidebar-header {
             padding: 2rem 1.5rem 1.5rem;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            background: inherit;
+            z-index: 10;
+        }
+
+        body.dark .sidebar-header {
+            border-bottom-color: #334155;
         }
 
         .sidebar-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 0.5rem;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        body.dark .sidebar-title {
+            color: #f1f5f9;
         }
 
         .sidebar-subtitle {
-            color: #6b7280;
-            font-size: 0.95rem;
+            color: #64748b;
+            font-size: 0.9rem;
         }
 
-        /* Topics/Folders */
+        body.dark .sidebar-subtitle {
+            color: #94a3b8;
+        }
+
+        /* Topics */
         .topics-list {
             list-style: none;
-            padding: 0;
+            padding: 0.5rem 0;
         }
 
         .topic-item {
-            border-bottom: 1px solid #f3f4f6;
-            transition: all 0.3s;
+            border-bottom: 1px solid #f1f5f9;
         }
 
-        .topic-item:last-child {
-            border-bottom: none;
+        body.dark .topic-item {
+            border-bottom-color: #1e293b;
         }
 
         .topic-button {
@@ -150,339 +181,475 @@
             padding-left: 2rem;
         }
 
+        body.dark .topic-button {
+            color: #cbd5e1;
+        }
+
+        body.dark .topic-button:hover {
+            background: #1e293b;
+            color: #60a5fa;
+        }
+
         .topic-button.active {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: #1e40af;
             color: white;
         }
 
         .topic-icon {
-            font-size: 1.2rem;
+            width: 20px;
+            height: 20px;
             margin-right: 0.75rem;
+            display: inline-block;
         }
 
         .topic-arrow {
             transition: transform 0.3s;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
+            stroke-width: 2;
+            stroke: currentColor;
         }
 
         .topic-item.open .topic-arrow {
             transform: rotate(180deg);
         }
 
-        /* Teams List */
+        /* Teams */
         .teams-list {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             background: #f8fafc;
         }
 
+        body.dark .teams-list {
+            background: #0f172a;
+        }
+
         .topic-item.open .teams-list {
-            max-height: 500px;
+            max-height: 400px;
         }
 
         .team-item {
-            padding: 0.75rem 3rem 0.75rem 3.5rem;
+            padding: 0.875rem 2.5rem 0.875rem 3rem;
             border-left: 3px solid transparent;
+            cursor: pointer;
             transition: all 0.2s;
             position: relative;
+            font-weight: 500;
         }
 
         .team-item:hover {
             background: white;
-            border-left-color: #667eea;
-            transform: translateX(5px);
+            border-left-color: #1e40af;
+            transform: translateX(4px);
+        }
+
+        body.dark .team-item:hover {
+            background: #1e293b;
+            border-left-color: #60a5fa;
         }
 
         .team-name {
-            font-weight: 500;
             color: #374151;
             font-size: 0.95rem;
         }
 
+        body.dark .team-name {
+            color: #e2e8f0;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 60px;
+            right: 0;
+            bottom: 80px;
+            width: 4px;
+            background: #e2e8f0;
+            z-index: 200;
+        }
+
+        body.dark .scroll-indicator {
+            background: #334155;
+        }
+
+        .scroll-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, #1e40af, #3b82f6);
+            width: 100%;
+            transition: height 0.1s;
+        }
+
         /* Content Area */
-        .content-area {
+        .content-wrapper {
+            margin-left: 320px;
+            margin-top: 60px;
+            padding: 2.5rem;
             flex: 1;
-            padding: 2rem;
-            background: #f5f7fa;
+            overflow-y: auto;
+            min-height: calc(100vh - 140px);
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin-left: 0;
+            }
         }
 
         .content-placeholder {
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            min-height: 60vh;
-            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        body.dark .content-placeholder {
+            background: #0f172a;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
 
         .content-title {
             font-size: 2.2rem;
             font-weight: 700;
-            color: #1f2937;
+            color: #1e293b;
             margin-bottom: 1rem;
         }
 
+        body.dark .content-title {
+            color: #f1f5f9;
+        }
+
         .content-subtitle {
-            font-size: 1.2rem;
-            color: #6b7280;
+            font-size: 1.15rem;
+            color: #64748b;
             margin-bottom: 2rem;
         }
 
-        .topic-content {
-            display: none;
+        body.dark .content-subtitle {
+            color: #94a3b8;
         }
 
-        .topic-content.active {
-            display: block;
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        /* Footer */
+        .material-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        body.dark .material-card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        .material-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #1e40af;
+        }
+
+        /* Footer - Fixed */
         .footer {
-            background: #1f2937;
-            color: white;
-            padding: 2rem;
-            text-align: center;
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 1.5rem 2rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             font-size: 0.9rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* Dark Theme */
-        body.dark {
-            background: #111827;
-            color: #f9fafb;
-        }
-
-        body.dark .sidebar {
-            background: #1f2937;
-            box-shadow: 2px 0 20px rgba(0,0,0,0.3);
-        }
-
-        body.dark .sidebar-header {
-            border-bottom-color: #374151;
-        }
-
-        body.dark .topic-button {
-            color: #d1d5db;
-        }
-
-        body.dark .topic-button:hover {
-            background: #374151;
-            color: #60a5fa;
-        }
-
-        body.dark .teams-list {
-            background: #111827;
-        }
-
-        body.dark .team-item:hover {
-            background: #374151;
-        }
-
-        body.dark .content-placeholder {
-            background: #1f2937;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            border-top: 1px solid #334155;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-            }
-            
+        @media (max-width: 1024px) {
             .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                top: 0;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
             }
             
-            .content-area {
-                padding: 1rem;
+            .content-wrapper {
+                margin-left: 0;
             }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .content-placeholder {
-            animation: fadeIn 0.6s ease-out;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Fixed Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo-section">
-                <div class="logo">🚀</div>
-                <div>
-                    <div class="header-title">Digital Innovators</div>
-                    <div style="font-size: 0.9rem; opacity: 0.9;">TwinSpace Portal</div>
-                </div>
+            <div class="logo-section" onclick="window.location.href='index.html'">
+                <img src="logo.png" alt="Logo" class="logo">
+                <div class="header-title">eTwinning Aristotel '26</div>
             </div>
-            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark/Light</button>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h2 class="sidebar-title">Project Topics</h2>
-                <p class="sidebar-subtitle">7 teams per topic</p>
-            </div>
-
-            <ul class="topics-list">
-                <!-- Topic 1 -->
-                <li class="topic-item">
-                    <button class="topic-button">
-                        <span><span class="topic-icon">📱</span>Digital Citizenship Rules</span>
-                        <svg class="topic-arrow" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M7 10l5 5 5-5z"/>
-                        </svg>
-                    </button>
-                    <ul class="teams-list">
-                        <li class="team-item"><span class="team-name">Team Alpha 🇫🇷</span></li>
-                        <li class="team-item"><span class="team-name">Team Beta 🇹🇷</span></li>
-                        <li class="team-item"><span class="team-name">Team Gamma 🇮🇹</span></li>
-                        <li class="team-item"><span class="team-name">Team Delta 🇵🇱</span></li>
-                        <li class="team-item"><span class="team-name">Team Epsilon 🇪🇸</span></li>
-                        <li class="team-item"><span class="team-name">Team Zeta 🇦🇱</span></li>
-                        <li class="team-item"><span class="team-name">Team Eta 🇲🇩</span></li>
-                    </ul>
-                </li>
-
-                <!-- Topic 2 -->
-                <li class="topic-item">
-                    <button class="topic-button">
-                        <span><span class="topic-icon">🌍</span>International Teams</span>
-                        <svg class="topic-arrow" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M7 10l5 5 5-5z"/>
-                        </svg>
-                    </button>
-                    <ul class="teams-list">
-                        <li class="team-item"><span class="team-name">Team Alpha 🇫🇷</span></li>
-                        <li class="team-item"><span class="team-name">Team Beta 🇹🇷</span></li>
-                        <li class="team-item"><span class="team-name">Team Gamma 🇮🇹</span></li>
-                        <li class="team-item"><span class="team-name">Team Delta 🇵🇱</span></li>
-                        <li class="team-item"><span class="team-name">Team Epsilon 🇪🇸</span></li>
-                        <li class="team-item"><span class="team-name">Team Zeta 🇦🇱</span></li>
-                        <li class="team-item"><span class="team-name">Team Eta 🇲🇩</span></li>
-                    </ul>
-                </li>
-
-                <!-- Topic 3 -->
-                <li class="topic-item">
-                    <button class="topic-button">
-                        <span><span class="topic-icon">🤖</span>Coding Challenge #1</span>
-                        <svg class="topic-arrow" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M7 10l5 5 5-5z"/>
-                        </svg>
-                    </button>
-                    <ul class="teams-list">
-                        <li class="team-item"><span class="team-name">Team Alpha 🇫🇷</span></li>
-                        <li class="team-item"><span class="team-name">Team Beta 🇹🇷</span></li>
-                        <li class="team-item"><span class="team-name">Team Gamma 🇮🇹</span></li>
-                        <li class="team-item"><span class="team-name">Team Delta 🇵🇱</span></li>
-                        <li class="team-item"><span class="team-name">Team Epsilon 🇪🇸</span></li>
-                        <li class="team-item"><span class="team-name">Team Zeta 🇦🇱</span></li>
-                        <li class="team-item"><span class="team-name">Team Eta 🇲🇩</span></li>
-                    </ul>
-                </li>
-
-                <!-- Add more topics as needed -->
-            </ul>
-        </aside>
-
-        <!-- Content Area -->
-        <main class="content-area">
-            <div class="content-placeholder">
-                <div class="topic-content active">
-                    <h1 class="content-title">📱 Digital Citizenship Rules</h1>
-                    <p class="content-subtitle">Select a team to view their contributions and materials</p>
-                    <div style="font-size: 4rem; margin: 2rem 0; opacity: 0.3;">Click a topic above to expand teams</div>
-                </div>
-            </div>
-        </main>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Digital Innovators TwinSpace. All rights reserved. | European School Education Platform</p>
+    <!-- Fixed Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">TwinSpace Pages</h2>
+            <p class="sidebar-subtitle">Select a topic</p>
         </div>
+
+        <ul class="topics-list">
+            <!-- 1. Digital Pact -->
+            <li class="topic-item" data-topic="digital-pact">
+                <button class="topic-button">
+                    <span>1 - Our digital pact: rules, rights & responsibilities</span>
+                    <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </button>
+                <ul class="teams-list">
+                    <li class="team-item" data-material="digital-pact-france">France Team</li>
+                    <li class="team-item" data-material="digital-pact-turkey">Turkey Team</li>
+                    <li class="team-item" data-material="digital-pact-italy">Italy Team</li>
+                    <li class="team-item" data-material="digital-pact-poland">Poland Team</li>
+                    <li class="team-item" data-material="digital-pact-spain">Spain Team</li>
+                    <li class="team-item" data-material="digital-pact-albania">Albania Team</li>
+                    <li class="team-item" data-material="digital-pact-moldova">Moldova Team</li>
+                </ul>
+            </li>
+
+            <!-- 2. International Groups -->
+            <li class="topic-item" data-topic="international-groups">
+                <button class="topic-button">
+                    <span>2 - Our international groups</span>
+                    <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </button>
+                <ul class="teams-list">
+                    <li class="team-item" data-material="international-france">France Team</li>
+                    <li class="team-item" data-material="international-turkey">Turkey Team</li>
+                    <li class="team-item" data-material="international-italy">Italy Team</li>
+                    <li class="team-item" data-material="international-poland">Poland Team</li>
+                    <li class="team-item" data-material="international-spain">Spain Team</li>
+                    <li class="team-item" data-material="international-albania">Albania Team</li>
+                    <li class="team-item" data-material="international-moldova">Moldova Team</li>
+                </ul>
+            </li>
+
+            <!-- 3. Suffragette Movie -->
+            <li class="topic-item" data-topic="suffragette">
+                <button class="topic-button">
+                    <span>3 - Watching and studying the movie Suffragette</span>
+                    <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </button>
+                <ul class="teams-list">
+                    <li class="team-item" data-material="suffragette-group1">Group 1</li>
+                    <li class="team-item" data-material="suffragette-group2">Group 2</li>
+                    <li class="team-item" data-material="suffragette-group3">Group 3</li>
+                    <li class="team-item" data-material="suffragette-group4">Group 4</li>
+                    <li class="team-item" data-material="suffragette-group5">Group 5</li>
+                    <li class="team-item" data-material="suffragette-group6">Group 6</li>
+                    <li class="team-item" data-material="suffragette-group7">Group 7</li>
+                </ul>
+            </li>
+
+            <!-- 4. XMas Cards -->
+            <li class="topic-item" data-topic="xmas">
+                <button class="topic-button">
+                    <span>4 - XMas cards</span>
+                    <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </button>
+                <ul class="teams-list">
+                    <li class="team-item" data-material="xmas-france">France Team</li>
+                    <li class="team-item" data-material="xmas-turkey">Turkey Team</li>
+                    <li class="team-item" data-material="xmas-italy">Italy Team</li>
+                    <li class="team-item" data-material="xmas-poland">Poland Team</li>
+                    <li class="team-item" data-material="xmas-spain">Spain Team</li>
+                    <li class="team-item" data-material="xmas-albania">Albania Team</li>
+                    <li class="team-item" data-material="xmas-moldova">Moldova Team</li>
+                </ul>
+            </li>
+
+            <!-- 5. Reenacting Movie -->
+            <li class="topic-item" data-topic="reenacting">
+                <button class="topic-button">
+                    <span>5 - Reenacting the Movie</span>
+                    <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </button>
+                <ul class="teams-list">
+                    <li class="team-item" data-material="reenact-group1">Group 1</li>
+                    <li class="team-item" data-material="reenact-group2">Group 2</li>
+                    <li class="team-item" data-material="reenact-group3">Group 3</li>
+                    <li class="team-item" data-material="reenact-group4">Group 4</li>
+                    <li class="team-item" data-material="reenact-group5">Group 5</li>
+                    <li class="team-item" data-material="reenact-group6">Group 6</li>
+                    <li class="team-item" data-material="reenact-group7">Group 7</li>
+                </ul>
+            </li>
+
+            <!-- 6. International Women's Day -->
+            <li class="topic-item" data-topic="womens-day">
+                <button class="topic-button">
+                    <span>6 - International Women's Day</span>
+                    <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </button>
+                <ul class="teams-list">
+                    <li class="team-item" data-material="womens-sport">Women in Sport</li>
+                    <li class="team-item" data-material="womens-politics">Women in Politics</li>
+                    <li class="team-item" data-material="womens-arts">Women in Arts</li>
+                    <li class="team-item" data-material="womens-rights">Human Rights</li>
+                    <li class="team-item" data-material="womens-science">Science & Medicine</li>
+                    <li class="team-item" data-material="womens-feminism">Feminism</li>
+                    <li class="team-item" data-material="womens-resistance">Resistance</li>
+                </ul>
+            </li>
+
+            <!-- 7. Skills -->
+            <li class="topic-item" data-topic="skills">
+                <button class="topic-button">
+                    <span>7 - Skills that make a difference</span>
+                    <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </button>
+                <ul class="teams-list">
+                    <li class="team-item" data-material="skills-campaign">7.1 Mini Campaign</li>
+                    <li class="team-item" data-material="skills-promotion">7.2 eTwinning Promotion</li>
+                </ul>
+            </li>
+
+            <!-- 8. Project Logo -->
+            <li class="topic-item" data-topic="logo">
+                <button class="topic-button">
+                    <span>8 - Project logo</span>
+                    <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </button>
+                <ul class="teams-list">
+                    <li class="team-item" data-material="logo-france">France</li>
+                    <li class="team-item" data-material="logo-turkey">Turkey</li>
+                    <li class="team-item" data-material="logo-moldova">Moldova</li>
+                    <li class="team-item" data-material="logo-italy">Italy</li>
+                    <li class="team-item" data-material="logo-poland">Poland</li>
+                    <li class="team-item" data-material="logo-spain">Spain</li>
+                    <li class="team-item" data-material="logo-albania">Albania</li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Scrollable Content -->
+    <div class="content-wrapper">
+        <div class="content-placeholder" id="contentArea">
+            <h1 class="content-title">Welcome to eTwinning Aristotel '26</h1>
+            <p class="content-subtitle">Click a topic in the sidebar to view team materials (videos, PDFs, eMags)</p>
+        </div>
+    </div>
+
+    <!-- Fixed Footer -->
+    <footer class="footer">
+        <div>&copy; 2025 eTwinning Aristotel '26. European School Education Platform. All rights reserved.</div>
     </footer>
 
     <script>
+        let currentTheme = 'light';
+
         // Theme Toggle
         function toggleTheme() {
             document.body.classList.toggle('dark');
-            const btn = document.querySelector('.theme-toggle');
-            btn.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';
+            currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+            const toggle = document.querySelector('.theme-toggle');
+            toggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
         }
 
-        // Sidebar Topics Functionality
+        // Topic Toggle
         document.querySelectorAll('.topic-button').forEach(button => {
             button.addEventListener('click', function() {
                 const topicItem = this.closest('.topic-item');
                 const isOpen = topicItem.classList.contains('open');
-                const teamsList = topicItem.querySelector('.teams-list');
-                
-                // Close all other topics
+
+                // Close all topics
                 document.querySelectorAll('.topic-item').forEach(item => {
                     item.classList.remove('open');
                     item.querySelector('.topic-button').classList.remove('active');
                 });
 
-                // Toggle current topic
+                // Open current topic
                 if (!isOpen) {
                     topicItem.classList.add('open');
                     this.classList.add('active');
-                    
-                    // Show content for this topic
-                    showTopicContent(this);
                 }
             });
         });
 
-        // Team click handlers (placeholder)
+        // Team Material Display
         document.querySelectorAll('.team-item').forEach(team => {
             team.addEventListener('click', function() {
-                const teamName = this.querySelector('.team-name').textContent;
-                alert(`Opening content for ${teamName}\n\nTeam materials, presentations, and files will load here!`);
+                const materialId = this.dataset.material;
+                showMaterial(materialId, this.textContent);
             });
         });
 
-        function showTopicContent(button) {
-            const topicTitle = button.querySelector('span').textContent.trim();
-            const contentArea = document.querySelector('.content-placeholder');
+        function showMaterial(id, teamName) {
+            const materials = {
+                // Digital Pact materials
+                'digital-pact-france': { type: 'video', title: 'France Team - Netiquette Presentation', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                'digital-pact-turkey': { type: 'pdf', title: 'Turkey Team - Code of Conduct', src: 'https://example.com/code-conduct.pdf' },
+                // Add all your materials here following the same pattern
+                // Example format:
+                // 'womens-sport': { type: 'video', title: 'Women in Sport Video', src: 'VIDEO_URL' },
+                // 'womens-politics': { type: 'emag', title: 'Politics eMag', src: 'EMAG_LINK' },
+            };
+
+            const material = materials[id] || { type: 'video', title: `${teamName} Materials`, src: 'https://www.youtube.com/embed/dQw4w9WgXcQ' };
             
+            const contentArea = document.getElementById('contentArea');
             contentArea.innerHTML = `
-                <div class="topic-content active">
-                    <h1 class="content-title">${topicTitle}</h1>
-                    <p class="content-subtitle">Select a team from the sidebar to view their contributions</p>
-                    <div style="font-size: 4rem; margin: 2rem 0; opacity: 0.3;">👈 Click a team name</div>
-                    <p style="color: #6b7280; max-width: 600px; margin: 0 auto;">
-                        Each team has created presentations, infographics, quizzes, and coding projects 
-                        related to this topic. Click any team to see their work!
-                    </p>
+                <h1 class="content-title">${material.title}</h1>
+                <p class="content-subtitle">${teamName} - ${material.type.toUpperCase()} Content</p>
+                <div class="materials-grid">
+                    ${material.type === 'video' ? 
+                        `<iframe width="100%" height="400" src="${material.src}" frameborder="0" allowfullscreen></iframe>` :
+                        `<div class="material-card" onclick="window.open('${material.src}', '_blank')">
+                            <h3>${material.title}</h3>
+                            <p>Click to open ${material.type.toUpperCase()}</p>
+                        </div>`
+                    }
                 </div>
             `;
         }
 
-        // Smooth scrolling for sidebar
-        document.querySelector('.sidebar').addEventListener('wheel', function(e) {
-            e.stopPropagation();
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scrollProgress').style.height = progress + '%';
         });
     </script>
 </body>
