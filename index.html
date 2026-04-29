@@ -1284,29 +1284,28 @@ description: `
 
         // Topic Toggle
         // FIXED Topic Toggle - Handles ALL levels
+// 🔥 FIXED Topic Toggle - Works for ALL nesting levels
 document.addEventListener('click', function(e) {
-    if (e.target.closest('.topic-button')) {
+    const topicButton = e.target.closest('.topic-button');
+    if (topicButton) {
         e.stopPropagation();
-        const button = e.target.closest('.topic-button');
-        const topicItem = button.closest('.topic-item');
+        e.preventDefault();
         
-        // Close ALL other topic-items at same level
-        const parentList = topicItem.parentElement;
-        parentList.querySelectorAll('.topic-item').forEach(sibling => {
-            if (sibling !== topicItem) {
-                sibling.classList.remove('open');
-                sibling.querySelector('.topic-button')?.classList.remove('active');
-            }
+        const topicItem = topicButton.closest('.topic-item');
+        const isOpen = topicItem.classList.contains('open');
+        
+        // Close ALL topic-items in the same parent list
+        const parentTeamsList = topicItem.parentElement;
+        parentTeamsList.querySelectorAll('.topic-item').forEach(item => {
+            item.classList.remove('open');
+            const btn = item.querySelector('.topic-button');
+            if (btn) btn.classList.remove('active');
         });
         
         // Toggle current item
-        const isOpen = topicItem.classList.contains('open');
-        if (isOpen) {
-            topicItem.classList.remove('open');
-            button.classList.remove('active');
-        } else {
+        if (!isOpen) {
             topicItem.classList.add('open');
-            button.classList.add('active');
+            topicButton.classList.add('active');
         }
     }
 });
