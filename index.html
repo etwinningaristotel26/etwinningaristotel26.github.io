@@ -614,23 +614,21 @@
             <button class="nav-title" data-section="pages">Pages</button>
             <ul class="topics-list" id="pages">
                 <!-- 1. Digital Pact -->
-                <li class="topic-item" data-topic="digital-pact">
-                    <button class="topic-button">
-                        <span>1 - Our digital pact: rules, rights & responsibilities</span>
-                        <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <polyline points="6,9 12,15 18,9"></polyline>
-                        </svg>
-                    </button>
-                    <ul class="teams-list">
-                        <li class="team-item" data-material="digital-pact-team1" data-type="presentation">Team 1</li>
-                        <li class="team-item" data-material="digital-pact-team2" data-type="infographic">Team 2</li>
-                        <li class="team-item" data-material="digital-pact-team3" data-type="kahoot">Team 3</li>
-                        <li class="team-item" data-material="digital-pact-team4" data-type="presentation">Team 4</li>
-                        <li class="team-item" data-material="digital-pact-team5" data-type="infographic">Team 5</li>
-                        <li class="team-item" data-material="digital-pact-team6" data-type="kahoot">Team 6</li>
-                        <li class="team-item" data-material="digital-pact-team7" data-type="wordle">Team 7</li>
-                    </ul>
-                </li>
+                <!-- 1. Digital Pact - ONLY 4 TEAMS -->
+<li class="topic-item" data-topic="digital-pact">
+    <button class="topic-button">
+        <span>1 - Our digital pact: rules, rights & responsibilities</span>
+        <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polyline points="6,9 12,15 18,9"></polyline>
+        </svg>
+    </button>
+    <ul class="teams-list">
+        <li class="team-item" data-material="digital-pact-team1" data-type="mixed1">Team 1</li>
+        <li class="team-item" data-material="digital-pact-team2" data-type="mixed2">Team 2</li>
+        <li class="team-item" data-material="digital-pact-team3" data-type="mixed3">Team 3</li>
+        <li class="team-item" data-material="digital-pact-team4" data-type="mixed4">Team 4</li>
+    </ul>
+</li>
 
                 <!-- 2. International Groups -->
                 <li class="topic-item" data-topic="international-groups">
@@ -671,23 +669,18 @@
                 </li>
 
                 <!-- 4. XMas -->
-                <li class="topic-item" data-topic="xmas">
-                    <button class="topic-button">
-                        <span>4 - XMas cards</span>
-                        <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <polyline points="6,9 12,15 18,9"></polyline>
-                        </svg>
-                    </button>
-                    <ul class="teams-list">
-                        <li class="team-item" data-material="xmas-team1" data-type="postcard">Team 1</li>
-                        <li class="team-item" data-material="xmas-team2" data-type="postcard">Team 2</li>
-                        <li class="team-item" data-material="xmas-team3" data-type="postcard">Team 3</li>
-                        <li class="team-item" data-material="xmas-team4" data-type="postcard">Team 4</li>
-                        <li class="team-item" data-material="xmas-team5" data-type="postcard">Team 5</li>
-                        <li class="team-item" data-material="xmas-team6" data-type="postcard">Team 6</li>
-                        <li class="team-item" data-material="xmas-team7" data-type="postcard">Team 7</li>
-                    </ul>
-                </li>
+                <!-- 4. XMas -->
+<li class="topic-item" data-topic="xmas">
+    <button class="topic-button">
+        <span>4 - XMas cards</span>
+        <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polyline points="6,9 12,15 18,9"></polyline>
+        </svg>
+    </button>
+    <ul class="teams-list">
+        <li class="team-item" data-material="xmas" data-type="xmas">XMas Gallery</li>
+    </ul>
+</li>
 
                 <!-- 5. Reenacting -->
                 <li class="topic-item" data-topic="reenacting">
@@ -866,17 +859,26 @@
         function showMainSection(section) {
             const content = {
                 home: `
-                    <h1 class="content-title">Welcome to eTwinning Aristotel '26</h1>
-                    <p class="content-subtitle">European School Education Platform - TwinSpace Navigation</p>
-                    <p style="line-height: 1.7; margin-top: 2rem;">Click on sidebar items to explore project materials, team contributions, and gallery.</p>
-                `,
-                description: `
-                    <h1 class="content-title">The power of S.H.E. - Strength, Hope and Equality</h1>
-                    <div style="line-height: 1.7; font-size: 1.1rem;">
-                        <p>This is a year-long international eTwinning project (from September to May) exploring women's rights, activism, and representation in cinema and beyond. The project is designed for secondary school students, working in international groups to encourage intercultural collaboration, critical thinking, and creativity.</p>
-                        <p style="margin-top: 1.5rem; font-style: italic;">Some of us have already been running this similar project around the "suffragettes" film for two years, and we're improving every year.</p>
-                    </div>
-                `,
+    <h1 class="content-title">Welcome to eTwinning Aristotel '26</h1>
+    <p class="content-subtitle"><strong>✨ Made by Moldavian Team from eTwinning 2025-2026</strong><br>Aristotel Republican Theoretical Lyceum - English Project</p>
+    <div style="display: flex; gap: 2rem; margin-top: 2rem; align-items: flex-start;">
+        <img src="description.png" alt="Project Description" style="width: 300px; height: 400px; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); flex-shrink: 0;">
+        <div style="flex: 1; line-height: 1.7;">
+            <p>Click sidebar items to explore international team contributions, materials, and gallery from 8 European countries!</p>
+            <p><strong>Project Theme:</strong> The power of S.H.E. - Strength, Hope & Equality</p>
+        </div>
+    </div>
+`,
+description: `
+    <h1 class="content-title">The power of S.H.E. - Strength, Hope and Equality</h1>
+    <div style="display: flex; gap: 2rem; align-items: flex-start; line-height: 1.7; font-size: 1.1rem;">
+        <img src="description.png" alt="Project Description" style="width: 350px; height: 450px; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); flex-shrink: 0;">
+        <div style="flex: 1;">
+            <p>This is a year-long international eTwinning project (September-May) exploring women's rights, activism, and representation in cinema. Secondary school students work in international groups across 8 European countries.</p>
+            <p style="margin-top: 1.5rem; font-style: italic; font-size: 1.1rem;"><strong>Improving every year!</strong> Some teams have run similar suffragette projects for 2+ years.</p>
+        </div>
+    </div>
+`,
                 members: `
                     <h1 class="content-title">Members (8)</h1>
                     <div class="members-grid">
@@ -988,54 +990,95 @@
         }
 
         function getMaterialsForType(type, id) {
-            const materialsMap = {
-                presentation: [
-                    {type: 'canva', icon: '📱', title: 'Canva Presentation', desc: 'Interactive presentation', url: `https://canva.com/${id}`},
-                    {type: 'pdf', icon: '📄', title: 'PDF Download', desc: 'Downloadable report', url: `https://yourdomain.com/${id}-presentation.pdf`}
-                ],
-                infographic: [
-                    {type: 'image', icon: '🖼️', title: 'Infographic', desc: 'High-res image', url: `https://yourdomain.com/${id}-infographic.jpg`},
-                    {type: 'canva', icon: '📱', title: 'Canva Editor', desc: 'Edit online', url: `https://canva.com/${id}`}
-                ],
-                kahoot: [
-                    {type: 'link', icon: '🎮', title: 'Kahoot Quiz', desc: 'Play quiz', url: `https://kahoot.it/${id}`},
-                    {type: 'wordle', icon: '🧩', title: 'Wordle Game', desc: 'Play game', url: `https://wordle.com/${id}`}
-                ],
-                groups: [
-                    {type: 'link', icon: '👥', title: 'Team Composition', desc: 'View team members', url: `https://yourdomain.com/teams/${id}`}
-                ],
-                slides: [
-                    {type: 'google-slides', icon: '📊', title: 'Google Slides', desc: 'View presentation', url: `https://docs.google.com/presentation/${id}`}
-                ],
-                postcard: [
-                    {type: 'image', icon: '📬', title: 'XMas Postcard', desc: 'High-res image', url: `https://yourdomain.com/${id}-postcard.jpg`},
-                    {type: 'canva', icon: '📱', title: 'Canva Postcard', desc: 'View design', url: `https://canva.com/${id}`}
-                ],
-                video: [
-                    {type: 'youtube', icon: '🎥', title: 'YouTube Video', desc: 'Watch video', url: `https://youtube.com/embed/${id}`, preview: `<iframe src="https://youtube.com/embed/${id}?autoplay=0" allowfullscreen></iframe>`}
-                ],
-                ebook: [
-                    {type: 'link', icon: '📖', title: 'Online eBook', desc: 'Read online', url: `https://yourdomain.com/ebooks/${id}`}
-                ],
-                website: [
-                    {type: 'link', icon: '🌐', title: 'Project Website', desc: 'Visit site', url: `https://yourdomain.com/sites/${id}`}
-                ],
-                vr: [
-                    {type: 'link', icon: '🕶️', title: 'VR Museum', desc: 'Virtual tour', url: `https://yourdomain.com/vr/${id}`}
-                ],
-                games: [
-                    {type: 'link', icon: '🎮', title: 'Game 1', desc: 'Interactive game', url: `https://yourdomain.com/games/${id}-1`},
-                    {type: 'link', icon: '🎮', title: 'Game 2', desc: 'Quiz game', url: `https://yourdomain.com/games/${id}-2`},
-                    {type: 'link', icon: '🎮', title: 'Game 3', desc: 'Challenge', url: `https://yourdomain.com/games/${id}-3`}
-                ],
-                infographic: [
-                    {type: 'image', icon: '🖼️', title: 'Exhibition Infographic', desc: 'High-res image', url: `https://yourdomain.com/${id}-exhibition.jpg`}
-                ]
-            };
+    const materialsMap = {
+        // Digital Pact Teams
+        mixed1: [  // Team 1
+            {type: 'canva', icon: '📱', title: 'Canva Presentation', desc: 'Interactive presentation', url: 'https://www.canva.com/design/DAGyaQahhJU/5hA0W7pB9mtfkb38W6Q2QQ/edit?utm_content=DAGyaQahhJU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'},
+            {type: 'canva', icon: '🖼️', title: 'Canva Infographic', desc: 'Visual infographic', url: 'https://www.canva.com/design/DAGx_xS5VD4/GjvtZMxWFVpSPKq2gNuqvw/edit?utm_content=DAGx_xS5VD4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'},
+            {type: 'wordwall', icon: '🧩', title: 'Wordwall Game', desc: 'Interactive game', url: 'https://wordwall.net/resource/97080037'}
+        ],
+        mixed2: [  // Team 2
+            {type: 'canva', icon: '📱', title: 'Canva Presentation', desc: 'Interactive presentation', url: 'https://www.canva.com/design/DAGyZw93F5Q/2Z7HyirhpXOJfCe6v9r2Ig/edit?utm_content=DAGyZw93F5Q&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'},
+            {type: 'image', icon: '🖼️', title: 'Infographic 2', desc: 'Team infographic', url: 'infographic2.png'},
+            {type: 'kahoot', icon: '🎮', title: 'Kahoot Quiz', desc: 'eSafety quiz', url: 'https://create.kahoot.it/share/esafety/5debb0dd-075d-4654-900c-5fc184ef5a7b'}
+        ],
+        mixed3: [  // Team 3
+            {type: 'canva', icon: '📱', title: 'Canva Presentation', desc: 'View presentation', url: 'https://www.canva.com/design/DAGx_5Xm1w0/AjtaI_ZewMyApjeetpsv4w/view?utm_content=DAGx_5Xm1w0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h2a88d1e74d'},
+            {type: 'image', icon: '🖼️', title: 'Infographic 3', desc: 'Team infographic', url: 'infographic3.png'},
+            {type: 'kahoot', icon: '🎮', title: 'Kahoot Quiz', desc: 'Interactive quiz', url: 'https://create.kahoot.it/details/959751c2-fe9e-4ede-888c-57ccda19e9e3'}
+        ],
+        mixed4: [  // Team 4
+            {type: 'canva', icon: '📱', title: 'Canva Presentation', desc: 'View presentation', url: 'https://www.canva.com/design/DAGyaM83peU/WXjtsbf5zt2vY8yRnfuUiw/view?utlId=h30dc2c612d&utm_campaign=designshare&utm_content=DAGyaM83peU&utm_medium=link2&utm_source=uniquelinks'},
+            {type: 'image', icon: '🖼️', title: 'Infographic 4', desc: 'Team infographic', url: 'infographic4.png'},
+            {type: 'google-forms', icon: '📋', title: 'Google Form', desc: 'Interactive form', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdnHWf9JotNrDeG2nyOD8bDAl4TGzjW9-90Z7uJbDhAJFAzSQ/viewform'}
+        ],
 
-            return materialsMap[type] || [{type: 'link', icon: '🔗', title: 'Link', desc: 'External resource', url: `https://yourdomain.com/${id}`}];
-        }
+        // International Groups
+        groups: [
+            {type: 'text', icon: '👥', title: 'Group 1', desc: 'FRemeline, FRLouise, FRMarion, PLMarek, PLBartek...', url: '#'},
+            {type: 'text', icon: '👥', title: 'Group 2', desc: 'FRSacha, FRMéliane, FREmy...', url: '#'},
+            {type: 'text', icon: '👥', title: 'Group 3', desc: 'FR Célia, FRRosalie...', url: '#'},
+            {type: 'text', icon: '👥', title: 'Group 4', desc: 'FRCharlyne, FRKetsia...', url: '#'},
+            {type: 'text', icon: '👥', title: 'Group 5', desc: 'FRClément, FRAppollinariia...', url: '#'},
+            {type: 'text', icon: '👥', title: 'Group 6', desc: 'FROctave, FRLouis...', url: '#'},
+            {type: 'text', icon: '👥', title: 'Group 7', desc: 'FRZélie, FRFleur...', url: '#'}
+        ],
 
+        // Suffragette - Google Slides with PREVIEW
+        slides: [
+            {type: 'google-slides', icon: '📊', title: 'Google Slides', desc: 'View presentation', url: id.includes('suffragette-team1') ? 'https://docs.google.com/presentation/d/1yzG6SS2mAi9aBCiBRBBJE8kMQKIxfIxL9jSh2YhzOoI/embed' : id.includes('suffragette-team2') ? 'https://docs.google.com/presentation/d/1Kfp7Sv3yHWEDrVbTXBB6Xro-P_w6lHBPMeXX9RUHB1A/embed' : 'https://docs.google.com/presentation/d/1ak-O49I9LGY0BXksKVx9Vy_jruriqoMRLCmbU_16nBQ/embed', preview: `<iframe src="${id.includes('suffragette-team1') ? 'https://docs.google.com/presentation/d/1yzG6SS2mAi9aBCiBRBBJE8kMQKIxfIxL9jSh2YhzOoI/embed?rm=minimal' : id.includes('suffragette-team2') ? 'https://docs.google.com/presentation/d/1Kfp7Sv3yHWEDrVbTXBB6Xro-P_w6lHBPMeXX9RUHB1A/embed?rm=minimal' : 'https://docs.google.com/presentation/d/1ak-O49I9LGY0BXksKVx9Vy_jruriqoMRLCmbU_16nBQ/embed?rm=minimal'}" style="border:0;" allowfullscreen></iframe>`}
+        ],
+
+        // XMas - NO TEAMS, just gallery
+        xmas: [
+            {type: 'image', icon: '📬', title: 'Screenshot 1', desc: 'XMas card 1', url: 'screenshot1.png'},
+            {type: 'image', icon: '📬', title: 'Screenshot 2', desc: 'XMas card 2', url: 'screenshot2.png'},
+            {type: 'image', icon: '📬', title: 'Screenshot 3', desc: 'XMas card 3', url: 'screenshot3.png'}
+        ],
+
+        // Reenacting Videos with PREVIEW
+        video: [
+            {type: 'youtube', icon: '🎥', title: 'Team Video', desc: 'Watch reenactment', 
+             url: id.includes('reenact-team1') ? 'https://www.youtube.com/embed/e-g-4_PAGLo' : 
+                  id.includes('reenact-team2') ? 'https://www.youtube.com/embed/iQyojJ0XXZA' :
+                  id.includes('reenact-team3') ? 'https://www.youtube.com/embed/zj3ulxiQfoc' :
+                  id.includes('reenact-team4') ? 'https://www.youtube.com/embed/8l8_vTwLX7Q' :
+                  id.includes('reenact-team5') ? 'https://www.youtube.com/embed/U5TEIJbL444' : 'https://drive.google.com/file/d/1eudLHP3iIEG1gIyyuk5yAcO3SPI9qg5G/preview',
+             preview: id.includes('reenact-team1') ? `<iframe src="https://www.youtube.com/embed/e-g-4_PAGLo" allowfullscreen></iframe>` :
+                        id.includes('reenact-team2') ? `<iframe src="https://www.youtube.com/embed/iQyojJ0XXZA" allowfullscreen></iframe>` :
+                        id.includes('reenact-team3') ? `<iframe src="https://www.youtube.com/embed/zj3ulxiQfoc" allowfullscreen></iframe>` :
+                        id.includes('reenact-team4') ? `<iframe src="https://www.youtube.com/embed/8l8_vTwLX7Q" allowfullscreen></iframe>` :
+                        id.includes('reenact-team5') ? `<iframe src="https://www.youtube.com/embed/U5TEIJbL444" allowfullscreen></iframe>` : ''}
+        ],
+
+        // Women's Day
+        presentation: [
+            {type: 'youtube', icon: '🎥', title: 'Team Video', desc: 'Watch video', 
+             url: id.includes('womens-team1') ? 'https://www.youtube.com/embed/9igzhMZDwRg' : 'https://www.youtube.com/embed/Awn9xLq8wIU',
+             preview: id.includes('womens-team1') ? `<iframe src="https://www.youtube.com/embed/9igzhMZDwRg" allowfullscreen></iframe>` : `<iframe src="https://www.youtube.com/embed/Awn9xLq8wIU" allowfullscreen></iframe>`},
+            {type: 'canva', icon: '📱', title: 'eMag', desc: 'Digital magazine', url: id.includes('womens-team1') ? 'https://www.canva.com/design/DAHC3yJYI48/1KAtuvKLFini04JzP5Kf1A/edit?utm_content=DAHC3yJYI48&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton' : 'https://www.canva.com/design/DAHC3018jlA/y-XdJQUkJ9DNo2wDuXiyoQ/edit?utm_content=DAHC3018jlA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'}
+        ],
+
+        // 7.1 Mini Teams
+        'video': [
+            {type: 'drive', icon: '🎥', title: 'Team Video', desc: 'Watch video', url: id.includes('mini-team1') ? 'https://drive.google.com/file/d/1I9uA7PwcMaobhIe0Ns_MCfEzSi2OylXi/view?usp=sharing' : id.includes('mini-team6') ? 'https://www.youtube.com/embed/RK6fFzYzob8' : id.includes('mini-team9') ? 'https://www.youtube.com/embed/ZrBzqRbTKmU' : ''}
+        ],
+
+        // 7.2 Promotion Teams
+        ebook: [{type: 'bookcreator', icon: '📖', title: 'eBook', desc: 'Interactive book', url: 'https://read.bookcreator.com/guabWq9i56WoAWOxIVYLOdmXMQf1/PcytJIBRRu6GK_jdr8rytw'}],
+        website: [{type: 'link', icon: '🌐', title: 'Project Site', desc: 'Visit website', url: 'https://etwinningaristotel26.github.io'}],
+        vr: [{type: 'link', icon: '🕶️', title: 'VR Museum', desc: 'Virtual tour', url: 'https://metasteps.com/viewer/80dc8861-833c-41c7-8c3a-2df4598bc87b'}],
+        games: [
+            {type: 'link', icon: '🎮', title: 'Quiz 1', desc: 'Interactive quiz', url: 'https://wayground.com/admin/quiz/69ce0893288de4679c3044de'},
+            {type: 'wordwall', icon: '🧩', title: 'Wordwall', desc: 'Learning game', url: 'https://wordwall.net/resource/110878082'},
+            {type: 'learningapps', icon: '📱', title: 'Learning Apps', desc: 'Interactive app', url: 'https://learningapps.org/view49936035'}
+        ],
+
+        // Project Logo
+        logo: [{type: 'text', icon: '🎨', title: 'Coming Soon', desc: 'Logo designs coming soon!', url: '#'}]
+    };
+    return materialsMap[type] || [{type: 'link', icon: '🔗', title: 'Coming Soon', desc: 'Content loading...', url: '#'}];
+}
         function getTypeDescription(type) {
             const descriptions = {
                 presentation: 'Canva presentations and PDFs',
@@ -1055,20 +1098,16 @@
         }
 
         function openMaterial(type, url, title) {
-            if (type === 'youtube') {
-                // Already previewed, open full screen
-                const fullUrl = url.replace('embed/', 'watch?v=');
-                window.open(fullUrl, '_blank');
-            } else if (type === 'google-slides') {
-                window.open(url, '_blank');
-            } else {
-                window.open(url, '_blank');
-            }
-            
-            if (typeof umami !== 'undefined') {
-                umami.trackEvent('Material Opened', { type, title });
-            }
-        }
+    trackMaterial(type, title); // Track with Umami
+    
+    if (type === 'youtube' || type === 'google-slides') {
+        // Preview already shown, open full screen
+        const fullUrl = url.includes('embed') ? url.replace('embed/', 'watch?v=') : url;
+        window.open(fullUrl, '_blank');
+    } else {
+        window.open(url, '_blank');
+    }
+}
 
         // Topic Toggle
         document.addEventListener('click', function(e) {
@@ -1102,6 +1141,12 @@
                 {img: 'https://via.placeholder.com/400x400/8b5cf6/ffffff?text=7.1+Mini', topic: 'Mini Campaign', full: 'https://via.placeholder.com/1200x1200/8b5cf6/ffffff?text=Mini+Campaign+Full'},
                 {img: 'https://via.placeholder.com/400x400/f97316/ffffff?text=7.2+Promo', topic: 'Promotion', full: 'https://via.placeholder.com/1200x1200/f97316/ffffff?text=Promotion+Full'},
                 {img: 'https://via.placeholder.com/400x400/14b8a6/ffffff?text=8+Logo', topic: 'Project Logo', full: 'https://via.placeholder.com/1200x1200/14b8a6/ffffff?text=Logo+Full'}
+                {img: 'screenshot1.png', topic: 'XMas Cards 1', full: 'screenshot1.png'},
+                {img: 'screenshot2.png', topic: 'XMas Cards 2', full: 'screenshot2.png'},
+                {img: 'screenshot3.png', topic: 'XMas Cards 3', full: 'screenshot3.png'},
+                {img: 'infographic2.png', topic: 'Digital Pact Team 2', full: 'infographic2.png'},
+                {img: 'infographic3.png', topic: 'Digital Pact Team 3', full: 'infographic3.png'},
+                {img: 'infographic4.png', topic: 'Digital Pact Team 4', full: 'infographic4.png'}
             ];
 
             galleryData.forEach(item => {
@@ -1160,17 +1205,25 @@
         });
 
         // Umami Analytics - Force tracking
-        function trackPageView() {
-            if (typeof umami !== 'undefined') {
-                umami.trackView('/twinspace-pages');
-                umami.trackEvent('Page Loaded', { page: 'TwinSpace' });
-                console.log('Umami tracked page view');
-            } else {
-                console.log('Umami not loaded yet');
-                setTimeout(trackPageView, 1000);
-            }
-        }
-        trackPageView();
+        // Umami Analytics - FIXED
+function trackPageView() {
+    if (typeof umami !== 'undefined' && umami.trackEvent) {
+        umami.trackView('/twinspace-pages');
+        umami.trackEvent('Page Loaded', { page: 'TwinSpace' });
+        console.log('✅ Umami tracked page view');
+    } else {
+        console.log('⏳ Umami loading...');
+        setTimeout(trackPageView, 500);
+    }
+}
+trackPageView();
+
+// Track all material clicks
+function trackMaterial(type, title) {
+    if (typeof umami !== 'undefined' && umami.trackEvent) {
+        umami.trackEvent('Material Opened', { type, title });
+    }
+}
 
         // Initial load
         showMainSection('home');
