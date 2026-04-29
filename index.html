@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eTwinning Aristotel '26 - TwinSpace</title>
     <!-- Simple Analytics Tracker -->
-    <script async defer src="https://cloud.umami.is/script.js" data-website-id="8bf95060-8550-4fb9-9c1d-c17624d0c0ab"></script>
+    <script async src="https://cloud.umami.is/script.js" data-website-id="8bf95060-8550-4fb9-9c1d-c17624d0c0ab" data-do-not-track="false"></script>
     <style>
         * {
             margin: 0;
@@ -110,7 +110,6 @@
 
         .theme-toggle:hover {
             background: var(--hover-bg);
-            transform: scale(1.05);
         }
 
         /* Main Wrapper */
@@ -249,7 +248,6 @@
             overflow: hidden;
             transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             background: var(--hover-bg);
-        }
 
         .topic-item.open .teams-list {
             max-height: 500px;
@@ -288,7 +286,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: var(--active-bg);
+            background:var(--active-bg);
             width: 100%;
             transition: height 0.1s;
         }
@@ -306,7 +304,7 @@
         }
 
         .content-placeholder {
-            background: var(--bg-card);
+            background:var(--bg-card);
             border-radius: 12px;
             padding: 3rem;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
@@ -328,6 +326,56 @@
             margin-bottom: 2rem;
         }
 
+        /* Members List */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap:1.5rem;
+            margin-top: 2rem;
+        }
+
+        .member-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding:1.75rem;
+            transition: all 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--active-bg);
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--active-bg);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .member-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .member-school {
+            font-weight: 500;
+            margin-top: 0.75rem;
+        }
+
+        .member-location {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Materials Grid */
         .materials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -342,6 +390,8 @@
             padding: 1.75rem;
             cursor: pointer;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .material-card:hover {
@@ -351,9 +401,146 @@
         }
 
         .material-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             opacity: 0.8;
+            text-align: center;
+            display: block;
+        }
+
+        .material-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .material-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Video Preview */
+        .video-preview {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #000;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .video-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img  {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 1.5rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.4);
         }
 
         /* Fixed Footer */
@@ -434,13 +621,13 @@
                         </svg>
                     </button>
                     <ul class="teams-list">
-                        <li class="team-item" data-material="digital-pact-team1">Team 1</li>
-                        <li class="team-item" data-material="digital-pact-team2">Team 2</li>
-                        <li class="team-item" data-material="digital-pact-team3">Team 3</li>
-                        <li class="team-item" data-material="digital-pact-team4">Team 4</li>
-                        <li class="team-item" data-material="digital-pact-team5">Team 5</li>
-                        <li class="team-item" data-material="digital-pact-team6">Team 6</li>
-                        <li class="team-item" data-material="digital-pact-team7">Team 7</li>
+                        <li class="team-item" data-material="digital-pact-team1" data-type="presentation">Team 1</li>
+                        <li class="team-item" data-material="digital-pact-team2" data-type="infographic">Team 2</li>
+                        <li class="team-item" data-material="digital-pact-team3" data-type="kahoot">Team 3</li>
+                        <li class="team-item" data-material="digital-pact-team4" data-type="presentation">Team 4</li>
+                        <li class="team-item" data-material="digital-pact-team5" data-type="infographic">Team 5</li>
+                        <li class="team-item" data-material="digital-pact-team6" data-type="kahoot">Team 6</li>
+                        <li class="team-item" data-material="digital-pact-team7" data-type="wordle">Team 7</li>
                     </ul>
                 </li>
 
@@ -451,15 +638,15 @@
                         <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <polyline points="6,9 12,15 18,9"></polyline>
                         </svg>
-                    </button>
+                    </button>                   
                     <ul class="teams-list">
-                        <li class="team-item" data-material="international-team1">Team 1</li>
-                        <li class="team-item" data-material="international-team2">Team 2</li>
-                        <li class="team-item" data-material="international-team3">Team 3</li>
-                        <li class="team-item" data-material="international-team4">Team 4</li>
-                        <li class="team-item" data-material="international-team5">Team 5</li>
-                        <li class="team-item" data-material="international-team6">Team 6</li>
-                        <li class="team-item" data-material="international-team7">Team 7</li>
+                        <li class="team-item" data-material="international-team1" data-type="groups">Team 1</li>
+                        <li class="team-item" data-material="international-team2" data-type="groups">Team 2</li>
+                        <li class="team-item" data-material="international-team3" data-type="groups">Team 3</li>
+                        <li class="team-item" data-material="international-team4" data-type="groups">Team 4</li>
+                        <li class="team-item" data-material="international-team5" data-type="groups">Team 5</li>
+                        <li class="team-item" data-material="international-team6" data-type="groups">Team 6</li>
+                        <li class="team-item" data-material="international-team7" data-type="groups">Team 7</li>
                     </ul>
                 </li>
 
@@ -472,13 +659,13 @@
                         </svg>
                     </button>
                     <ul class="teams-list">
-                        <li class="team-item" data-material="suffragette-team1">Team 1</li>
-                        <li class="team-item" data-material="suffragette-team2">Team 2</li>
-                        <li class="team-item" data-material="suffragette-team3">Team 3</li>
-                        <li class="team-item" data-material="suffragette-team4">Team 4</li>
-                        <li class="team-item" data-material="suffragette-team5">Team 5</li>
-                        <li class="team-item" data-material="suffragette-team6">Team 6</li>
-                        <li class="team-item" data-material="suffragette-team7">Team 7</li>
+                        <li class="team-item" data-material="suffragette-team1" data-type="slides">Team 1</li>
+                        <li class="team-item" data-material="suffragette-team2" data-type="slides">Team 2</li>
+                        <li class="team-item" data-material="suffragette-team3" data-type="slides">Team 3</li>
+                        <li class="team-item" data-material="suffragette-team4" data-type="slides">Team 4</li>
+                        <li class="team-item" data-material="suffragette-team5" data-type="slides">Team 5</li>
+                        <li class="team-item" data-material="suffragette-team6" data-type="slides">Team 6</li>
+                        <li class="team-item" data-material="suffragette-team7" data-type="slides">Team 7</li>
                     </ul>
                 </li>
 
@@ -491,13 +678,13 @@
                         </svg>
                     </button>
                     <ul class="teams-list">
-                        <li class="team-item" data-material="xmas-team1">Team 1</li>
-                        <li class="team-item" data-material="xmas-team2">Team 2</li>
-                        <li class="team-item" data-material="xmas-team3">Team 3</li>
-                        <li class="team-item" data-material="xmas-team4">Team 4</li>
-                        <li class="team-item" data-material="xmas-team5">Team 5</li>
-                        <li class="team-item" data-material="xmas-team6">Team 6</li>
-                        <li class="team-item" data-material="xmas-team7">Team 7</li>
+                        <li class="team-item" data-material="xmas-team1" data-type="postcard">Team 1</li>
+                        <li class="team-item" data-material="xmas-team2" data-type="postcard">Team 2</li>
+                        <li class="team-item" data-material="xmas-team3" data-type="postcard">Team 3</li>
+                        <li class="team-item" data-material="xmas-team4" data-type="postcard">Team 4</li>
+                        <li class="team-item" data-material="xmas-team5" data-type="postcard">Team 5</li>
+                        <li class="team-item" data-material="xmas-team6" data-type="postcard">Team 6</li>
+                        <li class="team-item" data-material="xmas-team7" data-type="postcard">Team 7</li>
                     </ul>
                 </li>
 
@@ -510,13 +697,13 @@
                         </svg>
                     </button>
                     <ul class="teams-list">
-                        <li class="team-item" data-material="reenact-team1">Team 1</li>
-                        <li class="team-item" data-material="reenact-team2">Team 2</li>
-                        <li class="team-item" data-material="reenact-team3">Team 3</li>
-                        <li class="team-item" data-material="reenact-team4">Team 4</li>
-                        <li class="team-item" data-material="reenact-team5">Team 5</li>
-                        <li class="team-item" data-material="reenact-team6">Team 6</li>
-                        <li class="team-item" data-material="reenact-team7">Team 7</li>
+                        <li class="team-item" data-material="reenact-team1" data-type="video">Team 1</li>
+                        <li class="team-item" data-material="reenact-team2" data-type="video">Team 2</li>
+                        <li class="team-item" data-material="reenact-team3" data-type="video">Team 3</li>
+                        <li class="team-item" data-material="reenact-team4" data-type="video">Team 4</li>
+                        <li class="team-item" data-material="reenact-team5" data-type="video">Team 5</li>
+                        <li class="team-item" data-material="reenact-team6" data-type="video">Team 6</li>
+                        <li class="team-item" data-material="reenact-team7" data-type="video">Team 7</li>
                     </ul>
                 </li>
 
@@ -526,16 +713,16 @@
                         <span>6 - International Women's Day</span>
                         <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <polyline points="6,9 12,15 18,9"></polyline>
-                        </svg>
+                        </                        </svg>
                     </button>
                     <ul class="teams-list">
-                        <li class="team-item" data-material="womens-team1">Team 1</li>
-                        <li class="team-item" data-material="womens-team2">Team 2</li>
-                        <li class="team-item" data-material="womens-team3">Team 3</li>
-                        <li class="team-item" data-material="womens-team4">Team 4</li>
-                        <li class="team-item" data-material="womens-team5">Team 5</li>
-                        <li class="team-item" data-material="womens-team6">Team 6</li>
-                        <li class="team-item" data-material="womens-team7">Team 7</li>
+                        <li class="team-item" data-material="womens-team1" data-type="presentation">Team 1</li>
+                        <li class="team-item" data-material="womens-team2" data-type="presentation">Team 2</li>
+                        <li class="team-item" data-material="womens-team3" data-type="presentation">Team 3</li>
+                        <li class="team-item" data-material="womens-team4" data-type="presentation">Team 4</li>
+                        <li class="team-item" data-material="womens-team5" data-type="presentation">Team 5</li>
+                        <li class="team-item" data-material="womens-team6" data-type="presentation">Team 6</li>
+                        <li class="team-item" data-material="womens-team7" data-type="presentation">Team 7</li>
                     </ul>
                 </li>
 
@@ -557,15 +744,15 @@
                                 </svg>
                             </button>
                             <ul class="teams-list">
-                                <li class="team-item" data-material="mini-team1">Mini Team 1</li>
-                                <li class="team-item" data-material="mini-team2">Mini Team 2</li>
-                                <li class="team-item" data-material="mini-team3">Mini Team 3</li>
-                                <li class="team-item" data-material="mini-team4">Mini Team 4</li>
-                                <li class="team-item" data-material="mini-team5">Mini Team 5</li>
-                                <li class="team-item" data-material="mini-team6">Mini Team 6</li>
-                                <li class="team-item" data-material="mini-team7">Mini Team 7</li>
-                                <li class="team-item" data-material="mini-team8">Mini Team 8</li>
-                                <li class="team-item" data-material="mini-team9">Mini Team 9</li>
+                                <li class="team-item" data-material="mini-team1" data-type="video">Mini Team 1</li>
+                                <li class="team-item" data-material="mini-team2" data-type="video">Mini Team 2</li>
+                                <li class="team-item" data-material="mini-team3" data-type="video">Mini Team 3</li>
+                                <li class="team-item" data-material="mini-team4" data-type="video">Mini Team 4</li>
+                                <li class="team-item" data-material="mini-team5" data-type="video">Mini Team 5</li>
+                                <li class="team-item" data-material="mini-team6" data-type="video">Mini Team 6</li>
+                                <li class="team-item" data-material="mini-team7" data-type="video">Mini Team 7</li>
+                                <li class="team-item" data-material="mini-team8" data-type="video">Mini Team 8</li>
+                                <li class="team-item" data-material="mini-team9" data-type="video">Mini Team 9</li>
                             </ul>
                         </li>
                         <!-- 7.2 Promoting -->
@@ -577,13 +764,13 @@
                                 </svg>
                             </button>
                             <ul class="teams-list">
-                                <li class="team-item" data-material="promo-team1">Team 1</li>
-                                <li class="team-item" data-material="promo-team2">Team 2</li>
-                                <li class="team-item" data-material="promo-team3">Team 3</li>
-                                <li class="team-item" data-material="promo-team4">Team 4</li>
-                                <li class="team-item" data-material="promo-team5">Team 5</li>
-                                <li class="team-item" data-material="promo-team6">Team 6</li>
-                                <li class="team-item" data-material="promo-team7">Team 7</li>
+                                <li class="team-item" data-material="promo-team1" data-type="ebook">Team 1</li>
+                                <li class="team-item" data-material="promo-team2" data-type="video">Team 2</li>
+                                <li class="team-item" data-material="promo-team3" data-type="video">Team 3</li>
+                                <li class="team-item" data-material="promo-team4" data-type="website">Team 4</li>
+                                <li class="team-item" data-material="promo-team5" data-type="vr">Team 5</li>
+                                <li class="team-item" data-material="promo-team6" data-type="games">Team 6</li>
+                                <li class="team-item" data-material="promo-team7" data-type="infographic">Team 7</li>
                             </ul>
                         </li>
                     </ul>
@@ -598,16 +785,21 @@
                         </svg>
                     </button>
                     <ul class="teams-list">
-                        <li class="team-item" data-material="logo-team1">Team 1</li>
-                        <li class="team-item" data-material="logo-team2">Team 2</li>
-                        <li class="team-item" data-material="logo-team3">Team 3</li>
-                        <li class="team-item" data-material="logo-team4">Team 4</li>
-                        <li class="team-item" data-material="logo-team5">Team 5</li>
-                        <li class="team-item" data-material="logo-team6">Team 6</li>
-                        <li class="team-item" data-material="logo-team7">Team 7</li>
+                        <li class="team-item" data-material="logo-team1" data-type="logo">Team 1</li>
+                        <li class="team-item" data-material="logo-team2" data-type="logo">Team 2</li>
+                        <li class="team-item" data-material="logo-team3" data-type="logo">Team 3</li>
+                        <li class="team-item" data-material="logo-team4" data-type="logo">Team 4</li>
+                        <li class="team-item" data-material="logo-team5" data-type="logo">Team 5</li>
+                        <li class="team-item" data-material="logo-team6" data-type="logo">Team 6</li>
+                        <li class="team-item" data-material="logo-team7" data-type="logo">Team 7</li>
                     </ul>
                 </li>
             </ul>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="nav-item">
+            <button class="nav-title" onclick="showGallery()">Gallery</button>
         </div>
     </aside>
 
@@ -619,6 +811,12 @@
         </div>
     </div>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img id="lightbox-img" src="" alt="Gallery Image">
+    </div>
+
     <!-- Fixed Footer -->
     <footer class="footer">
         <div>&copy; 2025 eTwinning Aristotel '26 | European School Education Platform | All rights reserved</div>
@@ -626,76 +824,263 @@
 
     <script>
         let currentTheme = localStorage.getItem('theme') || 'light';
-        let currentActiveNav = 'home';
 
-        // Apply saved theme on load
+        // Apply saved theme
         if (currentTheme === 'dark') {
             document.body.classList.add('dark');
             document.getElementById('themeToggle').textContent = 'Light';
         }
 
         // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', function() {
+        document.getElementById('themeToggle').addEventListener('click', function() {
             document.body.classList.toggle('dark');
-            currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+            currentTheme            = document.body.classList.contains('dark') ? 'dark' : 'light';
             this.textContent = currentTheme === 'dark' ? 'Light' : 'Dark';
             localStorage.setItem('theme', currentTheme);
+            
+            // Track theme change
+            if (typeof umami !== 'undefined') {
+                umami.trackEvent('Theme Changed', { theme: currentTheme });
+            }
         });
 
-        // Main Navigation (Home/Description/Members/Pages)
+        // Navigation
         document.querySelectorAll('.nav-title').forEach(title => {
             title.addEventListener('click', function(e) {
                 e.stopPropagation();
                 
-                // Remove active from all nav titles
                 document.querySelectorAll('.nav-title').forEach(t => t.classList.remove('active'));
-                
-                // Add active to clicked
                 this.classList.add('active');
                 
                 const sectionId = this.dataset.section;
                 if (sectionId === 'pages') {
-                    // Toggle Pages dropdown
-                    const pagesList = document.getElementById('pages');
-                    const pagesItem = this.closest('.nav-item');
-                    pagesItem.classList.toggle('open');
+                    this.closest('.nav-item').classList.toggle('open');
                 } else {
-                    // Close Pages if open
-                    document.querySelector('.nav-item[data-section="pages"]')?.closest('.nav-item')?.classList.remove('open');
-                    // Show main section
-                    showMainSection(this.textContent.trim().toLowerCase());
+                    document.querySelector('[data-section="pages"]')?.closest('.nav-item')?.classList.remove('open');
                 }
             });
         });
 
+        // Main sections
         function showMainSection(section) {
-            const titles = {
-                'home': 'Welcome to eTwinning Aristotel \'26',
-                'description': 'Project Description',
-                'members': 'Project Members'
+            const content = {
+                home: `
+                    <h1 class="content-title">Welcome to eTwinning Aristotel '26</h1>
+                    <p class="content-subtitle">European School Education Platform - TwinSpace Navigation</p>
+                    <p style="line-height: 1.7; margin-top: 2rem;">Click on sidebar items to explore project materials, team contributions, and gallery.</p>
+                `,
+                description: `
+                    <h1 class="content-title">The power of S.H.E. - Strength, Hope and Equality</h1>
+                    <div style="line-height: 1.7; font-size: 1.1rem;">
+                        <p>This is a year-long international eTwinning project (from September to May) exploring women's rights, activism, and representation in cinema and beyond. The project is designed for secondary school students, working in international groups to encourage intercultural collaboration, critical thinking, and creativity.</p>
+                        <p style="margin-top: 1.5rem; font-style: italic;">Some of us have already been running this similar project around the "suffragettes" film for two years, and we're improving every year.</p>
+                    </div>
+                `,
+                members: `
+                    <h1 class="content-title">Members (8)</h1>
+                    <div class="members-grid">
+                        <div class="member-card">
+                            <div class="member-name">Aliona Meriacre</div>
+                            <div class="member-role">Administrator</div>
+                            <div class="member-date">Last access 29.04.2026</div>
+                            <div class="member-school">Liceul Teoretic Republican "Aristotel"</div>
+                            <div class="member-location">Chişinău, Republic of Moldova</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Hasibe Yalçınkaya</div>
+                            <div class="member-role">Co-founder</div>
+                            <div class="member-date">Last access 28.04.2026</div>
+                            <div class="member-school">Hasan Aybaba Anadolu Lisesi</div>
+                            <div class="member-location">Merkez, Türkiye</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">diana iervolino</div>
+                            <div class="member-role">Administrator</div>
+                            <div class="member-date">Last access 08.04.2026</div>
+                            <div class="member-school">IIS "Don L. Milani" di Gragnano</div>
+                            <div class="member-location">Gragnano (Na), Italy</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Mathilde Bertaso</div>
+                            <div class="member-role">Founder</div>
+                            <div class="member-date">Last access 20.04.2026</div>
+                            <div class="member-school">Lycée Jean Jaurès</div>
+                            <div class="member-location">Reims, France</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Anila Hoxhaj</div>
+                            <div class="member-role">Administrator</div>
+                            <div class="member-date">Last access 28.04.2026</div>
+                            <div class="member-school">"Kostandin Kristoforidhi"</div>
+                            <div class="member-location">Tiranë, Albania</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Fara Messina</div>
+                            <div class="member-role">Administrator</div>
+                            <div class="member-date">Last access 30.01.2026</div>
+                            <div class="member-school">IIS "Don L. Milani" di Gragnano</div>
+                            <div class="member-location">Gragnano (Na), Italy</</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Anna Bukwarow</div>
+                            <div class="member-role">Administrator</div>
+                            <div class="member-date">Last access 14.04.2026</div>
+                            <div class="member-school">LO im. Stefana Banacha w Żaganiu</div>
+                            <div class="member-location">Żagań, Poland</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Nagore Barbero</div>
+                            <div class="member-role">Administrator</div>
+                            <div class="member-date">Last access 29.04.2026</div>
+                            <div class="member-school">IES BOTIKAZAR BHI</div>
+                            <div class="member-location">Bilbao, Spain</div>
+                        </div>
+                    </div>
+                `
             };
-            
-            document.getElementById('contentArea').innerHTML = `
-                <h1 class="content-title">${titles[section] || section}</h1>
-                <p class="content-subtitle">Content for ${section} - eTwinning Aristotel '26 project overview</p>
-            `;
+            document.getElementById('contentArea').innerHTML = content[section] || content.home;
         }
 
-        // Topic Toggle (nested)
+        // Gallery
+        function showGallery() {
+            document.getElementById('contentArea').innerHTML = `
+                <h1 class="content-title">Project Gallery</h1>
+                <p class="content-subtitle">Hover over images to see which topic they belong to</p>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Gallery images will be populated by JS -->
+                </div>
+            `;
+            loadGallery();
+        }
+
+        // Team Materials
+        document.querySelectorAll('.team-item').forEach(team) {
+            team.addEventListener('click', function() {
+                const materialId = this.dataset.material;
+                const teamName = this.textContent.trim();
+                const materialType = this.dataset.type;
+                showTeamMaterial(materialId, teamName, materialType);
+            });
+        });
+
+        function showTeamMaterial(id, teamName, type) {
+            const materials = getMaterialsForType(type, id);
+            let content = `
+                <h1 class="content-title">${teamName} Materials</h1>
+                <p class="content-subtitle">${getTypeDescription(type)}</p>
+                <div class="materials-grid">
+            `;
+            
+            materials.forEach(material => {
+                content += `
+                    <div class="material-card" onclick="openMaterial('${material.type}', '${material.url}', '${material.title}')">
+                        <div class="material-icon">${material.icon}</div>
+                        <h3 class="material-title">${material.title}</h3>
+                        <p class="material-desc">${material.desc}</p>
+                        ${material.preview ? `<div class="video-preview">${material.preview}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            content += '</div>';
+            document.getElementById('contentArea').innerHTML = content;
+        }
+
+        function getMaterialsForType(type, id) {
+            const materialsMap = {
+                presentation: [
+                    {type: 'canva', icon: '📱', title: 'Canva Presentation', desc: 'Interactive presentation', url: `https://canva.com/${id}`},
+                    {type: 'pdf', icon: '📄', title: 'PDF Download', desc: 'Downloadable report', url: `https://yourdomain.com/${id}-presentation.pdf`}
+                ],
+                infographic: [
+                    {type: 'image', icon: '🖼️', title: 'Infographic', desc: 'High-res image', url: `https://yourdomain.com/${id}-infographic.jpg`},
+                    {type: 'canva', icon: '📱', title: 'Canva Editor', desc: 'Edit online', url: `https://canva.com/${id}`}
+                ],
+                kahoot: [
+                    {type: 'link', icon: '🎮', title: 'Kahoot Quiz', desc: 'Play quiz', url: `https://kahoot.it/${id}`},
+                    {type: 'wordle', icon: '🧩', title: 'Wordle Game', desc: 'Play game', url: `https://wordle.com/${id}`}
+                ],
+                groups: [
+                    {type: 'link', icon: '👥', title: 'Team Composition', desc: 'View team members', url: `https://yourdomain.com/teams/${id}`}
+                ],
+                slides: [
+                    {type: 'google-slides', icon: '📊', title: 'Google Slides', desc: 'View presentation', url: `https://docs.google.com/presentation/${id}`}
+                ],
+                postcard: [
+                    {type: 'image', icon: '📬', title: 'XMas Postcard', desc: 'High-res image', url: `https://yourdomain.com/${id}-postcard.jpg`},
+                    {type: 'canva', icon: '📱', title: 'Canva Postcard', desc: 'View design', url: `https://canva.com/${id}`}
+                ],
+                video: [
+                    {type: 'youtube', icon: '🎥', title: 'YouTube Video', desc: 'Watch video', url: `https://youtube.com/embed/${id}`, preview: `<iframe src="https://youtube.com/embed/${id}?autoplay=0" allowfullscreen></iframe>`}
+                ],
+                ebook: [
+                    {type: 'link', icon: '📖', title: 'Online eBook', desc: 'Read online', url: `https://yourdomain.com/ebooks/${id}`}
+                ],
+                website: [
+                    {type: 'link', icon: '🌐', title: 'Project Website', desc: 'Visit site', url: `https://yourdomain.com/sites/${id}`}
+                ],
+                vr: [
+                    {type: 'link', icon: '🕶️', title: 'VR Museum', desc: 'Virtual tour', url: `https://yourdomain.com/vr/${id}`}
+                ],
+                games: [
+                    {type: 'link', icon: '🎮', title: 'Game 1', desc: 'Interactive game', url: `https://yourdomain.com/games/${id}-1`},
+                    {type: 'link', icon: '🎮', title: 'Game 2', desc: 'Quiz game', url: `https://yourdomain.com/games/${id}-2`},
+                    {type: 'link', icon: '🎮', title: 'Game 3', desc: 'Challenge', url: `https://yourdomain.com/games/${id}-3`}
+                ],
+                infographic: [
+                    {type: 'image', icon: '🖼️', title: 'Exhibition Infographic', desc: 'High-res image', url: `https://yourdomain.com/${id}-exhibition.jpg`}
+                ]
+            };
+
+            return materialsMap[type] || [{type: 'link', icon: '🔗', title: 'Link', desc: 'External resource', url: `https://yourdomain.com/${id}`}];
+        }
+
+        function getTypeDescription(type) {
+            const descriptions = {
+                presentation: 'Canva presentations and PDFs',
+                infographic: 'Infographics and images',
+                kahoot: 'Interactive quizzes and games',
+                groups: 'International team compositions',
+                slides: 'Google Slides presentations',
+                postcard: 'XMas postcards and designs',
+                video: 'YouTube videos with preview',
+                ebook: 'Online eBooks',
+                website: 'Project websites',
+                vr: 'VR Museum tours',
+                games: 'Interactive games and quizzes',
+                infographic: 'Exhibition infographics'
+            };
+            return descriptions[type] || 'Team materials';
+        }
+
+        function openMaterial(type, url, title) {
+            if (type === 'youtube') {
+                // Already previewed, open full screen
+                const fullUrl = url.replace('embed/', 'watch?v=');
+                window.open(fullUrl, '_blank');
+            } else if (type === 'google-slides') {
+                window.open(url, '_blank');
+            } else {
+                window.open(url, '_blank');
+            }
+            
+            if (typeof umami !== 'undefined') {
+                umami.trackEvent('Material Opened', { type, title });
+            }
+        }
+
+        // Topic Toggle
         document.addEventListener('click', function(e) {
             if (e.target.closest('.topic-button')) {
                 const button = e.target.closest('.topic-button');
                 const topicItem = button.closest('.topic-item');
                 const isOpen = topicItem.classList.contains('open');
 
-                // Close all topics at same level
                 topicItem.parentElement.querySelectorAll('.topic-item').forEach(item => {
                     item.classList.remove('open');
                     item.querySelector('.topic-button').classList.remove('active');
                 });
 
-                // Toggle current
                 if (!isOpen) {
                     topicItem.classList.add('open');
                     button.classList.add('active');
@@ -703,56 +1088,65 @@
             }
         });
 
-        // Team Material Display
-        document.querySelectorAll('.team-item').forEach(team => {
-            team.addEventListener('click', function() {
-                const materialId = this.dataset.material;
-                const teamName = this.textContent.trim();
-                showTeamMaterial(materialId, teamName);
-            });
-        });
+        // Gallery functionality
+        function loadGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            const galleryData = [
+                {img: 'https://via.placeholder.com/400x400/1e40af/ffffff?text=1+Digital+Pact', topic: 'Digital Pact', full: 'https://via.placeholder.com/1200x1200/1e40af/ffffff?text=Digital+Pact+Full'},
+                {img: 'https://via.placeholder.com/400x400/3b82f6/ffffff?text=2+Groups', topic: 'International Groups', full: 'https://via.placeholder.com/1200x1200/3b82f6/ffffff?text=Groups+Full'},
+                {img: 'https://via.placeholder.com/400x400/e879f9/ffffff?text=3+Suffragette', topic: 'Suffragette', full: 'https://via.placeholder.com/1200x1200/e879f9/ffffff?text=Suffragette+Full'},
+                {img: 'https://via.placeholder.com/400x400/10b981/ffffff?text=4+XMas', topic: 'XMas Cards', full: 'https://via.placeholder.com/1200x1200/10b981/ffffff?text=XMas+Full'},
+                {img: 'https://via.placeholder.com/400x400/f59e0b/000000?text=5+Reenact', topic: 'Reenacting', full: 'https://via.placeholder.com/1200x1200/f59e0b/000000?text=Reenact+Full'},
+                {img: 'https://via.placeholder.com/400x400/ef4444/ffffff?text=6+Women', topic: "Women\'s Day", full: 'https://via.placeholder.com/1200x1200/ef4444/ffffff?text=Womens+Day+Full'},
+                {img: 'https://via.placeholder.com/400x400/8b5cf6/ffffff?text=7.1+Mini', topic: 'Mini Campaign', full: 'https://via.placeholder.com/1200x1200/8b5cf6/ffffff?text=Mini+Campaign+Full'},
+                {img: 'https://via.placeholder.com/400x400/f97316/ffffff?text=7.2+Promo', topic: 'Promotion', full: 'https://via.placeholder.com/1200x1200/f97316/ffffff?text=Promotion+Full'},
+                {img: 'https://via.placeholder.com/400x400/14b8a6/ffffff?text=8+Logo', topic: 'Project Logo', full: 'https://via.placeholder.com/1200x1200/14b8a6/ffffff?text=Logo+Full'}
+            ];
 
-        function showTeamMaterial(id, teamName) {
-            const contentArea = document.getElementById('contentArea');
-            contentArea.innerHTML = `
-                <h1 class="content-title">${teamName} Materials</h1>
-                <p class="content-subtitle">Team contributions - Videos, PDFs, eMagazines</p>
-                <div class="materials-grid">
-                    <div class="material-card" onclick="openMaterial('video', '${id}')">
-                        <div class="material-icon">🎥</div>
-                        <h3>Video Presentation</h3>
-                        <p>Main team video contribution</p>
+            galleryData.forEach(item => {
+                galleryGrid.innerHTML += `
+                    <div class="gallery-item" data-full="${item.full}">
+                        <img src="${item.img}" alt="${item.topic}" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">${item.topic}</div>
+                        </div>
                     </div>
-                    <div class="material-card" onclick="openMaterial('pdf', '${id}')">
-                        <div class="material-icon">📄</div>
-                        <h3>PDF Report</h3>
-                        <p>Detailed project documentation</p>
-                    </div>
-                    <div class="material-card" onclick="openMaterial('emag', '${id}')">
-                        <div class="material-icon">📖</div>
-                        <h3>eMagazine</h3>
-                        <p>Interactive digital magazine</p>
-                    </div>
-                </div>
-            `;
+                `;
+            });
+
+            // Initialize gallery interactions
+            setTimeout(() => initGallery(), 100);
         }
 
-        function openMaterial(type, id) {
-            // TODO: Replace with your actual URLs
-            const baseUrls = {
-                video: 'https://www.youtube.com/embed/YOUR_VIDEO_ID',
-                pdf: 'https://yourdomain.com/files/team-${id}-report.pdf',
-                emag: 'https://yourdomain.com/emag/team-${id}.html'
-            };
-            
-            const url = baseUrls[type].replace('${id}', id);
-            window.open(url, '_blank');
-            
-            // Track with Umami
-            if (typeof umami !== 'undefined') {
-                umami.trackEvent(`${type.toUpperCase()} Opened`, {
-                    team: id
+        function initGallery() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.querySelector('.lightbox-close');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const fullImgSrc = item.getAttribute('data-full');
+                    lightboxImg.src = fullImgSrc;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 });
+
+                // Animate in
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, Math.random() * 200);
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
             }
         }
 
@@ -764,13 +1158,22 @@
             document.getElementById('scrollProgress').style.height = (scrollPercent * 100) + '%';
         });
 
-        // Umami Analytics
-        if (typeof umami !== 'undefined') {
-            umami.trackView('/twinspace-pages');
-            umami.trackEvent('Page Loaded', {
-                page: 'TwinSpace Pages'
-            });
+        // Umami Analytics - Force tracking
+        function trackPageView() {
+            if (typeof umami !== 'undefined') {
+                umami.trackView('/twinspace-pages');
+                umami.trackEvent('Page Loaded', { page: 'TwinSpace' });
+                console.log('Umami tracked page view');
+            } else {
+                console.log('Umami not loaded yet');
+                setTimeout(trackPageView, 1000);
+            }
         }
+        trackPageView();
+
+        // Initial load
+        showMainSection('home');
     </script>
 </body>
 </html>
+                                                                                                    
