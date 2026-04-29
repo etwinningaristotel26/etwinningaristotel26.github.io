@@ -714,7 +714,7 @@
                         <span>6 - International Women's Day</span>
                         <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <polyline points="6,9 12,15 18,9"></polyline>
-                        </                        </svg>
+                        </svg>
                     </button>
                     <ul class="teams-list">
                         <li class="team-item" data-material="womens-team1" data-type="presentation">Team 1</li>
@@ -835,7 +835,7 @@
         // Theme Toggle
         document.getElementById('themeToggle').addEventListener('click', function() {
             document.body.classList.toggle('dark');
-            currentTheme            = document.body.classList.contains('dark') ? 'dark' : 'light';
+            currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
             this.textContent = currentTheme === 'dark' ? 'Light' : 'Dark';
             localStorage.setItem('theme', currentTheme);
             
@@ -920,7 +920,7 @@
                             <div class="member-role">Administrator</div>
                             <div class="member-date">Last access 30.01.2026</div>
                             <div class="member-school">IIS "Don L. Milani" di Gragnano</div>
-                            <div class="member-location">Gragnano (Na), Italy</</div>
+                            <div class="member-location">Gragnano (Na), Italy</div>
                         </div>
                         <div class="member-card">
                             <div class="member-name">Anna Bukwarow</div>
@@ -955,7 +955,7 @@
         }
 
         // Team Materials
-        document.querySelectorAll('.team-item').forEach(team {
+        document.querySelectorAll('.team-item').forEach(team => {
             team.addEventListener('click', function() {
                 const materialId = this.dataset.material;
                 const teamName = this.textContent.trim();
