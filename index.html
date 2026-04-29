@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eTwinning Aristotel '26 - TwinSpace</title>
     <!-- Simple Analytics Tracker -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="8bf95060-8550-4fb9-9c1d-c17624d0c0ab"></script>
+    <script async defer src="https://cloud.umami.is/script.js" data-website-id="8bf95060-8550-4fb9-9c1d-c17624d0c0ab"></script>
     <style>
         * {
             margin: 0;
@@ -15,8 +15,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8fafc;
-            color: #1e293b;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             overflow-x: hidden;
             transition: all 0.3s ease;
         }
@@ -99,17 +99,18 @@
 
         .theme-toggle {
             background: var(--bg-secondary);
-            color: var(--text-primary);
             border: 1px solid var(--border);
             padding: 0.5rem 1.25rem;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
+            color: var(--text-primary);
         }
 
         .theme-toggle:hover {
             background: var(--hover-bg);
+            transform: scale(1.05);
         }
 
         /* Main Wrapper */
@@ -135,7 +136,7 @@
         }
 
         .sidebar-header {
-            padding: 2rem 1.5rem 1.5rem;
+            padding: 2.5rem 1.5rem 1.5rem;
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
@@ -155,9 +156,9 @@
             font-size: 0.9rem;
         }
 
-        /* Navigation Sections */
-        .nav-section {
-            margin-bottom: 1rem;
+        /* Navigation Items */
+        .nav-item {
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-title {
@@ -168,6 +169,12 @@
             border-bottom: 2px solid var(--active-bg);
             cursor: pointer;
             transition: all 0.3s;
+            user-select: none;
+            display: block;
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
         }
 
         .nav-title:hover {
@@ -175,10 +182,22 @@
             padding-left: 2rem;
         }
 
+        .nav-title.active {
+            background: var(--active-bg);
+            color: white;
+        }
+
         /* Topics List */
         .topics-list {
             list-style: none;
             padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-item.open .topics-list {
+            max-height: 2000px;
         }
 
         .topic-item {
@@ -210,14 +229,6 @@
         .topic-button.active {
             background: var(--active-bg);
             color: white;
-        }
-
-        .topic-icon {
-            width: 18px;
-            height: 18px;
-            margin-right: 0.75rem;
-            display: inline-block;
-            opacity: 0.8;
         }
 
         .topic-arrow {
@@ -379,7 +390,7 @@
                 <img src="logo.png" alt="Logo" class="logo">
                 <div class="header-title">eTwinning Aristotel '26</div>
             </div>
-            <button class="theme-toggle" id="themeToggle">Light</button>
+            <button class="theme-toggle" id="themeToggle">Dark</button>
         </div>
     </header>
 
@@ -395,20 +406,25 @@
             <p class="sidebar-subtitle">eTwinning Project</p>
         </div>
 
-        <!-- Main Navigation -->
-        <div class="nav-section">
-            <div class="nav-title" onclick="toggleSection('main-nav')">Main</div>
-            <ul class="topics-list" id="main-nav" style="display: none;">
-                <li><a href="#" class="nav-title" onclick="showSection('home')">Home</a></li>
-                <li><a href="#" class="nav-title" onclick="showSection('description')">Description</a></li>
-                <li><a href="#" class="nav-title" onclick="showSection('members')">Members</a></li>
-            </ul>
+        <!-- Home -->
+        <div class="nav-item">
+            <button class="nav-title active" onclick="showMainSection('home')">Home</button>
+        </div>
+
+        <!-- Description -->
+        <div class="nav-item">
+            <button class="nav-title" onclick="showMainSection('description')">Description</button>
+        </div>
+
+        <!-- Members -->
+        <div class="nav-item">
+            <button class="nav-title" onclick="showMainSection('members')">Members</button>
         </div>
 
         <!-- Pages Section -->
-        <div class="nav-section">
-            <div class="nav-title" onclick="toggleSection('pages')">Pages</div>
-            <ul class="topics-list" id="pages" style="display: none;">
+        <div class="nav-item">
+            <button class="nav-title" data-section="pages">Pages</button>
+            <ul class="topics-list" id="pages">
                 <!-- 1. Digital Pact -->
                 <li class="topic-item" data-topic="digital-pact">
                     <button class="topic-button">
@@ -438,7 +454,7 @@
                     </button>
                     <ul class="teams-list">
                         <li class="team-item" data-material="international-team1">Team 1</li>
-                                                <li class="team-item" data-material="international-team2">Team 2</li>
+                        <li class="team-item" data-material="international-team2">Team 2</li>
                         <li class="team-item" data-material="international-team3">Team 3</li>
                         <li class="team-item" data-material="international-team4">Team 4</li>
                         <li class="team-item" data-material="international-team5">Team 5</li>
@@ -456,13 +472,13 @@
                         </svg>
                     </button>
                     <ul class="teams-list">
-                        <li class="team-item" data-material="suffragette-group1">Group 1</li>
-                        <li class="team-item" data-material="suffragette-group2">Group 2</li>
-                        <li class="team-item" data-material="suffragette-group3">Group 3</li>
-                        <li class="team-item" data-material="suffragette-group4">Group 4</li>
-                        <li class="team-item" data-material="suffragette-group5">Group 5</li>
-                        <li class="team-item" data-material="suffragette-group6">Group 6</li>
-                        <li class="team-item" data-material="suffragette-group7">Group 7</li>
+                        <li class="team-item" data-material="suffragette-team1">Team 1</li>
+                        <li class="team-item" data-material="suffragette-team2">Team 2</li>
+                        <li class="team-item" data-material="suffragette-team3">Team 3</li>
+                        <li class="team-item" data-material="suffragette-team4">Team 4</li>
+                        <li class="team-item" data-material="suffragette-team5">Team 5</li>
+                        <li class="team-item" data-material="suffragette-team6">Team 6</li>
+                        <li class="team-item" data-material="suffragette-team7">Team 7</li>
                     </ul>
                 </li>
 
@@ -494,13 +510,13 @@
                         </svg>
                     </button>
                     <ul class="teams-list">
-                        <li class="team-item" data-material="reenact-group1">Group 1</li>
-                        <li class="team-item" data-material="reenact-group2">Group 2</li>
-                        <li class="team-item" data-material="reenact-group3">Group 3</li>
-                        <li class="team-item" data-material="reenact-group4">Group 4</li>
-                        <li class="team-item" data-material="reenact-group5">Group 5</li>
-                        <li class="team-item" data-material="reenact-group6">Group 6</li>
-                        <li class="team-item" data-material="reenact-group7">Group 7</li>
+                        <li class="team-item" data-material="reenact-team1">Team 1</li>
+                        <li class="team-item" data-material="reenact-team2">Team 2</li>
+                        <li class="team-item" data-material="reenact-team3">Team 3</li>
+                        <li class="team-item" data-material="reenact-team4">Team 4</li>
+                        <li class="team-item" data-material="reenact-team5">Team 5</li>
+                        <li class="team-item" data-material="reenact-team6">Team 6</li>
+                        <li class="team-item" data-material="reenact-team7">Team 7</li>
                     </ul>
                 </li>
 
@@ -513,13 +529,13 @@
                         </svg>
                     </button>
                     <ul class="teams-list">
-                        <li class="team-item" data-material="womens-group1">Group 1</li>
-                        <li class="team-item" data-material="womens-group2">Group 2</li>
-                        <li class="team-item" data-material="womens-group3">Group 3</li>
-                        <li class="team-item" data-material="womens-group4">Group 4</li>
-                        <li class="team-item" data-material="womens-group5">Group 5</li>
-                        <li class="team-item" data-material="womens-group6">Group 6</li>
-                        <li class="team-item" data-material="womens-group7">Group 7</li>
+                        <li class="team-item" data-material="womens-team1">Team 1</li>
+                        <li class="team-item" data-material="womens-team2">Team 2</li>
+                        <li class="team-item" data-material="womens-team3">Team 3</li>
+                        <li class="team-item" data-material="womens-team4">Team 4</li>
+                        <li class="team-item" data-material="womens-team5">Team 5</li>
+                        <li class="team-item" data-material="womens-team6">Team 6</li>
+                        <li class="team-item" data-material="womens-team7">Team 7</li>
                     </ul>
                 </li>
 
@@ -532,6 +548,7 @@
                         </svg>
                     </button>
                     <ul class="teams-list">
+                        <!-- 7.1 Mini Campaign -->
                         <li class="topic-item" data-topic="skills-7-1">
                             <button class="topic-button">
                                 <span>7.1 - Mini Campaign</span>
@@ -551,6 +568,7 @@
                                 <li class="team-item" data-material="mini-team9">Mini Team 9</li>
                             </ul>
                         </li>
+                        <!-- 7.2 Promoting -->
                         <li class="topic-item" data-topic="skills-7-2">
                             <button class="topic-button">
                                 <span>7.2 - Promoting eTwinning and ESEP Platform</span>
@@ -565,16 +583,16 @@
                                 <li class="team-item" data-material="promo-team4">Team 4</li>
                                 <li class="team-item" data-material="promo-team5">Team 5</li>
                                 <li class="team-item" data-material="promo-team6">Team 6</li>
-                                                                <li class="team-item" data-material="promo-team7">Team 7</li>
+                                <li class="team-item" data-material="promo-team7">Team 7</li>
                             </ul>
                         </li>
                     </ul>
                 </li>
 
                 <!-- 8. Project Logo -->
-                                <li class="topic-item" data-topic="logo">
+                <li class="topic-item" data-topic="logo">
                     <button class="topic-button">
-                                                <span>8 - Project logo</span>
+                        <span>8 - Project logo</span>
                         <svg class="topic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <polyline points="6,9 12,15 18,9"></polyline>
                         </svg>
@@ -596,8 +614,8 @@
     <!-- Scrollable Content -->
     <div class="content-wrapper">
         <div class="content-placeholder" id="contentArea">
-            <h1 class="content-title">Welcome</h1>
-            <p class="content-subtitle">Click "Pages" in sidebar → Select topic → Choose team to see their materials</p>
+            <h1 class="content-title">Welcome to eTwinning Aristotel '26</h1>
+            <p class="content-subtitle">European School Education Platform - TwinSpace Navigation</p>
         </div>
     </div>
 
@@ -607,7 +625,14 @@
     </footer>
 
     <script>
-        let currentTheme = 'light';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        let currentActiveNav = 'home';
+
+        // Apply saved theme on load
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark');
+            document.getElementById('themeToggle').textContent = 'Light';
+        }
 
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
@@ -615,37 +640,56 @@
             document.body.classList.toggle('dark');
             currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
             this.textContent = currentTheme === 'dark' ? 'Light' : 'Dark';
+            localStorage.setItem('theme', currentTheme);
         });
 
-        // Navigation Sections
-        function toggleSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            const isOpen = section.style.display === 'block';
-            
-            // Close all sections
-            document.querySelectorAll('.topics-list').forEach(list => {
-                list.style.display = 'none';
+        // Main Navigation (Home/Description/Members/Pages)
+        document.querySelectorAll('.nav-title').forEach(title => {
+            title.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Remove active from all nav titles
+                document.querySelectorAll('.nav-title').forEach(t => t.classList.remove('active'));
+                
+                // Add active to clicked
+                this.classList.add('active');
+                
+                const sectionId = this.dataset.section;
+                if (sectionId === 'pages') {
+                    // Toggle Pages dropdown
+                    const pagesList = document.getElementById('pages');
+                    const pagesItem = this.closest('.nav-item');
+                    pagesItem.classList.toggle('open');
+                } else {
+                    // Close Pages if open
+                    document.querySelector('.nav-item[data-section="pages"]')?.closest('.nav-item')?.classList.remove('open');
+                    // Show main section
+                    showMainSection(this.textContent.trim().toLowerCase());
+                }
             });
-            
-            // Toggle current
-            section.style.display = isOpen ? 'none' : 'block';
-        }
+        });
 
-        function showSection(section) {
+        function showMainSection(section) {
+            const titles = {
+                'home': 'Welcome to eTwinning Aristotel \'26',
+                'description': 'Project Description',
+                'members': 'Project Members'
+            };
+            
             document.getElementById('contentArea').innerHTML = `
-                <h1 class="content-title">${section.charAt(0).toUpperCase() + section.slice(1)}</h1>
-                <p class="content-subtitle">Content for ${section} section</p>
+                <h1 class="content-title">${titles[section] || section}</h1>
+                <p class="content-subtitle">Content for ${section} - eTwinning Aristotel '26 project overview</p>
             `;
         }
 
-        // Topic Toggle
-        document.querySelectorAll('.topic-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const topicItem = this.closest('.topic-item');
+        // Topic Toggle (nested)
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.topic-button')) {
+                const button = e.target.closest('.topic-button');
+                const topicItem = button.closest('.topic-item');
                 const isOpen = topicItem.classList.contains('open');
 
-                // Close all topics in current section
+                // Close all topics at same level
                 topicItem.parentElement.querySelectorAll('.topic-item').forEach(item => {
                     item.classList.remove('open');
                     item.querySelector('.topic-button').classList.remove('active');
@@ -653,10 +697,10 @@
 
                 // Toggle current
                 if (!isOpen) {
-                    topicItem.classList.add('('open');
-                    this.classList.add('active');
+                    topicItem.classList.add('open');
+                    button.classList.add('active');
                 }
-            });
+            }
         });
 
         // Team Material Display
@@ -672,45 +716,43 @@
             const contentArea = document.getElementById('contentArea');
             contentArea.innerHTML = `
                 <h1 class="content-title">${teamName} Materials</h1>
-                <p class="content-subtitle">Team contributions - Videos, PDFs, eMags</p>
+                <p class="content-subtitle">Team contributions - Videos, PDFs, eMagazines</p>
                 <div class="materials-grid">
                     <div class="material-card" onclick="openMaterial('video', '${id}')">
                         <div class="material-icon">🎥</div>
                         <h3>Video Presentation</h3>
-                        <p>Main team video</p>
+                        <p>Main team video contribution</p>
                     </div>
                     <div class="material-card" onclick="openMaterial('pdf', '${id}')">
                         <div class="material-icon">📄</div>
                         <h3>PDF Report</h3>
-                        <p>Detailed project report</p>
+                        <p>Detailed project documentation</p>
                     </div>
                     <div class="material-card" onclick="openMaterial('emag', '${id}')">
                         <div class="material-icon">📖</div>
                         <h3>eMagazine</h3>
-                        <p>Interactive magazine</p>
+                        <p>Interactive digital magazine</p>
                     </div>
                 </div>
             `;
         }
 
         function openMaterial(type, id) {
-            // Replace with your actual URLs
-            const urls = {
+            // TODO: Replace with your actual URLs
+            const baseUrls = {
                 video: 'https://www.youtube.com/embed/YOUR_VIDEO_ID',
                 pdf: 'https://yourdomain.com/files/team-${id}-report.pdf',
                 emag: 'https://yourdomain.com/emag/team-${id}.html'
             };
             
-            const url = urls[type].replace('${id}', id);
-            if (type === 'video') {
-                const w = window.open('', '_blank');
-                w.document.write(`
-                    <html><head><title>${type.toUpperCase()}</title></head>
-                    <body style="margin:0;padding:20px;background:#000;">
-                        <iframe width="100%" height="500" src="${url}" frameborder="0" allowfullscreen></iframe>
-                    </body></html>`);
-            } else {
-                window.open(url, '_blank');
+            const url = baseUrls[type].replace('${id}', id);
+            window.open(url, '_blank');
+            
+            // Track with Umami
+            if (typeof umami !== 'undefined') {
+                umami.trackEvent(`${type.toUpperCase()} Opened`, {
+                    team: id
+                });
             }
         }
 
@@ -722,30 +764,13 @@
             document.getElementById('scrollProgress').style.height = (scrollPercent * 100) + '%';
         });
 
-        // Analytics Tracking
-        // Umami is privacy-friendly and tracks country + visits
-        // Sign up at umami.is (free self-hosted option available)
-        // Replace YOUR_WEBSITE_ID with your actual ID
-        
-        // Track page views
+        // Umami Analytics
         if (typeof umami !== 'undefined') {
             umami.trackView('/twinspace-pages');
-        }
-
-        // Initial load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial theme state
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark');
-                themeToggle.textContent = 'Light';
-            }
-            
-            // Save theme preference
-            themeToggle.addEventListener('click', function() {
-                localStorage.setItem('theme', currentTheme);
+            umami.trackEvent('Page Loaded', {
+                page: 'TwinSpace Pages'
             });
-        });
+        }
     </script>
 </body>
 </html>
