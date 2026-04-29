@@ -1,760 +1,280 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eTwinning Aristotel '26</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Pages | Digital Innovators TwinSpace</title>
+    
+    <!-- Simplified CSS for demo (in production would be external files) -->
     <style>
-        :root {
-            --primary: #4f46e5;
-            --secondary: #7c3aed;
-            --accent: #06b6d4;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --white: #ffffff;
-            --gray: #64748b;
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            
-            /* Light theme */
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --event-header-dark: #1e40af;
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --card-bg: #1e293b;
-            --border: #334155;
-            --event-header-dark: #1d4ed8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-secondary);
-            transition: all 0.3s ease;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--bg-primary);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-        }
-
-        .etwinning-logo {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
-        .site-title {
-            font-size: 1.6rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .theme-toggle {
-            background: var(--border);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            color: var(--text-secondary);
-        }
-
-        .theme-toggle:hover {
-            background: var(--primary);
-            color: white;
-            transform: rotate(180deg);
-        }
-
-        /* Hero with Horizontal Gallery */
-        .hero {
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-container {
-            max-width: 1400px;
-            margin: 0 auto 3rem;
-            position: relative;
-            height: 200px;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-
-        .gallery-track {
-            display: flex;
-            animation: scroll-left 60s linear infinite;
-            width: max-content;
-            height: 100%;
-        }
-
-        .gallery-track:hover {
-            animation-play-state: paused;
-        }
-
-        .gallery-photo {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            flex-shrink: 0;
-            border-radius: 20px;
-            margin-right: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-photo:hover {
-            transform: scale(1.05);
-        }
-
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .hero-title {
-            text-align: center;
-        }
-
-        .hero-title h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        .header { background: linear-gradient(135deg, #004494 0%, #0066cc 100%); color: white; padding: 1rem 0; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .user-profile { display: flex; align-items: center; gap: 0.5rem; }
+        .profile-img { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+        .notifications { background: #ff6b35; color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
+        
+        /* Page Header */
+        .page-header { background: #f8f9fa; padding: 2rem 0; border-bottom: 1px solid #dee2e6; }
+        .project-info { display: flex; align-items: center; gap: 1rem; }
+        .project-icon { width: 80px; height: 80px; background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); border-radius: 12px; }
+        .project-title { font-size: 2.5rem; color: #212529; margin-bottom: 0.5rem; }
+        .project-meta { color: #6c757d; font-size: 1.1rem; }
+        
+        /* Navigation Tabs */
+        .tabs { background: white; border-bottom: 2px solid #dee2e6; padding: 1rem 0; }
+        .tabs-list { display: flex; list-style: none; gap: 2rem; margin: 0; padding: 0; }
+        .tab { padding: 0.75rem 1.5rem; border-bottom: 3px solid transparent; text-decoration: none; color: #495057; font-weight: 500; transition: all 0.3s; }
+        .tab.active { color: #004494; border-bottom-color: #004494; }
+        .tab:hover { color: #004494; }
+        
         /* Main Content */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section {
-            margin-bottom: 5rem;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .section-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        /* Status */
-        .status-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .status-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .status-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-color: var(--primary);
-        }
-
-        .progress-container {
-            margin-top: 1.5rem;
-        }
-
-        .progress-bar {
-            background: var(--border);
-            height: 12px;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--gradient);
-            border-radius: 6px;
-            transition: width 1s ease;
-            width: 0%;
-        }
-
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* Events */
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .event-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-        }
-
-        .event-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-        }
-
-        .event-header {
-            background: var(--gradient);
-            color: white;
-            padding: 1.8rem 2rem;
-            position: relative;
-        }
-
-        [data-theme="dark"] .event-header {
-            background: var(--event-header-dark);
-        }
-
-        .event-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-
-        .event-meta {
-            font-size: 0.95rem;
-            opacity: 0.95;
-        }
-
-        .event-content {
-            padding: 2.2rem;
-        }
-
-        .subsections {
-            margin: 1.5rem 0;
-        }
-
-        .subsection {
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .subsection-title {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .teams-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .team-card {
-            background: transparent;
-            padding: 1.2rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .team-card:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
-
-        .team-name {
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-        }
-
-        .team-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .team-card:hover .team-link {
-            color: white;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: #94a3b8;
-            padding: 3rem 2rem 1.5rem;
-            margin-top: 6rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-
-        .github-link {
-            color: #eab308;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
+        .main-content { padding: 2rem 0; }
+        .content-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+        
+        /* Sidebar Navigation */
+        .sidebar-nav { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 1.5rem; }
+        .sidebar-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; color: #212529; border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem; }
+        .nav-list { list-style: none; }
+        .nav-item { margin-bottom: 0.25rem; }
+        .nav-link { color: #495057; text-decoration: none; padding: 0.5rem 0; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; }
+        .nav-link:hover { color: #004494; background: #f8f9fa; padding-left: 0.5rem; border-radius: 4px; }
+        .nav-toggle { width: 20px; height: 12px; transition: transform 0.3s; }
+        .nav-item.open .nav-toggle { transform: rotate(180deg); }
+        
+        /* Content Area */
+        .content-area { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 2rem; }
+        .page-title { font-size: 2rem; color: #212529; margin-bottom: 1rem; }
+        .page-meta { color: #6c757d; margin-bottom: 2rem; font-size: 0.95rem; }
+        .twinboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #dee2e6; }
+        .twinboard-title { font-size: 1.25rem; font-weight: 600; color: #212529; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500; transition: all 0.3s; }
+        .btn-primary { background: linear-gradient(135deg, #004494 0%, #0066cc 100%); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,68,148,0.3); }
+        
+        /* Masonry Grid */
+        .masonry-grid { column-count: 2; column-gap: 1.5rem; }
+        .grid-item { break-inside: avoid; margin-bottom: 1.5rem; background: #f8f9fa; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .grid-item:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .grid-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; }
+        .item-title { font-size: 1.1rem; font-weight: 600; color: #212529; margin-bottom: 0.5rem; }
+        .item-description { color: #6c757d; line-height: 1.6; margin-bottom: 1rem; }
+        .item-link { color: #004494; text-decoration: none; font-weight: 500; }
+        .item-link:hover { text-decoration: underline; }
+        
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-container {
-                padding: 0 1.5rem;
-            }
-            
-            .hero-title h1 {
-                font-size: 2.8rem;
-            }
-            
-            .gallery-photo {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .gallery-container {
-                height: 160px;
-            }
-            
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
+            .content-grid { grid-template-columns: 1fr; }
+            .tabs-list { flex-wrap: wrap; gap: 1rem; }
+            .masonry-grid { column-count: 1; }
+            .twinboard-header { flex-direction: column; gap: 1rem; align-items: stretch; }
         }
+        
+        /* Utilities */
+        .hidden { display: none; }
+        .flex { display: flex; }
+        .mb-xl { margin-bottom: 2rem; }
     </style>
 </head>
-<body data-theme="light">
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo-container">
-                <img src="eTwinning Logo Transparent" alt="eTwinning Logo" class="etwinning-logo">
-                <span class="site-title">Aristotel '26</span>
-            </a>
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-            </button>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">European School Education Platform</div>
+                <div class="user-profile">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxkZWZzPgo8cmFkaWFsR3JhZGllbnQgaWQ9ImdyYWRpZW50IiBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iI0ZGQjJEMiIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGN0E1NCIgc3RvcC1vcGFjaXR5PSIwLjk1Ii8+CjwvcmFkaWFsR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+" alt="Profile" class="profile-img">
+                    <span>mddamian m</span>
+                    <div class="notifications">9</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="project-info">
+                <div class="project-icon"></div>
+                <div>
+                    <div class="project-meta">TwinSpace</div>
+                    <h1 class="project-title">Digital Innovators: Code, Create, Collaborate</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+        <div class="container">
+            <ul class="tabs-list">
+                <li><a href="#" class="tab">Home</a></li>
+                <li><a href="#" class="tab active">Pages</a></li>
+                <li><a href="#" class="tab">Materials</a></li>
+                <li><a href="#" class="tab">Forum</a></li>
+                <li><a href="#" class="tab">Members</a></li>
+                <li><a href="#" class="tab">Support</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero with Horizontal Scrolling Gallery -->
-    <section class="hero">
-        <div class="gallery-container">
-            <div class="gallery-track" id="galleryTrack">
-                <!-- Duplicate images for seamless loop - Replace with your team photos -->
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&crop=face" alt="Team Photo 1" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Team Photo 2" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face" alt="Team Photo 3" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1500622909229-e707f45f426b?w=400&h=400&fit=crop&crop=face" alt="Team Photo 4" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=400&fit=crop&crop=face" alt="Team Photo 5" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face" alt="Team Photo 6" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1560272562-cabdb21f39ef?w=400&h=400&fit=crop&crop=face" alt="Team Photo 7" class="gallery-photo">
-                <!-- Duplicates for seamless loop -->
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop&crop=face" alt="Team Photo 1" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Team Photo 2" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face" alt="Team Photo 3" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1500622909229-e707f45f426b?w=400&h=400&fit=crop&crop=face" alt="Team Photo 4" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=400&fit=crop&crop=face" alt="Team Photo 5" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop&crop=face" alt="Team Photo 6" class="gallery-photo">
-                <img src="https://images.unsplash.com/photo-1560272562-cabdb21f39ef?w=400&h=400&fit=crop&crop=face" alt="Team Photo 7" class="gallery-photo">
-            </div>
-        </div>
-        <div class="hero-title">
-            <h1>eTwinning Aristotel '26</h1>
-            <p class="hero-subtitle">Collaborative learning platform showcasing team achievements and project milestones</p>
-        </div>
-    </section>
-
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Google Drive Status -->
-        <section class="section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <i class="fab fa-google-drive"></i>
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar Navigation -->
+                <aside class="sidebar-nav">
+                    <h2 class="sidebar-title">Pages</h2>
+                    <ol class="nav-list">
+                        <li class="nav-item">
+                            <div class="nav-link">
+                                <a href="#">📱 Our Digital Citizenship Rules</a>
+                                <svg class="nav-toggle" viewBox="0 0 10 6" fill="#282828">
+                                    <path d="M0.6 4.5C0.27 4.83 0.27 5.37 0.6 5.7C0.93 6.03 1.47 6.03 1.8 5.7L5.1 2.41L8.4 5.7C8.73 6.03 9.27 6.03 9.6 5.7C9.93 5.37 9.93 4.83 9.6 4.5L5.81 0.71C5.42 0.32 4.78 0.32 4.39 0.71L0.6 4.5Z"/>
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-link">
+                                <a href="#">🌍 Meet Our International Teams</a>
+                                <svg class="nav-toggle" viewBox="0 0 10 6" fill="#282828">
+                                    <path d="M0.6 4.5C0.27 4.83 0.27 5.37 0.6 5.7C0.93 6.03 1.47 6.03 1.8 5.7L5.1 2.41L8.4 5.7C8.73 6.03 9.27 6.03 9.6 5.7C9.93 5.37 9.93 4.83 9.6 4.5L5.81 0.71C5.42 0.32 4.78 0.32 4.39 0.71L0.6 4.5Z"/>
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="nav-item open">
+                            <div class="nav-link">
+                                <a href="#">🤖 Coding Challenge #1</a>
+                                <svg class="nav-toggle" viewBox="0 0 10 6" fill="#282828">
+                                    <path d="M0.6 4.5C0.27 4.83 0.27 5.37 0.6 5.7C0.93 6.03 1.47 6.03 1.8 5.7L5.1 2.41L8.4 5.7C8.73 6.03 9.27 6.03 9.6 5.7C9.93 5.37 9.93 4.83 9.6 4.5L5.81 0.71C5.42 0.32 4.78 0.32 4.39 0.71L0.6 4.5Z"/>
+                                </svg>
+                            </div>
+                            <ol class="nav-list hidden">
+                                <li class="nav-item"><a href="#" class="nav-link">Team Alpha - Python</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Team Beta - Scratch</a></li>
+                            </ol>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">🎨 Our Project Logo Contest</a>
+                        </li>
+                    </ol>
+                </aside>
+
+                <!-- Content Area -->
+                <div class="content-area">
+                    <h1 class="page-title">Our Digital Citizenship Rules</h1>
+                    <div class="page-meta">
+                        Created by <strong>Digital Team Lead</strong> | 
+                        Last updated 2 weeks ago
+                    </div>
+
+                    <div class="twinboard-header">
+                        <h3 class="twinboard-title">Twinboard</h3>
+                        <a href="#" class="btn btn-primary">+ Add Item</a>
+                    </div>
+
+                    <div class="masonry-grid">
+                        <article class="grid-item">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=200&fit=crop" alt="Coding presentation">
+                            <h4 class="item-title">Digital Citizenship Presentation - Team Alpha</h4>
+                            <p class="item-description">Interactive presentation covering netiquette, online safety, and digital responsibility. Created using Canva with engaging visuals and key takeaways.</p>
+                            <a href="#" class="item-link" target="_blank">View Presentation →</a>
+                        </article>
+
+                        <article class="grid-item">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop" alt="Safety infographic">
+                            <h4 class="item-title">eSafety Infographic - Team Beta</h4>
+                            <p class="item-description">Visual guide to staying safe online with 5 golden rules: strong passwords, privacy settings, phishing awareness, cyberbullying prevention, and digital footprint management.</p>
+                            <a href="#" class="item-link">Download Infographic →</a>
+                        </article>
+
+                        <article class="grid-item">
+                            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop" alt="Quiz interface">
+                            <h4 class="item-title">Netiquette Quiz - Team Gamma</h4>
+                            <p class="item-description">Interactive Kahoot quiz to test knowledge on digital citizenship. 15 questions covering communication etiquette, copyright basics, and online behavior best practices.</p>
+                            <a href="#" class="item-link" target="_blank">Play Quiz →</a>
+                        </article>
+
+                        <article class="grid-item">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="Code of conduct poster">
+                            <h4 class="item-title">Code of Conduct Poster - Team Delta</h4>
+                            <p class="item-description">Eye-catching poster summarizing our project's digital citizenship rules. Perfect for classroom display and quick reference.</p>
+                            <a href="#" class="item-link">View Poster →</a>
+                        </article>
+
+                        <article class="grid-item">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop" alt="Word game">
+                            <h4 class="item-title">Netiquette Word Game - Team Epsilon</h4>
+                            <p class="item-description">Fun Wordwall activity where students match netiquette rules with scenarios. Great for reinforcing learning through gamification.</p>
+                            <a href="#" class="item-link" target="_blank">Play Game →</a>
+                        </article>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem; padding: 2rem; border-top: 1px solid #dee2e6;">
+                        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Load More Items</button>
+                    </div>
                 </div>
-                <h2 class="section-title">Project Status</h2>
             </div>
-            <div class="status-grid">
-                <div class="status-card">
-                    <h3>Main Drive Folder</h3>
-                    <p>Complete access to all project documents, presentations, and deliverables</p>
-                    <a href="https://docs.google.com/document/d/1dSYKySbd9fT-D3kuxGR4vljPeAYA5G3J/edit" target="_blank" class="team-link" style="font-size: 1.1rem; margin-top: 1.5rem; display: inline-block;">
-                        <i class="fab fa-google-drive"></i> Open Google Drive
-                    </a>
-                </div>
-                <div class="status-card">
-                    <h3>Progress Overview</h3>
-                    <p>7 teams • 5 major events • Ongoing collaboration across Europe</p>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progressFill"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progressPercent">0%</span>
-                            <span id="progressDate"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Events -->
-        <section class="section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2 class="section-title">Events & Activities</h2>
-            </div>
-
-            <div class="events-grid">
-                <!-- Event 1: Skills that make a difference (1 subsection: Video) -->
-                <article class="event-card">
-                    <div class="event-header">
-                        <div class="event-title">Skills that make a difference</div>
-                        <div class="event-meta">Video Showcase • Latest Event</div>
-                    </div>
-                    <div class="event-content">
-                        <p>Team presentations highlighting essential 21st-century skills</p>
-                        <div class="subsections">
-                            <div class="subsection">
-                                <div class="subsection-title">Video Presentation</div>
-                                <div class="teams-grid">
-                                    <div class="team-card"><div class="team-name">Mini Team 1</div><a href="https://drive.google.com/file/d/1I9uA7PwcMaobhIe0Ns_MCfEzSi2OylXi/view?usp=sharing" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Mini Team 2</div><a href="https://drive.google.com/file/d/18al-YWc2rp9vw9MEnXzIkjhibxKBFqfm/view" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Mini Team 3</div><a href="https://drive.google.com/file/d/1TiLkDBBs4BAJGK65NbEBgaNZOJwHQVv-/view?usp=drivesdk" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Mini Team 4</div><a href="https://drive.google.com/file/d/1z-p1z-8AhSok_CLfB5Pw3AZaFXHp55bl/view" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Mini Team 5</div><a href="https://drive.google.com/file/d/1SWmX8HUl-R3cWC9wKqUW9iXwp_3V3qlt/view?usp=drivesdk" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Mini Team 6</div><a href="https://youtu.be/RK6fFzYzob8?si=TTjRj7w84Ruld0_9" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Mini Team 7</div><a href="https://drive.google.com/file/d/17COeRkaPnd15RqRHLrdEhJj2ZLbbFSYQ/view?usp=sharing" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Mini Team 8</div><a href="https://drive.google.com/file/d/1occXkIIP3NeJqFcEsPTLHxuPTgP7U0wm/view?usp=drivesdk" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Mini Team 9</div><a href="https://youtube.com/shorts/ZrBzqRbTKmU?si=XSFvnGeauqIipy6q" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Event 2: Promoting eTwinning and ESEP platform (1 subsection: Activity) -->
-                <article class="event-card">
-                    <div class="event-header">
-                        <div class="event-title">Promoting eTwinning and ESEP platform</div>
-                        <div class="event-meta">Awareness Activity</div>
-                    </div>
-                    <div class="event-content">
-                        <p>Creative campaigns promoting eTwinning and ESEP platforms</p>
-                        <div class="subsections">
-                            <div class="subsection">
-                                <div class="subsection-title">Promotion Activity</div>
-                                <div class="teams-grid">
-                                    <div class="team-card"><div class="team-name">Team 1</div><a href="https://read.bookcreator.com/guabWq9i56WoAWOxIVYLOdmXMQf1/PcytJIBRRu6GK_jdr8rytw" target="_blank" class="team-link"><i class="fas fa-link"></i> eBook</a></div>
-                                    <div class="team-card"><div class="team-name">Team 2</div><a href="https://youtu.be/mB3YCKvMJsg?si=vAxf9Ug_ZDmgbJfu" target="_blank" class="team-link"><i class="fas fa-link"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 3</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Activity</a></div>
-                                    <div class="team-card"><div class="team-name">Team 4</div><a href="index.html" target="_blank" class="team-link"><i class="fas fa-link"></i> Site</a></div>
-                                    <div class="team-card"><div class="team-name">Team 5</div><a href="https://metasteps.com/viewer/80dc8861-833c-41c7-8c3a-2df4598bc87b" target="_blank" class="team-link"><i class="fas fa-link"></i> VR Museum</a></div>
-                                    <div class="team-card"><div class="team-name">Team 6</div><a href="https://wayground.com/admin/quiz/69ce0893288de4679c3044de" target="_blank" class="team-link"><i class="fas fa-link"></i> Wayground</a></div>
-                                    <div class="team-card"><div class="team-name">Team 7</div><a href="#" target="_blank" class="team-link"><i class="fas fa-link"></i> Infographic</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Event 3: International Women's Day (3 subsections) -->
-                <article class="event-card">
-                    <div class="event-header">
-                        <div class="event-title">International Women's Day</div>
-                        <div class="event-meta">YouTube • Photos • eMag</div>
-                    </div>
-                    <div class="event-content">
-                        <p>Celebrating women's achievements with multimedia presentations</p>
-                        <div class="subsections">
-                            <div class="subsection">
-                                <div class="subsection-title">YouTube Video</div>
-                                <div class="teams-grid">
-                                    <div class="team-card"><div class="team-name">Team 1</div><a href="https://youtu.be/9igzhMZDwRg?si=uytxDu6fOPoW5PDq" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 2</div><a href="https://youtu.be/Awn9xLq8wIU?is=aXHpHvCzE5XBTuWh" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 3</div><a href="https://youtube.com/shorts/i4cSLPegsfI?si=bK9duLXkZx2t5JbG" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 4</div><a href="https://youtube.com/shorts/UxmIieXumsQ" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 5</div><a href="https://youtu.be/QV7iD7w_40o?si=ICnXrJPlJzQQVstZ" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 6</div><a href="https://drive.google.com/file/d/1ieAETB71DXA-ti2p7xyBf81jkU07H5qr/view?usp=drivesdk" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 7</div><a href="https://youtu.be/U0zweV7JEtw?feature=shared" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                </div>
-                            </div>
-                            <div class="subsection">
-                                <div class="subsection-title">Event Photos</div>
-                                <div class="teams-grid">
-                                    <div class="team-card"><div class="team-name">Team 1</div><a href="https://drive.google.com/drive/folders/1acV9FcjPMMA2XHYRICTzbC10Q8REFjE2" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
-                                    <div class="team-card"><div class="team-name">Team 2</div><a href="https://www.canva.com/design/DAHELsA6amY/pAaNXOj3FIdV_jlY8NrEKQ/edit?utm_content=DAHELsA6amY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
-                                    <div class="team-card"><div class="team-name">Team 3</div><a href="https://drive.google.com/drive/folders/1nMmyziZYHlnUkrX1zshYMUErLArrTk0E" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
-                                    <div class="team-card"><div class="team-name">Team 4</div><a href="https://docs.google.com/document/d/1tLGPmEdxPlU2RcJNd_fAX5pzCBQG9_c_vTuVTgtmvHw/edit?usp=sharing" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
-                                    <div class="team-card"><div class="team-name">Team 5</div><a href="https://www.canva.com/design/DAHELi2vgtQ/XpDFxcXe8kpxVE8KC_S06g/edit?utm_content=DAHELi2vgtQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
-                                    <div class="team-card"><div class="team-name">Team 6</div><a href="https://docs.google.com/document/d/1W9S5N0nsK8Yvn7CJTuxteN9_0MXk2rPo4uyH2RgOCLs/edit?usp=drivesdk" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
-                                    <div class="team-card"><div class="team-name">Team 7</div><a href="https://www.canva.com/design/DAHE1jVfagI/CYTJUnRRZuX-P8WZKcUJrg/edit?utm_content=DAHE1jVfagI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-images"></i> Gallery</a></div>
-                                </div>
-                            </div>
-                            <div class="subsection">
-                                <div class="subsection-title">eMag</div>
-                                <div class="teams-grid">
-                                    <div class="team-card"><div class="team-name">Team 1</div><a href="https://www.canva.com/design/DAHC3yJYI48/1KAtuvKLFini04JzP5Kf1A/edit?utm_content=DAHC3yJYI48&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-file-image"></i> eMag1</a></div>
-                                    <div class="team-card"><div class="team-name">Team 2</div><a href="https://www.canva.com/design/DAHC3018jlA/y-XdJQUkJ9DNo2wDuXiyoQ/edit?utm_content=DAHC3018jlA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-file-image"></i> eMag2</a></div>
-                                    <div class="team-card"><div class="team-name">Team 3</div><a href="https://www.canva.com/design/DAHC34rdWio/d7AcdIILWas2WY_qoruF-g/edit?utm_content=DAHC34rdWio&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-file-image"></i> eMag3</a></div>
-                                    <div class="team-card"><div class="team-name">Team 4</div><a href="https://www.canva.com/design/DAHC4IsvnkE/FxbIrE2OeUjFgVEp8yEy0Q/edit?utm_content=DAHC4IsvnkE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-file-image"></i> eMag4</a></div>
-                                    <div class="team-card"><div class="team-name">Team 5</div><a href="https://www.canva.com/design/DAHC3wA497s/itF2SL3hpP2fqugfZsICpg/edit?utm_content=DAHC3wA497s&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-file-image"></i> eMag5</a></div>
-                                    <div class="team-card"><div class="team-name">Team 6</div><a href="https://canva.link/awxos97kv7bu5uo" target="_blank" class="team-link"><i class="fas fa-file-image"></i> eMag6</a></div>
-                                    <div class="team-card"><div class="team-name">Team 7</div><a href="https://www.canva.com/design/DAHC36J1CIQ/uxleA3_H1GJTjXdIy-gNRg/edit?utm_content=DAHC36J1CIQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-file-image"></i> eMag7</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Event 4: Reenacting the movie (3 subsections) -->
-                <article class="event-card">
-                    <div class="event-header">
-                        <div class="event-title">Reenacting the movie</div>
-                        <div class="event-meta">YouTube • Canva • Report</div>
-                    </div>
-                    <div class="event-content">
-                        <p>Creative movie reenactments with professional editing</p>
-                        <div class="subsections">
-                            <div class="subsection">
-                                <div class="subsection-title">YouTube Video</div>
-                                <div class="teams-grid">
-                                    <div class="team-card"><div class="team-name">Team 1</div><a href="https://youtu.be/e-g-4_PAGLo" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 2</div><a href="https://youtu.be/iQyojJ0XXZA?si=_LXWpsAKmCLu9MGD" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 3</div><a href="https://youtu.be/zj3ulxiQfoc?si=1IslC2eVmBOVMqNq" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 4</div><a href="https://youtu.be/8l8_vTwLX7Q" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 5</div><a href="https://youtu.be/U5TEIJbL444?si=C04KlV5lN51DWD0S" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 6</div><a href="https://drive.google.com/file/d/1eudLHP3iIEG1gIyyuk5yAcO3SPI9qg5G/view?usp=drivesdk" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                    <div class="team-card"><div class="team-name">Team 7</div><a href="https://drive.google.com/file/d/1FVJbcA1h2hDELwR634f_Z2tEmSyCiMVX/view?usp=drivesdk" target="_blank" class="team-link"><i class="fab fa-youtube"></i> Video</a></div>
-                                </div>
-                            </div>
-                            <div class="subsection">
-                                <div class="subsection-title">Canva Design</div>
-                                <div class="teams-grid">
-                                    <div class="team-card"><div class="team-name">Team 1</div><a href="https://www.canva.com/design/DAG-4a4vOUc/tquHKxciJT9hZHPjCS0L3Q/edit?utm_content=DAG-4a4vOUc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
-                                    <div class="team-card"><div class="team-name">Team 2</div><a href="https://www.canva.com/design/DAG-7bVroh0/JCxTpjY5WImyF5x8qa0Ftw/edit?utm_content=DAG-7bVroh0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
-                                    <div class="team-card"><div class="team-name">Team 3</div><a href="https://www.canva.com/design/DAHANXxe9K4/bf_S_vclBWG1lZkq_Zd2lw/view?utm_content=DAHANXxe9K4&utm_campaign=designshare&utm_medium=link&utm_source=viewer" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
-                                    <div class="team-card"><div class="team-name">Team 4</div><a href="https://www.canva.com/design/DAG-4owZLlc/rKMfkElakKvUd8wEXDAujQ/edit?utm_content=DAG-4owZLlc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
-                                    <div class="team-card"><div class="team-name">Team 5</div><a href="https://www.canva.com/design/DAG-4K6pyBQ/OjxA1zv3mf0Q3f_i8HcZCA/edit?utm_content=DAG-4K6pyBQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
-                                    <div class="team-card"><div class="team-name">Team 6</div><a href="https://www.canva.com/design/DAG_jYUycmU/kgx0Epdn7TTzrvkWRudkow/edit?utm_content=DAG_jYUycmU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
-                                    <div class="team-card"><div class="team-name">Team 7</div><a href="https://www.canva.com/design/DAG_jZ6_ggI/9gR37se1Z3733MVhbZoYPw/edit?utm_content=DAG_jZ6_ggI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="team-link"><i class="fas fa-external-link-alt"></i> Canva</a></div>
-                                </div>
-                            </div>
-                            <div class="subsection">
-                                <div class="subsection-title">Activity Report</div>
-                                <div class="teams-grid">
-                                    <div class="team-card"><div class="team-name">Team 1</div><a href="https://docs.google.com/document/u/0/d/1pfvIoPMq3oaMDfqx7oen8SKWk6gObJ9AyF51bqGRb5o/edit" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
-                                    <div class="team-card"><div class="team-name">Team 2</div><a href="https://docs.google.com/document/d/18YZaL1yAJHGVXpinCCPO7JnifG85VMMbyXW2QYA-KNo/edit?usp=sharing" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
-                                    <div class="team-card"><div class="team-name">Team 3</div><a href="https://docs.google.com/document/d/1-FakbW8j2sSPYWX6WIY9cx0-C_KQfuIH7Jz4DMKDpxE/edit?usp=drivesdk" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
-                                    <div class="team-card"><div class="team-name">Team 4</div><a href="https://docs.google.com/document/d/1SxEHHZxPyC_bEtuUMeH3jg62cX_NIIuQtlqxqcBQw7U/edit?tab=t.0" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
-                                    <div class="team-card"><div class="team-name">Team 5</div><a href="https://docs.google.com/document/d/1Iym-RdXS-ax-T7nLbuIaSxpOEUG_CDafOnfTa1fEzwk/edit?usp=sharing" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
-                                    <div class="team-card"><div class="team-name">Team 6</div><a href="https://docs.google.com/document/d/1Um4IgLW5_W3SoNCQVFYit4Gf8njzrktAc5wrNlo3OJ4/edit?usp=sharing" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
-                                    <div class="team-card"><div class="team-name">Team 7</div><a href="https://docs.google.com/document/d/1CoGiNFVgDNOGJk2OQFH67UplSw9RZoCRVc9zBh44UOs/edit?usp=sharing" target="_blank" class="team-link"><i class="fas fa-file-pdf"></i> Report</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Event 5: Suffragette (1 subsection: Google Slides) -->
-                <article class="event-card">
-                    <div class="event-header">
-                        <div class="event-title">Watching and Studying: Suffragette</div>
-                        <div class="event-meta">Google Slides Analysis</div>
-                    </div>
-                    <div class="event-content">
-                        <p>In-depth movie analysis focusing on women's rights history</p>
-                        <div class="subsections">
-                            <div class="subsection">
-                                <div class="subsection-title">Google Slides Presentation</div>
-                                <div class="teams-grid">
-                                    <div class="team-card"><div class="team-name">Team 1</div><a href="https://docs.google.com/presentation/d/1yzG6SS2mAi9aBCiBRBBJE8kMQKIxfIxL9jSh2YhzOoI/edit?usp=sharing" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                                    <div class="team-card"><div class="team-name">Team 2</div><a href="https://docs.google.com/presentation/d/1Kfp7Sv3yHWEDrVbTXBB6Xro-P_w6lHBPMeXX9RUHB1A/edit?usp=sharing" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                                    <div class="team-card"><div class="team-name">Team 3</div><a href="https://docs.google.com/presentation/d/1ak-O49I9LGY0BXksKVx9Vy_jruriqoMRLCmbU_16nBQ/edit?usp=sharing" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                                    <div class="team-card"><div class="team-name">Team 4</div><a href="https://docs.google.com/presentation/d/1O8kOT19-wPihf6WFVXQHvtBbyPT68n3A845-ialYhy0/edit?slide=id.g3aedcab9925_0_0#slide=id.g3aedcab9925_0_0" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                                    <div class="team-card"><div class="team-name">Team 5</div><a href="https://docs.google.com/presentation/d/1WZyVxl6THAsbV69lbRF3RqQxDMRnUTwx6RqFXi3EZgs/edit?usp=sharing" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                                    <div class="team-card"><div class="team-name">Team 6</div><a href="https://docs.google.com/presentation/d/1wbgxIufwTozdEc7adhbqD4jEiDbHSNhYk-D9bAtZtxk/edit?usp=sharing" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                                    <div class="team-card"><div class="team-name">Team 7</div><a href="https://docs.google.com/presentation/d/1BCtxU5JqKBfQ1pAszHl1mRvWb9Qs-KxzB2199q9GZzM/edit?usp=sharing" target="_blank" class="team-link"><i class="fab fa-google-slides"></i> Slides</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>eTwinning Aristotel '26 © 2026 All rights reserved.</p>
-            <p class="copyright">
-                View <a href="README.md" target="_blank" class="github-link">Copyright</a>
-            </p>
+    <footer style="background: #f8f9fa; padding: 3rem 0 1rem; margin-top: 4rem; border-top: 4px solid #004494;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h3 style="color: #004494; margin-bottom: 1rem;">European School Education Platform</h3>
+                    <p style="color: #6c757d;">Managed by European Education and Culture Executive Agency</p>
+                </div>
+                <div>
+                    <h4 style="color: #212529; margin-bottom: 1rem;">Get in Touch</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="#" style="color: #495057; text-decoration: none;">Contact & Support</a></li>
+                        <li><a href="#" style="color: #495057; text-decoration: none;">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #212529; margin-bottom: 1rem;">Legal</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="#" style="color: #495057; text-decoration: none;">Privacy Policy</a></li>
+                        <li><a href="#" style="color: #495057; text-decoration: none;">Terms of Use</a></li>
+                        <li><a href="#" style="color: #495057; text-decoration: none;">eTwinning Code</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #dee2e6; color: #6c757d; font-size: 0.9rem;">
+                © European Union, 2025 | All rights reserved
+            </div>
         </div>
     </footer>
 
     <script>
-        // Dark/Light Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const currentTheme = localStorage.getItem('theme');
-
-        if (currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            body.setAttribute('data-theme', 'dark');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-
-        themeToggle.addEventListener('click', () => {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        // Simple toggle functionality for sidebar
+        document.querySelectorAll('.nav-item .nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const parent = link.closest('.nav-item');
+                const sublist = parent.querySelector('.nav-list');
+                const toggle = parent.querySelector('.nav-toggle');
+                
+                parent.classList.toggle('open');
+                sublist.classList.toggle('hidden');
+            });
         });
 
-        // Progress bar based on time to May 31st 2026
-        function updateProgress() {
-            const startDate = new Date('2026-01-01T00:00:00');
-            const endDate = new Date('2026-05-31T23:59:59');
-            const now = new Date();
-            
-            const totalDuration = endDate - startDate;
-            const elapsed = Math.max(0, Math.min(now - startDate, totalDuration));
-            const progress = (elapsed / totalDuration) * 100;
-            
-            document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
-            document.getElementById('progressDate').textContent = now.toLocaleDateString();
-        }
-
-        // Update progress on load and every minute
-        updateProgress();
-        setInterval(updateProgress, 60000);
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = 'none';
-            }
+        // Smooth hover animations
+        document.querySelectorAll('.grid-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-4px)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+            });
         });
     </script>
 </body>
